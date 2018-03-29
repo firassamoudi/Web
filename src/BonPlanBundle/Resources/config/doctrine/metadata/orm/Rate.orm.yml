@@ -1,0 +1,39 @@
+Rate:
+    type: entity
+    table: rate
+    indexes:
+        fk_rate_fos_user1_idx:
+            columns:
+                - fos_user_id
+        fk_rate_fos_user2_idx:
+            columns:
+                - fos_user_id1
+    id:
+        idrate:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idRate
+            generator:
+                strategy: IDENTITY
+    fields:
+        rate:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        fosUserId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: fos_user_id
+        fosUserId1:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: fos_user_id1
+    lifecycleCallbacks: {  }

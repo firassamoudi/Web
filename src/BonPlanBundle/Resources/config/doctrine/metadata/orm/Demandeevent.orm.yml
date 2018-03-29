@@ -1,0 +1,84 @@
+Demandeevent:
+    type: entity
+    table: demandeevent
+    indexes:
+        fk_demandeevent_fos_user1_idx:
+            columns:
+                - fos_user_id
+        fk_demandeevent_fos_user2_idx:
+            columns:
+                - fos_user_id1
+    id:
+        iddemande:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idDemande
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomevent:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: nomEvent
+        typeevent:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: typeEvent
+        descriptionevent:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: descriptionEvent
+        nbplaceevent:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nbPlaceEvent
+        datedebut:
+            type: date
+            nullable: false
+            column: DateDebut
+        datefin:
+            type: date
+            nullable: false
+            column: DateFin
+        !!binary dmFsaWRpdOOp:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: Validité
+    manyToOne:
+        fosUser:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fosUser1:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id1:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

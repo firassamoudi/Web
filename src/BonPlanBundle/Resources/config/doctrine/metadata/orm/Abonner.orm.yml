@@ -1,0 +1,41 @@
+Abonner:
+    type: entity
+    table: abonner
+    indexes:
+        fk_abonner_fos_user1_idx:
+            columns:
+                - fos_user_id
+        fk_abonner_fos_user2_idx:
+            columns:
+                - fos_user_id1
+    id:
+        idabonner:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        fosUser:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fosUser1:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id1:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

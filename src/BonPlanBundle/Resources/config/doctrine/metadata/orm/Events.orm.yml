@@ -1,0 +1,79 @@
+Events:
+    type: entity
+    table: events
+    indexes:
+        fk_events_fos_user1_idx:
+            columns:
+                - fos_user_id
+    id:
+        idevents:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idEvents
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomev:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: nomEv
+        description:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        nbrplace:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: nbrPlace
+        type:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                default: "\tpublique"
+        datedebutev:
+            type: date
+            nullable: false
+            column: dateDebutEv
+        datefinev:
+            type: date
+            nullable: false
+            column: dateFinEv
+        nbparticipant:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: nbParticipant
+        etatev:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                default: 'En cours'
+            column: etatEv
+    manyToOne:
+        fosUser:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

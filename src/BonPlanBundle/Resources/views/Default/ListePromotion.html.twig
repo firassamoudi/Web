@@ -1,0 +1,123 @@
+{% extends '@BonPlan/Default/index.html.twig' %}
+{% block body %}
+
+
+
+    <div  style="background-repeat:no-repeat ; stroke:5px ; height:700px ; color: white ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }})" class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="header">
+                        <h2 class="title" style="color:#bd2130"><center >Liste des Promotions</center></h2>
+                        <br>
+                        <br>
+                    </div>
+
+                    <center><h6 style="color: #0b0b0b "  aria-busy="true"> Rechercher: <input size="50" type="text" id="recherche" style="color:#0088CC"></h6></center>
+    <h6>
+                    <div class="content table-responsive table-full-width">
+                        <br>
+                        <table  style=outline-color:#bee5eb    class="table  table-striped"  id="tableau">
+                            <thead style="color: #0b0b0b ;size:A5" >
+                            <tr>
+                                <th>descritpion</th>
+                                <th>Proprietaire</th>
+
+                                <th data-field="date debut" data-sortable="true">date Debut</th>
+                                <th data-field="date fin" data-sortable="true">date fin</th>
+
+                                <th data-field="image" data-sortable="true">Image de Promotion </th>
+
+                            </tr>
+                            </thead>
+                            {% for p in promo %}
+                                <tr>
+                                    <td>{{  p.description}}</td>
+                                    <td>{{  p.userPlan.username}}</td>
+
+                                    <td>{{ p.datedebutp |date("m/d/Y")}}</td>
+                                    <td>{{ p.datefinp |date("m/d/Y") }}</td>
+                                    <td> <img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}" style="height: 100px; width: 150px" ></td>
+
+
+
+
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                    </div>
+                </div>
+            </div></div></div></body>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // when the user clicks on like
+            $('.like').on('click', function(){
+                var postid = $(this).data('id');
+                $post = $(this);
+
+                $.ajax({
+                    url: 'index.php',
+                    type: 'post',
+                    data: {
+                        'liked': 1,
+                        'postid': postid
+                    },
+                    success: function(response){
+                        $post.parent().find('span.likes_count').text(response + " likes");
+                        $post.addClass('hide');
+                        $post.siblings().removeClass('hide');
+                    }
+                });
+            });
+
+            // when the user clicks on unlike
+            $('.unlike').on('click', function(){
+                var postid = $(this).data('id');
+                $post = $(this);
+
+                $.ajax({
+                    url: 'index.php',
+                    type: 'post',
+                    data: {
+                        'unliked': 1,
+                        'postid': postid
+                    },
+                    success: function(response){
+                        $post.parent().find('span.likes_count').text(response + " likes");
+                        $post.addClass('hide');
+                        $post.siblings().removeClass('hide');
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script >
+    $(function () {
+        $("#recherche").keyup(function () {
+            $.ajax({
+                url : "{{ path('recherche_promotion') }}",
+                data : { 'promotion' : $(this).val() }
+            }).done(function (response) {
+                var tableau = $(response).find("table");
+                $('.tableau').empty();
+                $('.tableau').append(tableau);
+            });
+        });
+        $("#rechercheP").keyup(function () {
+            $.ajax({
+                url : "{{ path('recherche_promotion') }}",
+                data : { 'promotion' : $(this).val() }
+            }).done(function (response) {
+                var tableau = $(response).find("table");
+                $('.tableau').empty();
+                $('.tableau').append(tableau);
+            });
+        });
+    })
+</script>
+
+    </h6>
+{% endblock %}

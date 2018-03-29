@@ -1,0 +1,138 @@
+{% extends '@BonPlan/Default/index.html.twig' %}
+{% block body %}
+
+
+
+<div  style="background-repeat:no-repeat ; stroke:5px ; height:1000px ; color: white ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }})" class="content">
+
+<br>
+    <br> <br>
+                <div class="header">
+                    <h2 class="title" style="color:#bd2130"><center >Liste des Promotions</center></h2>
+
+                    <br>
+                    <br>
+                    <br>
+                </div>
+    <div class="container-fluid">
+        <div class="row">
+                <center><h6 style="color: #0b0b0b "  aria-busy="true"> Rechercher: <input size="50" type="text" id="recherche" style="color:#0088CC"></h6></center>
+
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+                <div class="row  detail-options-wrap" style="width: 800px ;fill-opacity: 0.5" >
+                    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive" style="width: 100px ;height: 100px ;opacity: 0.8" >
+
+                                {% for p in promo %}
+
+                            <div class="featured-place-wrap "style="color: #3b97b5"   >
+
+                                <center ><img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}"  style="height: 300px ; width: 300px ;opacity: 1" class="img-fluid" alt="#" ></center>
+
+                                    <div class="featured-title-box"  >
+                                        <h6 style="color: black">{{  p.description}}</h6>
+
+
+
+                                        <ul >
+                                            <li><span class="icon-location-pin"></span>
+                                                <p style="color: black">{{ p.datedebutp |date("m/d/Y")}}</p>
+                                            </li>
+                                            <li><span class="icon-screen-smartphone"></span>
+                                                <p style="color: black">{{ p.datefinp |date("m/d/Y") }}</p>
+                                            </li>
+                                            <li><span class="icon-link"></span>
+                                                <p style="color: black">{{  p.userPlan.username}}</p>
+                                            </li>
+
+                                        </ul>
+                                        <div class="bottom-icons">
+
+                                            <span class="ti-heart"></span>
+                                            <span class="ti-bookmark"></span>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                                {% endfor %}
+
+
+                        </div>
+    </div>
+    </div></div> </div>
+  </body>
+
+
+    <script src="jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // when the user clicks on like
+            $('.like').on('click', function(){
+                var postid = $(this).data('id');
+                $post = $(this);
+
+                $.ajax({
+                    url: 'index.php',
+                    type: 'post',
+                    data: {
+                        'liked': 1,
+                        'postid': postid
+                    },
+                    success: function(response){
+                        $post.parent().find('span.likes_count').text(response + " likes");
+                        $post.addClass('hide');
+                        $post.siblings().removeClass('hide');
+                    }
+                });
+            });
+
+            // when the user clicks on unlike
+            $('.unlike').on('click', function(){
+                var postid = $(this).data('id');
+                $post = $(this);
+
+                $.ajax({
+                    url: 'index.php',
+                    type: 'post',
+                    data: {
+                        'unliked': 1,
+                        'postid': postid
+                    },
+                    success: function(response){
+                        $post.parent().find('span.likes_count').text(response + " likes");
+                        $post.addClass('hide');
+                        $post.siblings().removeClass('hide');
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script >
+        $(function () {
+            $("#recherche").keyup(function () {
+                $.ajax({
+                    url : "{{ path('recherche_promotion') }}",
+                    data : { 'promotion' : $(this).val() }
+                }).done(function (response) {
+                    var tableau = $(response).find("table");
+                    $('.tableau').empty();
+                    $('.tableau').append(tableau);
+                });
+            });
+            $("#rechercheP").keyup(function () {
+                $.ajax({
+                    url : "{{ path('recherche_promotion') }}",
+                    data : { 'promotion' : $(this).val() }
+                }).done(function (response) {
+                    var tableau = $(response).find("table");
+                    $('.tableau').empty();
+                    $('.tableau').append(tableau);
+                });
+            });
+        })
+    </script>
+
+
+{% endblock %}

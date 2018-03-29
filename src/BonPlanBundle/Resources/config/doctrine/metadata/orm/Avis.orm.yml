@@ -1,0 +1,60 @@
+Avis:
+    type: entity
+    table: avis
+    indexes:
+        fk_avis_fos_user1_idx:
+            columns:
+                - fos_user_id
+        fk_avis_fos_user2_idx:
+            columns:
+                - fos_user_id1
+    id:
+        idavis:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idAvis
+            generator:
+                strategy: IDENTITY
+    fields:
+        commentaire:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        urlphoto:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: urlPhoto
+        datecomment:
+            type: date
+            nullable: true
+            column: dateComment
+    manyToOne:
+        fosUser:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fosUser1:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id1:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

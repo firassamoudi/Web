@@ -1,0 +1,63 @@
+bon_plan_homepage:
+    path:     /
+    defaults: { _controller: BonPlanBundle:Default:index }
+Categorie_restau:
+    path:     /categorieRestau
+    defaults: { _controller: BonPlanBundle:Default:Categorierestau }
+Acceuil_back:
+    path:     /Acceuilback
+    defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
+Ajouter:
+    path:     /ajouter
+    defaults: { _controller: BonPlanBundle:Default:Ajout }
+Adminlog:
+    path:     /Adminlog
+    defaults: { _controller: BonPlanBundle:Default:adminlog }
+ConsulterP:
+    path:     /ConsulterP
+    defaults: { _controller: BonPlanBundle:Default:ConsulterP }
+AjouterP:
+    path:     /ajouterP
+    defaults: { _controller: BonPlanBundle:Default:AjoutP }
+Events:
+    path:     /Events
+    defaults: { _controller: BonPlanBundle:Default:Events }
+liste_Promotion_Admin:
+    path:     /Promotion
+    defaults: { _controller: BonPlanBundle:Promotion:listPromotionAdmin }
+Ajouter_Promotion:
+    path:     /Ajout_Promotion
+    defaults: { _controller: BonPlanBundle:Promotion:addPromo }
+Modifier_Promotion:
+    path:     /Modifier_Promotion/{id}
+    defaults: { _controller: BonPlanBundle:Promotion:UpdatePromotion1 }
+Supprimer_Promotion:
+    path:     /Supprimer_Promotion
+    defaults: { _controller: BonPlanBundle:Promotion:deletePromotion }
+recherche_promotion:
+    path:   /Recherche
+    defaults: { _controller: BonPlanBundle:Promotion:Recherche }
+bon_plan_homepage_back:
+    path:     /admin
+    defaults: { _controller: BonPlanBundle:Default:indexAdmin }
+liste_Promotion_Visiteur:
+    path:     /PromotionVisiteur
+    defaults: { _controller: BonPlanBundle:Promotion:listPromotionVisiteur }
+liste_Promotion_Prop:
+    path:     /PromotionProp
+    defaults: { _controller: BonPlanBundle:Promotion:Recherche_PromotionProp }
+Profil_Plan:
+    path:     /Profil_Plan
+    defaults: { _controller: BonPlanBundle:Default:ConsulterP }
+Validation_Compte:
+    path:     /Validation
+    defaults: { _controller: BonPlanBundle:Admin:ValiderCompte }
+Validation:
+    path:     /Validation/{id}
+    defaults: { _controller: BonPlanBundle:Admin:Valider }
+ajout_Categorie_admin:
+    path:     /AjoutCategorie
+    defaults: { _controller: BonPlanBundle:Categorie:CategAjout }
+Categorie_admin:
+    path:     /Suggestion
+    defaults: { _controller: BonPlanBundle:Categorie:CategorieA }

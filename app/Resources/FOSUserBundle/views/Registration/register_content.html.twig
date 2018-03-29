@@ -1,0 +1,30 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+ <div class="form" style="color: white"  ><center><h4 style="color: #bd2130"> Sign Up</h4></center>
+    <table>
+        <tr>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+            <td>    <div class="content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+
+</div>
+            </td>
+        </tr>
+    {{ form_end(form) }}
+    </table>
+</div>
+
+</div>
+</center>

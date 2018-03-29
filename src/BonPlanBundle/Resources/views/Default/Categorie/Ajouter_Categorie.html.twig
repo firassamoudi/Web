@@ -1,0 +1,34 @@
+{% extends '@BonPlan/Default/indexback.html.twig' %}
+
+{% block body %}
+    <center>
+        <h1>Ajout Categorie</h1><br>
+        {{ form_start(form) }}
+        <table >
+
+            <tr>
+                <td>Nom Catégorie</td>
+                <td>{{ form_widget(form.nomCategorie) }}</td>
+            </tr>
+
+            <tr>
+                <td>Image Catégorie</td>
+                <td >{{ form_widget(form.imageCategorie) }}</td>
+            </tr>
+            <tr>
+                <td>Icone Catégorie</td>
+                <td>{{ form_widget(form.iconeCategorie) }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ form_widget(form.Ajouter) }}</td>
+            </tr>
+        </table>
+        {{ form_end(form) }}
+    </center>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+

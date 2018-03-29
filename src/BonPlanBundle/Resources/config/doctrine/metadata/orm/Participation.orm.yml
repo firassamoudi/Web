@@ -1,0 +1,42 @@
+Participation:
+    type: entity
+    table: participation
+    indexes:
+        fk_Participation_Events1_idx:
+            columns:
+                - Events_idEvents
+        fk_participation_fos_user1_idx:
+            columns:
+                - fos_user_id
+    id:
+        idparticipation:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: idParticipation
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        eventsevents:
+            targetEntity: Events
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Events_idEvents:
+                    referencedColumnName: idEvents
+            orphanRemoval: false
+        fosUser:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

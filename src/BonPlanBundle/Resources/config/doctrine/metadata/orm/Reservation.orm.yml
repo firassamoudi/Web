@@ -1,0 +1,73 @@
+Reservation:
+    type: entity
+    table: reservation
+    indexes:
+        fk_reservation_fos_user1_idx:
+            columns:
+                - fos_user_id
+        fk_reservation_fos_user2_idx:
+            columns:
+                - fos_user_id1
+    id:
+        idreservation:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idReservation
+            generator:
+                strategy: IDENTITY
+    fields:
+        nbrplace:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nbrPlace
+        date:
+            type: date
+            nullable: false
+        etat:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        !!binary dOOpbOOpcGhvbmU=:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: téléphone
+        heure:
+            type: time
+            nullable: true
+        description:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        fosUser:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fosUser1:
+            targetEntity: FosUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fos_user_id1:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
