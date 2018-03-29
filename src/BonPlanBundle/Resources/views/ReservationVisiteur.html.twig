@@ -1,0 +1,32 @@
+
+<h1>liste de mes réservations</h1>
+<table border="2">
+    <tr>
+        <td>serie</td>
+        <td>date mise en circulation</td>
+        <td>marque</td>
+        <td>modele</td>
+
+    </tr>
+    {% for v in voitures %}
+    <tr>
+
+
+        <td>
+            {{ v.serie}}
+        </td>
+        <td>
+            {{ v.dateMiseCirculation|date}}
+        </td>
+        <td>
+            {{ v.marque }}
+        </td>
+        <td>
+            {{ v.modele.libelle}}
+        </td>
+
+        {% else %}
+            liste vide
+        {% endfor %}
+    </tr>
+</table>

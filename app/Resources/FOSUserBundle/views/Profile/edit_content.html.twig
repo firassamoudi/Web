@@ -1,8 +1,31 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-3">
+            {% include 'BonPlanBundle:Default/layout:visiteurConnecte.html.twig' %}
+        </div>
+        <div class="col-sm-9">
+            <h3  class="text-primary"> Modifier mes informations</h3>
+
+
+            <div class="col-sm-6">
+                <h4 class="text-secondary"> mes informations</h4>
+                <form action="{{ path('fos_user_profile_edit') }} " method="POST" class="text-white">
+                    {{ form_widget(form) }}
+
+                    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-primary text-white"/>
+
+                    {{ form_end(form) }}
+                </form>
+
+            </div>
+        </div>
+
+
+
+
     </div>
-{{ form_end(form) }}
+</div>

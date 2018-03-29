@@ -1,6 +1,25 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<div class="container">
+<div class="row">
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+<div class="col-sm-3">
+{% include 'BonPlanBundle:Default/layout:visiteurConnecte.html.twig' %}
+</div>
+<div class="col-sm-8">
+    <h3  class="text-primary"> Mes informations</h3>
+
+
+            <div class="col-sm-6">
+                <h4 class="text-secondary"> Mes informations</h4>
+                <p class="text-white">{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                <p class="text-white">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                <p class="text-white">{{ 'Nom '|trans }}: {{ user.nomVisiteur }}</p>
+                <p class="text-white">{{ 'Prénom'|trans }}: {{ user.prenomVisiteur }}</p>
+            </div>
+        </div>
+
+
+
+
+</div>
 </div>

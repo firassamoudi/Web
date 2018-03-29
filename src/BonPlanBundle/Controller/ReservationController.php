@@ -10,4 +10,12 @@ class ReservationController extends Controller
     {
         return $this->render('', array('name' => $name));
     }
+
+    function afficherReservationVisiteurAction(){
+        $em= $this->getDoctrine()->getManager();
+        $reservation = $em->getRepository("BonPlanBundle:Reservation")->findAll();
+
+        return $this->render('BonPlanBundle::ReservationVisiteur.html.twig',array("reservations"=>$reservation));
+
+    }
 }
