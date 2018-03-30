@@ -61,3 +61,18 @@ ajout_Categorie_admin:
 Categorie_admin:
     path:     /Suggestion
     defaults: { _controller: BonPlanBundle:Categorie:CategorieA }
+ReservationVisiteur:
+    path:     /ReservationVisiteur
+    defaults: { _controller: BonPlanBundle:Reservation:afficherReservationVisiteur }
+ReservationVisiteurSuppression:
+    path:     /Supprimer/{id}
+    defaults: { _controller: BonPlanBundle:Reservation:supprimerReservationVisiteur }
+ReservationVisiteurUpdate:
+    path:     /Update/{id}
+    defaults: { _controller: BonPlanBundle:Reservation:updateReservationVisiteur }
+ReservationProp:
+    path:     /ReservationProp
+    defaults: { _controller: BonPlanBundle:Reservation:afficherReservationProp }
+ReservationPropUpdate:
+    path:     /UpdateProp/{id}
+    defaults: { _controller: BonPlanBundle:Reservation:updateReservationProp }

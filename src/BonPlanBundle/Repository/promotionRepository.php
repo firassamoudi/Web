@@ -18,6 +18,7 @@ class promotionRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter(':description',"%$description%");
         return $q->getQuery()->getResult();
     }
+
     public function findByuser($user){
         $query=$this->createQueryBuilder('c')
             ->where('c.userPlan= :user')

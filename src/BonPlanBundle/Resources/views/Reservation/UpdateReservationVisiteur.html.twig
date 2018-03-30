@@ -1,0 +1,74 @@
+{% extends 'BonPlanBundle:Default:index.html.twig' %}
+{% block body %}
+    <body   style="background-repeat:no-repeat ; stroke:5px ; height:700px ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }}) ">
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-sm-3">
+                    {% include 'BonPlanBundle:Default/layout:visiteurConnecte.html.twig' %}
+                </div>
+                <div class="col-sm-8">
+                    <h3  class="text-primary">Liste de mes réservations</h3>
+
+
+                    <div class="col-sm-12">
+                        <h4 class="text-secondary"> Mes réservations</h4>
+
+
+                            <form method="POST" class="text-white">
+
+                                {{ form_start(form) }}
+                                <div class="table-responsive-sm">
+                            <table class="table table-hover">
+                                <tr>
+
+                                    <td>Nombre des places</td>
+                                    <td>
+                                        {{ form_widget(form.nbrplace) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>date de réservation </td>
+                                    <td>
+                                        {{ form_widget(form.date) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>état</td>
+                                    <td>
+                                        {{ form_widget(form.etat) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>téléphone</td>
+                                    <td>
+                                        {{ form_widget(form.telephone) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>heure</td>
+                                    <td>
+                                        {{ form_widget(form.heure) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        {{ form_widget(form.save) }}
+                                    </td>
+                                    {{ form_end(form) }}
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}
