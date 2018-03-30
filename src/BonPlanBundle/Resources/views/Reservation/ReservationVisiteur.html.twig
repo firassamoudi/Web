@@ -1,0 +1,76 @@
+{% extends 'BonPlanBundle:Default:index.html.twig' %}
+{% block body %}
+<body   style="background-repeat:no-repeat ; stroke:5px ; height:700px ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }}) ">
+
+<div class="content">
+    <div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-3">
+            {% include 'BonPlanBundle:Default/layout:visiteurConnecte.html.twig' %}
+        </div>
+        <div class="col-sm-8">
+            <h3  class="text-primary">Liste de mes réservations</h3>
+
+
+            <div class="col-sm-12">
+                <h4 class="text-secondary"> Mes réservations</h4>
+
+                <div class="table-responsive-sm">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+
+            <td>Nombre des places</td>
+            <td>date de réservation </td>
+            <td>état</td>
+            <td>téléphone</td>
+            <td>heure</td>
+            <td>Description</td>
+            <td>Modifier</td>
+            <td>Supprimer</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for v in reservations %}
+        <tr>
+            <td>
+                {{ v.nbrplace}}
+            </td>
+            <td>
+                {{ v.date|date("d/m/Y")}}
+            </td>
+            <td>
+                {{ v.etat}}
+            </td>
+            <td>
+                {{ v.telephone}}
+            </td>
+            <td>
+                {{ v.heure|date('H:i')}}
+            </td>
+            <td>
+                {{ v.description}}
+            </td>
+            <td>
+                <a href="{{ path('ReservationVisiteurUpdate',{'id':v.idreservation}) }}"> Modifier</a>
+            </td>
+            <td>
+                <a href="{{ path('ReservationVisiteurSuppression',{'id':v.idreservation}) }}"> Supprimer</a>
+            </td>
+
+            {% else %}
+                liste vide
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</body>
+{% endblock %}
