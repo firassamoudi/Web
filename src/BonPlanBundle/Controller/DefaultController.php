@@ -60,6 +60,14 @@ class DefaultController extends Controller
     {
         return $this->render('BonPlanBundle:Default:loginback.html.twig');
     }
+    public function ProfilPropAction()
+    {
+        return $this->render('BonPlanBundle:ProfilPlan:ProfilProp.html.twig');
+    }
+    public function EditProfilPropAction()
+    {
+        return $this->render('BonPlanBundle:ProfilPlan:EditProfilProp.html.twig');
+    }
     public function ConsulterAction()
     {
         return $this->render('BonPlanBundle:Default:Consulter.html.twig');

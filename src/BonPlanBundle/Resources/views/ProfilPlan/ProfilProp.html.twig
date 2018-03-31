@@ -1,0 +1,32 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends '@BonPlan/Default/indexback.html.twig' %}
+{% block body %}
+<body   style="background-repeat:no-repeat ; stroke:5px ; height:700px ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }}) ">
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-11">
+                <h3  class="text-primary">Mes informations</h3>
+
+
+                <div class="col-sm-12">
+                    <h4 class="text-secondary"> Mes informations</h4>
+                <p class="text-white">{{ 'profile.show.username'|trans }}: {{ app.user.username }}</p>
+                <p class="text-white">{{ 'profile.show.email'|trans }}: {{ app.user.email }}</p>
+                <p class="text-white">{{ 'Nom du plan '|trans }}: {{ app.user.nomPlan }}</p>
+                <p class="text-white">{{ 'Adresse'|trans }}: {{ app.user.adresse }}</p>
+            </div>
+        </div>
+
+
+</div>
+    </div>
+</div>
+
+
+    </div>
+</div>
+</body>
+{% endblock %}

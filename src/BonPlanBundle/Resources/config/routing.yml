@@ -76,3 +76,9 @@ ReservationProp:
 ReservationPropUpdate:
     path:     /UpdateProp/{id}
     defaults: { _controller: BonPlanBundle:Reservation:updateReservationProp }
+ProfilProp:
+    path:     /ProfilProp
+    defaults: { _controller: BonPlanBundle:Default:ProfilProp }
+EditProfilProp:
+    path:     /EditProfilProp
+    defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
