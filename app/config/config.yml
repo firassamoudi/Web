@@ -73,8 +73,10 @@ fos_user:
     firewall_name: main
     user_class: BonPlanBundle\Entity\User
     from_email:
-        address: you@example.com
+        address: firas.samoudi@esprit.tn
         sender_name: You
     registration:
                form:
                    type: BonPlanBundle\Form\RegistrationFormType
+               confirmation:
+                   enabled: true
