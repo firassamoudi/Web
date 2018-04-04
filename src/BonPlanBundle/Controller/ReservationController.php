@@ -20,6 +20,9 @@ class ReservationController extends Controller
      */
     public function sendNotification(Request $request)
     {
+
+
+        
         $manager = $this->get('mgilet.notification');
         $notif = $manager->createNotification('Hello world !');
         $notif->setMessage('This a notification.');
@@ -103,6 +106,7 @@ class ReservationController extends Controller
 
         $form=$this->createForm(ReservationPropType::class,$modele);
         $form->handleRequest($request);
+
         if ($form->isSubmitted()){
             $em=$this->getDoctrine()->getManager();
             $em->persist($modele);
