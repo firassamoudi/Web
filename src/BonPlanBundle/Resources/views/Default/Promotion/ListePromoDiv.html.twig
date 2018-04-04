@@ -3,7 +3,7 @@
 
 
 
-<div  style="background-repeat:no-repeat ; stroke:5px ; height:1000px ; color: white ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }})" class="content">
+<div  style="background-repeat:no-repeat ; stroke:5px ; height:1500px ; width: 1500px; color: white ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }})" class="content">
 
 <br>
     <br> <br>
@@ -14,17 +14,20 @@
                     <br>
                     <br>
                 </div>
-    <div class="container-fluid">
+
+
+    <div class="container-fluid" style="height: 800px">
         <div class="row">
-                <center><h6 style="color: #0b0b0b "  aria-busy="true"> Rechercher: <input size="50" type="text" id="recherche" style="color:#0088CC"></h6></center>
+            <br>
 
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
 
-                <div class="row  detail-options-wrap" style="width: 800px ;fill-opacity: 0.5" >
-                    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive" style="width: 100px ;height: 100px ;opacity: 0.8" >
+
 
                                 {% for p in promo %}
+                    <div class="col-md-4">
 
+                        <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive" >
+                            <div class="row  detail-options-wrap" style="width: 700px; height: 550px; fill-opacity: 0.5" >
                             <div class="featured-place-wrap "style="color: #3b97b5"   >
 
                                 <center ><img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}"  style="height: 300px ; width: 300px ;opacity: 1" class="img-fluid" alt="#" ></center>
@@ -35,34 +38,34 @@
 
 
                                         <ul >
-                                            <li><span class="icon-location-pin"></span>
+                                            <li><span class="icon-location-pin"> date debut </span>
                                                 <p style="color: black">{{ p.datedebutp |date("m/d/Y")}}</p>
                                             </li>
-                                            <li><span class="icon-screen-smartphone"></span>
+                                            <li><span class="icon-screen-smartphone"> date fin </span>
                                                 <p style="color: black">{{ p.datefinp |date("m/d/Y") }}</p>
                                             </li>
                                             <li><span class="icon-link"></span>
                                                 <p style="color: black">{{  p.userPlan.username}}</p>
                                             </li>
+                                            <div class="bottom-icons">
 
+                                                <span class="ti-heart">like </span>
+                                                <span class="ti-bookmark"></span>
+                                            </div>
+                                    </div></div>
                                         </ul>
-                                        <div class="bottom-icons">
 
-                                            <span class="ti-heart"></span>
-                                            <span class="ti-bookmark"></span>
-                                        </div>
-                                    </div>
+
+
+
 
                             </div>
                         </div>
-
+                    </div>
                                 {% endfor %}
 
+        </div></div></div>
 
-                        </div>
-    </div>
-    </div></div> </div>
-  </body>
 
 
     <script src="jquery.min.js"></script>
@@ -108,30 +111,6 @@
                 });
             });
         });
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script >
-        $(function () {
-            $("#recherche").keyup(function () {
-                $.ajax({
-                    url : "{{ path('recherche_promotion') }}",
-                    data : { 'promotion' : $(this).val() }
-                }).done(function (response) {
-                    var tableau = $(response).find("table");
-                    $('.tableau').empty();
-                    $('.tableau').append(tableau);
-                });
-            });
-            $("#rechercheP").keyup(function () {
-                $.ajax({
-                    url : "{{ path('recherche_promotion') }}",
-                    data : { 'promotion' : $(this).val() }
-                }).done(function (response) {
-                    var tableau = $(response).find("table");
-                    $('.tableau').empty();
-                    $('.tableau').append(tableau);
-                });
-            });
-        })
     </script>
 
 

@@ -9,7 +9,7 @@
                 <div class="row detail-filter-wrap">
                     <div class="col-md-4 featured-responsive">
                         <div class="detail-filter-text">
-                            <p>34 Results For <span>Restaurant</span></p>
+                            <p>34 Results For <span>Hotels</span></p>
                         </div>
                     </div>
                     <div class="col-md-8 featured-responsive">
@@ -25,10 +25,10 @@
                             </form>
                             <form class="filter-dropdown">
                                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect1">
-                                    <option selected>Restaurants</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected>Hotels</option>
+                                    <option value="1">3 etoilees</option>
+                                    <option value="2">4 etoiles</option>
+                                    <option value="3">5 etoiles </option>
                                 </select>
                             </form>
                             <div class="map-responsive-wrap">
@@ -86,6 +86,7 @@
                         </label>
                     </div>
 
+
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
 
                         <label class="custom-control custom-checkbox">
@@ -94,64 +95,31 @@
                             <span class="custom-control-description">Pets Friendly</span>
                         </label>
 
-                    </div>
+
                 </div>
                 <div class="row light-bg detail-options-wrap">
+                    {% for p in hotels %}
                     <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
                         <div class="featured-place-wrap">
                             <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid" alt="#">
+                                <img src="{{ asset('images/logo.png') }}" class="img-fluid" alt="#">
                                 <span class="featured-rating-orange ">6.5</span>
                                 <div class="featured-title-box">
-                                    <h6>Burger &amp; Lobster</h6>
-                                    <p>Restaurant </p> <span>• </span>
-                                    <p>3 Reviews</p> <span> • </span>
+                                    <h6>{{ p.nomPlan}}</h6>
+                                    <p>{{ p.categorie}}</p> <span>• </span>
+                                    <p></p> <span> • </span>
                                     <p><span>$$$</span>$$</p>
                                     <ul>
                                         <li><span class="icon-location-pin"></span>
-                                            <p>1301 Avenue, Brooklyn, NY 11230</p>
+                                            <p>{{ p.adresse}}</p>
                                         </li>
                                         <li><span class="icon-screen-smartphone"></span>
-                                            <p>+44 20 7336 8898</p>
+                                            <p>{{ p.telephone}}</p>
                                         </li>
-                                        <li><span class="icon-link"></span>
-                                            <p>https://burgerandlobster.com</p>
-                                        </li>
+
 
                                     </ul>
                                     <div class="bottom-icons">
-                                        <div class="closed-now">CLOSED NOW</div>
-                                        <span class="ti-heart"></span>
-                                        <span class="ti-bookmark"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
-                        <div class="featured-place-wrap">
-                            <a href="detail.html">
-                                <img src="images/featured2.jpg" class="img-fluid" alt="#">
-                                <span class="featured-rating-green">9.5</span>
-                                <div class="featured-title-box">
-                                    <h6>Joe’s Shanghai</h6>
-                                    <p>Restaurant </p> <span>• </span>
-                                    <p>3 Reviews</p> <span> • </span>
-                                    <p><span>$$$</span>$$</p>
-                                    <ul>
-                                        <li><span class="icon-location-pin"></span>
-                                            <p>1301 Avenue, Brooklyn, NY 11230</p>
-                                        </li>
-                                        <li><span class="icon-screen-smartphone"></span>
-                                            <p>+44 20 7336 8898</p>
-                                        </li>
-                                        <li><span class="icon-link"></span>
-                                            <p>https://burgerandlobster.com</p>
-                                        </li>
-
-                                    </ul>
-                                    <div class="bottom-icons">
-                                        <div class="open-now">OPEN NOW</div>
                                         <span class="ti-heart"></span>
                                         <span class="ti-bookmark"></span>
                                     </div>
@@ -160,69 +128,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
-                        <div class="featured-place-wrap">
-                            <a href="detail.html">
-                                <img src="images/featured3.jpg" class="img-fluid" alt="#">
-                                <span class="featured-rating">3.2</span>
-                                <div class="featured-title-box">
-                                    <h6>Tasty Hand-Pulled Noodles</h6>
-                                    <p>Restaurant </p> <span>• </span>
-                                    <p>3 Reviews</p> <span> • </span>
-                                    <p><span>$$$</span>$$</p>
-                                    <ul>
-                                        <li><span class="icon-location-pin"></span>
-                                            <p>1301 Avenue, Brooklyn, NY 11230</p>
-                                        </li>
-                                        <li><span class="icon-screen-smartphone"></span>
-                                            <p>+44 20 7336 8898</p>
-                                        </li>
-                                        <li><span class="icon-link"></span>
-                                            <p>https://burgerandlobster.com</p>
-                                        </li>
-
-                                    </ul>
-                                    <div class="bottom-icons">
-                                        <div class="closed-now">CLOSED NOW</div>
-                                        <span class="ti-heart"></span>
-                                        <span class="ti-bookmark"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive">
-                        <div class="featured-place-wrap">
-                            <a href="detail.html">
-                                <img src="images/featured4.jpg" class="img-fluid" alt="#">
-                                <span class="featured-rating-green">9.5</span>
-                                <div class="featured-title-box">
-                                    <h6>Pizza - Cicis</h6>
-                                    <p>Restaurant </p> <span>• </span>
-                                    <p>3 Reviews</p> <span> • </span>
-                                    <p><span>$$$</span>$$</p>
-                                    <ul>
-                                        <li><span class="icon-location-pin"></span>
-                                            <p>1301 Avenue, Brooklyn, NY 11230</p>
-                                        </li>
-                                        <li><span class="icon-screen-smartphone"></span>
-                                            <p>+44 20 7336 8898</p>
-                                        </li>
-                                        <li><span class="icon-link"></span>
-                                            <p>https://burgerandlobster.com</p>
-                                        </li>
-
-                                    </ul>
-                                    <div class="bottom-icons">
-                                        <div class="closed-now">CLOSED NOW</div>
-                                        <span class="ti-heart"></span>
-                                        <span class="ti-bookmark"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
             </div>
             <div class="col-md-5 responsive-wrap map-wrap">
                 <div class="map-fix">

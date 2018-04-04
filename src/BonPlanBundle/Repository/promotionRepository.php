@@ -11,14 +11,27 @@ namespace BonPlanBundle\Repository;
 class promotionRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function findDescription($description)
+    public function findDescription($description,$user)
     {
         $q=$this->createQueryBuilder('p')
-            ->where('p.description LIKE :description')
+            ->andWhere('p.description LIKE :description')
+            ->andWhere('p.userPlan= :user')
+
+            ->setParameter(':user',$user)
+
             ->setParameter(':description',"%$description%");
         return $q->getQuery()->getResult();
     }
+    public function findDescriptionAdmin($description)
+    {
+        $q=$this->createQueryBuilder('p')
+            ->andWhere('p.description LIKE :description')
 
+
+
+            ->setParameter(':description',"%$description%");
+        return $q->getQuery()->getResult();
+    }
     public function findByuser($user){
         $query=$this->createQueryBuilder('c')
             ->where('c.userPlan= :user')

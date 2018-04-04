@@ -15,9 +15,6 @@ class ProfileType extends AbstractType
             $builder->add('telephone')
                 ->add('nomPlan')
                 ->add('adresse')
-                ->add('photodeprofil',FileType::class,array(
-                    'required' => false
-                ))
 
 
         ;

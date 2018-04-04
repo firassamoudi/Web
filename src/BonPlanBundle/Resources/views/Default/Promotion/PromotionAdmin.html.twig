@@ -55,24 +55,15 @@
             $(function () {
                 $("#recherche").keyup(function () {
                     $.ajax({
-                        url : "{{ path('recherche_promotion') }}",
+                        url : "{{ path('recherche_promotionAdmin') }}",
                         data : { 'promotion' : $(this).val() }
                     }).done(function (response) {
-                        var tableau = $(response).find("table");
-                        $('.tableau').empty();
-                        $('.tableau').append(tableau);
+                        var tableau = $(response).find("#tableau");
+                        $('#tableau').empty();
+                        $('#tableau').append(tableau);
                     });
                 });
-                $("#rechercheP").keyup(function () {
-                    $.ajax({
-                        url : "{{ path('recherche_promotion') }}",
-                        data : { 'promotion' : $(this).val() }
-                    }).done(function (response) {
-                        var tableau = $(response).find("table");
-                        $('.tableau').empty();
-                        $('.tableau').append(tableau);
-                    });
-                });
+
             })
         </script>
 

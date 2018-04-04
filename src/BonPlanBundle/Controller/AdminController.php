@@ -4,13 +4,35 @@ namespace BonPlanBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends Controller
 {
     public function indexAction($name)
     {
         return $this->render('', array('name' => $name));
+
     }
+    public function ToPDFAction(){
+
+        $snappy = $this->get('knp_snappy.pdf');
+
+        $html = $this->renderView('BonPlanBundle:Default/validation:TESTPDF.html.twig', array(
+            //..Send some data to your view if you need to //
+        ));
+
+        $filename = 'myFirstSnappyPDF';
+
+        return new Response(
+            $snappy->getOutputFromHtml($html),
+                200,
+                array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+                )
+                );
+                }
+
     public function ValiderCompteAction()
     {
 
@@ -29,6 +51,15 @@ class AdminController extends Controller
 
 
     }
+    public function RechercheAction(Request $request)
+    {
+        $search =$request->query->get('user');
+        $en = $this->getDoctrine()->getManager();
+        $user=$en->getRepository("BonPlanBundle:User")->findProp($search);
+        return $this->render("BonPlanBundle:Default/validation:validationcompte.html.twig",array(
+            'users' => $user
+        ));}
+
     public function ValiderAction(Request $request, $id)
     {
         //$authChecker = $this->container->get('security.authorization_checker');

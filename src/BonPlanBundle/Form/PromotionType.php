@@ -4,6 +4,7 @@ namespace BonPlanBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,12 +18,14 @@ class PromotionType extends AbstractType
     {$builder
         ->add('description')
         ->add('datedebutp')
-        ->add('datefinp')
+        ->add('datefinp',DateType::class, [
+            'attr' => ['class' => 'js-datepicker']])
+
 
 
         ->add('urlpromo',FileType::class,array(
-            'required' => false
-        ))
+            'attr' => array('accept' => 'image/*')))
+
 
 
         ->add('Ajouter', SubmitType::class);

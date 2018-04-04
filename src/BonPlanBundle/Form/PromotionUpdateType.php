@@ -18,8 +18,7 @@ class PromotionUpdateType extends AbstractType
 
             ->add('datedebutp' )
             ->add('datefinp' )
-            ->add('urlpromo',FileType::class,
-                array('data_class' => null,'required' => false ))
+
 
             ;
 

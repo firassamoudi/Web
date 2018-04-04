@@ -15,10 +15,8 @@ class VisiteurType extends AbstractType
             ->add('nomVisiteur')
             ->add('prenomVisiteur')
 
-            ->add('telephone')
-        ->add('photodeprofil',FileType::class,array(
-            'required' => false
-        ));
+            ->add('telephone');
+
 
 
 

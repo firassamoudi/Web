@@ -11,11 +11,11 @@ use BonPlanBundle\Entity\User;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findDescription($description)
+    public function findProp($nomPlan)
     {
         $q=$this->createQueryBuilder('p')
-            ->where('p.description LIKE :description')
-            ->setParameter(':description',"%$description%");
+            ->where('p.nomPlan LIKE :nomPlan')
+            ->setParameter(':nomPlan',"%$nomPlan%");
         return $q->getQuery()->getResult();
     }
     public function findRole($role)
@@ -26,6 +26,19 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->from($this->User, 'u')
             ->where('u.roles LIKE "ROLE_PROP"')
             ->setParameter('roles', '%"'.$role.'"%');
+
+        return $qb->getQuery()->getResult();
+    }
+    public function findCategorie($role,$categorie)
+    {
+
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('u')
+            ->from($this->User, 'u')
+            ->where('u.roles LIKE "ROLE_PROP"')
+            ->andWhere('u.categorie LIKE :categorie')
+            ->setParameter('roles', '%"'.$role.'"%')
+        ->setParameter(':categorie',"%$categorie%");
 
         return $qb->getQuery()->getResult();
     }

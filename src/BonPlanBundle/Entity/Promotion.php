@@ -30,7 +30,7 @@ class Promotion
 
     /**
      * @var string
-     *
+         *
      * @ORM\Column(name="urlPromo", type="string", length=255, nullable=true)
      */
     private $urlpromo;
@@ -51,7 +51,7 @@ class Promotion
     /**
      * @var \ boolean
      *
-     * @ORM\Column(name="etat_promo", type="boolean", nullable=false)
+     * @ORM\Column(name="etat_promo", type="boolean", nullable=true)
      */
     private $etat_promo;
     /**

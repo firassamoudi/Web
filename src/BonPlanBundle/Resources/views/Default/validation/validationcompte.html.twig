@@ -8,10 +8,11 @@
                 <div class="col-md-12">
 
                     <div class="header">
-                        <h2 class="title" style="color:#bd2130"><center >Liste des Comptes</center></h2>
+                        <h2 class="title" style="color:#bd2130"><center >Liste des Comptes </center></h2>
                         <br>
                         <br>
                     </div>
+                    <center><h6 style="color: #0b0b0b "  aria-busy="true"> Rechercher: <input size="50" type="text" id="recherche" style="color:#0088CC"></h6></center>
 
 
                         <div class="content table-responsive table-full-width">
@@ -32,11 +33,11 @@
                                 </thead>
                                 {% for p in users %}
                                     <tr>
-                                        <td>{{ p.username}}</td>
+                                        <td>{{ p.nomPlan}}</td>
                                         <td>{{ p.adresse}}</td>
                                         <td>{{ p.telephone}}</td>
                                         <td> <a class="btn btn-common btn-sm" href="{{ path('Validation', {'id' : p.id}) }}"  onclick="if(window.confirm('Voulez-vous vraiment Valider Ce Plan?')){return true;}else{return false;}">Valider</a></td>
-
+                                        <td>{{ p.categorie}}</td>
 
 
 
@@ -45,6 +46,22 @@
 
                             </table>
                         </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script >
+                        $(function () {
+                            $("#recherche").keyup(function () {
+                                $.ajax({
+                                    url : "{{ path('recherche_compte') }}",
+                                    data : { 'user' : $(this).val() }
+                                }).done(function (response) {
+                                    var tableau = $(response).find("#tableau");
+                                    $('#tableau').empty();
+                                    $('#tableau').append(tableau);
+                                });
+                            });
+
+                        })
+                    </script>
+
                 </div>
             </div></div></div></body>
 

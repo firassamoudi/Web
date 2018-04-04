@@ -2,15 +2,16 @@
 {% block body %}
 
       <div class="panel panel-default chat">
-        <div class="panel-heading" id="accordion"><svg class="glyph stroked app window with content">
 
-                <div class="panel-body">
+        <div class="panel-heading" id="accordion"  style="background: #0c5460 ;background-image: url({{ asset('images/back.jpg') }})">
+          <center>  <h1 style="color: #f3f4f7">Ajouter un promotion </h1></center>
+            <svg class="glyph stroked app window with content">
+
+                <div class="panel-body" style="background: #bee5eb ; opacity: 0.9">
                     {{ form_start(form) }}
                     <div class="col-lg-8 col-md-7">
 
-                            <div class="header">
-                                <h4 class="title">Ajouter une promotion </h4>
-                            </div>
+
                         <div class="content">
                             <div class="row">
                                 <div class="col-md-4">
@@ -25,7 +26,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            {{ form_row(form.datedebutp) }}
+                                            {{ form_row(form.datedebutp, {'label':"date debut de promotion" ,'attr': {'class': 'form-control border-input'}}) }}
                                         </div>
                                     </div>
 
@@ -35,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            {{ form_row(form.datefinp) }}
+                                            {{ form_row(form.datefinp, {'label':"date fin de promotion" ,'attr': {'class': 'form-control border-input'}}) }}
                                         </div>
                                     </div>
 
@@ -45,7 +46,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            {{ form_row(form.urlpromo) }}
+                                            {{ form_row(form.urlpromo,{'label':"photo de promotion" ,'attr': {'class': 'form-control border-input'}}) }}
                                         </div>
                                     </div>
 
@@ -55,15 +56,28 @@
 
 
                             {{ form_row(form.Ajouter, {'attr': {'class': 'btn btn-info'}}) }}
+
                             {{ form_end(form) }}
+
                         </div>
 
+
+                </div>
                 {% for flashMessage in app.session.flashBag.get('success') %}
                     <div class="alert alert-success">
                         {{ flashMessage }}
                     </div>
                 {% endfor %}
-                </div></svg>
+            </svg>
         </div>
     </div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            jQuery(document).ready(function() {
+                $('.js-datepicker').datepicker();
+            });
+        </script>
+    {% endblock %}
 {% endblock %}
