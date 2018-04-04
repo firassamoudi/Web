@@ -5,8 +5,10 @@ namespace BonPlanBundle\Controller;
 use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\ProfileType;
 use BonPlanBundle\Form\VisiteurType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class DefaultController extends Controller
 {
@@ -56,8 +58,13 @@ class DefaultController extends Controller
             "form" => $form->createView()
         ));
     }
+    /**
+     * @Route("/admin/", name="RoleAdmin")
+     */
     public function adminlogAction()
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+
         return $this->render('BonPlanBundle:Default:loginback.html.twig');
     }
     public function ProfilPropAction()
@@ -85,8 +92,13 @@ class DefaultController extends Controller
     {
         return $this->render('BonPlanBundle:Default:Events.html.twig');
     }
+
+    /**
+     * @Route("/admin/", name="RoleAdmin")
+     */
     public function AcceuilBackAction()
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
         return $this->render('BonPlanBundle:Default:Acceuilback.html.twig');
     }
     public function CategorierestauAction()

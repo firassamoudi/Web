@@ -3,7 +3,15 @@
 <div class="row">
 
 <div class="col-sm-3">
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_VISITEUR")) %}
+
 {% include 'BonPlanBundle:Default/layout:visiteurConnecte.html.twig' %}
+
+    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+    {% include 'BonPlanBundle:Default/layout:propConnecte.html.twig' %}
+    {% endif %}
+
+
 </div>
 <div class="col-sm-8">
     <h3  class="text-primary"> Mes informations</h3>

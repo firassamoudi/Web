@@ -1,17 +1,19 @@
-{% extends '@BonPlan/Default/indexback.html.twig' %}
+{% extends 'BonPlanBundle:Default:index.html.twig' %}
 {% block body %}
     <body   style="background-repeat:no-repeat ; stroke:5px ; height:700px ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }}) ">
 
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-
-                <div class="col-sm-11">
+                <div class="col-sm-3">
+                    {% include 'BonPlanBundle:Default/layout:propConnecte.html.twig' %}
+                </div>
+                <div class="col-sm-8">
                     <h3  class="text-primary">Traiter mes réservations</h3>
 
 
                     <div class="col-sm-12">
-                        <h4 class="text-secondary"> Mes réservations</h4>
+                        <h4 class="text-secondary"> Liste de mes  réservations</h4>
 
                         <div class="table-responsive-sm">
                             <table class="table table-hover">
@@ -52,7 +54,6 @@
                                     <td>
                                         <a href="{{ path('ReservationPropUpdate',{'id':v.idreservation}) }}"> Modifier</a>
                                     </td>
-
 
                                     {% else %}
                                         liste vide

@@ -22,4 +22,13 @@ class ReservationRepository  extends EntityRepository
 
         return $query->getQuery()->getResult();
     }
+
+    public function findByuserP($user){
+        $query=$this->createQueryBuilder('c')
+            ->where('c.userPlan= :user_iduser1')
+
+            ->setParameter(':user_iduser1',$user);
+
+        return $query->getQuery()->getResult();
+    }
 }

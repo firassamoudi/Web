@@ -39,7 +39,7 @@ recherche_promotion:
     defaults: { _controller: BonPlanBundle:Promotion:Recherche }
 bon_plan_homepage_back:
     path:     /admin
-    defaults: { _controller: BonPlanBundle:Default:indexAdmin }
+    defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
 liste_Promotion_Visiteur:
     path:     /PromotionVisiteur
     defaults: { _controller: BonPlanBundle:Promotion:listPromotionVisiteur }
