@@ -34,6 +34,7 @@
         "symfony/symfony": "3.3.*",
         "fyneworks/star-rating": "4.11.0",
         "nurikabe/star-rating-bundle": "~2.0.1",
+        "blackknight467/star-rating-bundle": "2.*",
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {

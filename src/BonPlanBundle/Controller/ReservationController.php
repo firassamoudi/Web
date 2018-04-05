@@ -22,7 +22,7 @@ class ReservationController extends Controller
     {
 
 
-        
+
         $manager = $this->get('mgilet.notification');
         $notif = $manager->createNotification('Hello world !');
         $notif->setMessage('This a notification.');
