@@ -58,8 +58,14 @@ Validation:
 ajout_Categorie_admin:
     path:     /AjoutCategorie
     defaults: { _controller: BonPlanBundle:Categorie:CategAjout }
+supprimer_Categorie_admin:
+    path:     /SuppCategorie/{id}
+    defaults: { _controller: BonPlanBundle:Categorie:CategSupp }
+modifier_Categorie_admin:
+    path:     /ModifCategorie
+    defaults: { _controller: BonPlanBundle:Categorie:CategUpdate }
 Categorie_admin:
-    path:     /Suggestion
+    path:     /Categorie
     defaults: { _controller: BonPlanBundle:Categorie:CategorieA }
 ReservationVisiteur:
     path:     /ReservationVisiteur
