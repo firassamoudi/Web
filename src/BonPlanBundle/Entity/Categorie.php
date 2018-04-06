@@ -4,6 +4,7 @@ namespace BonPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Categorie
@@ -30,22 +31,16 @@ class Categorie
     private $nomCategorie;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image_categorie", type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Ajouter une image jpg")
-     * @Assert\File(mimeTypes={ "image/jpg" })
-     *
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $imageCategorie;
+    public $imageCategorie;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="icone_categorie", type="string", length=255)
+     * @Assert\File(maxSize="6000000")
      */
-    private $iconeCategorie;
+    private $file;
+
+
 
 
     /**
@@ -98,29 +93,75 @@ class Categorie
         $this->imageCategorie = $imageCategorie;
     }
 
-
-
-    /**
-     * Set iconeCategorie
-     *
-     * @param string $iconeCategorie
-     *
-     * @return Categorie
-     */
-    public function setIconeCategorie($iconeCategorie)
+    public function getAbsolutePath()
     {
-        $this->iconeCategorie = $iconeCategorie;
+        return null === $this->imageCategorie
+            ? null
+            : $this->getUploadRootDir().'/'.$this->imageCategorie;
+    }
 
-        return $this;
+    public function getWebPath()
+    {
+        return null === $this->imageCategorie
+            ? null
+            : $this->getUploadDir().'/'.$this->imageCategorie;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/images/Categorie';
     }
 
     /**
-     * Get iconeCategorie
+     * Sets file.
      *
-     * @return string
+     * @param UploadedFile $file
      */
-    public function getIconeCategorie()
+    public function setFile(UploadedFile $file = null)
     {
-        return $this->iconeCategorie;
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->imageCategorie = $this->getFile()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
     }
 }
