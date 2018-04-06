@@ -1,39 +1,60 @@
 {% extends '@BonPlan/Default/indexback.html.twig' %}
 
 {% block body %}
-<div id="page-wrapper" >
-    <div id="page-inner">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Admin Suggestion</h2>
-                <h5>bienvenu dans la suggestion des plans</h5>
-            </div>
-        </div>
-        <!-- /. ROW  -->
-        <hr />
-        <div class="row">
 
-        </div>
-        <!-- /. ROW  -->
-        <hr />
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-blue">
-                    <i class="fa fa-warning"></i>
-                </span>
-                    <div class="text-box" >
-                        <p class="main-text">52 Important Issues to Fix </p>
-                        <p class="text-muted">Please fix these issues to work smooth</p>
-                        <p class="text-muted">Time Left: 30 mins</p>
-                        <hr />
-                        <p class="text-muted">
-                          <span class="text-muted color-bottom-txt"><i class="fa fa-edit"></i>
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               </span>
-                        </p>
-                    </div>
+            {% for event in events %}
+                <center>
+                <ul>
+                     <li style="list-style-type: none">   <div class="card" style="width: 20rem;">
+                            <img class="card-img-top" src="{{ asset('uploads/images/Categorie/'~event.imageCategorie) }}" style="height: 180px; width: 100%; display: block;" alt="Card image cap">
+                            <div class="card-block">
+                                <h3 class="card-title">{{ event.nomCategorie }}</h3>
+                                <a href="{{ path('supprimer_Categorie_admin',{'id': event.id})  }}" class="btn btn-primary">Supprimer</a>
+
+                                <button type="button" class="btn btn-success" id="mybtn_{{ event.id }}" data-toggle="modal" data-target="#exampleModal" onclick="ShowModal({{ event.id }})" data-whatever="@getbootstrap">Modifier</button>
+                            </div>
+                        </div>
+                <br>
+                     </li>
+                </ul>
+                </center>
+
+
+            {% endfor %}
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="modal-title" id="exampleModalLabel">Modifier Catégorie</h2>
+                </div>
+                <div id="fromAjax">
+
                 </div>
             </div>
+        </div>
+    </div>
+    <script language="JavaScript">
+        function ShowModal(event_id){
+            $.ajax({
+               type:    "POST",
+               url: "{{ path('modifier_Categorie_admin') }}",
+                data:   "id="+event_id,
+                success:    function (data) {
+                    $('#fromAjax').html(data.html);
+                }
+            });
+            $('#exampleModal').modal('toggle');
+        }
+        $('#mybtn').click(function(){
+
+
+        });
+    </script>
+
 {% endblock %}
+

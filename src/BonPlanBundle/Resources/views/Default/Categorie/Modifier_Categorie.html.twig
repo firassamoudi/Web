@@ -1,0 +1,14 @@
+{{ form_start(edit_form) }}
+<div class="modal-body">
+        <div class="form-group">
+            {{ form_widget(edit_form.nomCategorie, {'label':"Nom Catégorie" ,'attr': {'class': 'form-control border-input'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(edit_form.file, {'label':"Image" ,'attr': {'class': 'form-control border-input' }}) }}
+        </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+    {{ form_widget(edit_form.modifier,{'attr':{'class':'btn btn-warning'}}) }}
+</div>
+{{ form_end(edit_form) }}
