@@ -55,7 +55,7 @@
         <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;">   &nbsp; <a href={{ path('Adminlog') }} class="btn btn-danger square-btn-adjust">Log Out</a> </div>
+font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class="btn btn-danger square-btn-adjust">Déconnexion</a> </div>
     </nav>
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -75,9 +75,7 @@ font-size: 16px;">   &nbsp; <a href={{ path('Adminlog') }} class="btn btn-danger
                     <a  href="{{ path('Validation_Compte') }}"><i class="fa fa-desktop fa-3x"></i> Validation des Comptes</a>
                     {% endif %}
                 </li>
-                <li>
-                    <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Traitement des Resrvation</a>
-                </li>
+
                 <li  >
                     <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
                 </li>
@@ -91,6 +89,13 @@ font-size: 16px;">   &nbsp; <a href={{ path('Adminlog') }} class="btn btn-danger
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
                     <a  href="{{ path('Ajouter_Promotion') }}"><i class="fa fa-edit fa-3x"></i> Ajouter Promotion </a>
                     {% endif %}
+                </li>
+                <li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+
+                    <a  href="{{ path('ReservationProp') }}"><i class="fa fa-qrcode fa-3x"></i> Traitement des Resrvation</a>
+                    {% endif %}
+
                 </li>
                 <li  >
                     <a  href="{{ path('liste_Promotion_Admin') }}"><i class="fa fa-edit fa-3x"></i>Liste Promotion </a>

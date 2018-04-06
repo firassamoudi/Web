@@ -3,17 +3,15 @@
 namespace BonPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Mgilet\NotificationBundle\Annotation\Notifiable;
-use Mgilet\NotificationBundle\NotifiableInterface;
+
 
 /**
  * Reservation
  *
  * @ORM\Table(name="reservation")
  * @ORM\Entity(repositoryClass="BonPlanBundle\Repository\ReservationRepository")
- * @Notifiable(name="Reservation")
  */
-class Reservation implements NotifiableInterface
+class Reservation
 {
     /**
      * @var integer

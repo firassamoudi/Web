@@ -33,12 +33,8 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
-<<<<<<< HEAD
-=======
-        "fyneworks/star-rating": "4.11.0",
-        "nurikabe/star-rating-bundle": "~2.0.1",
+
         "blackknight467/star-rating-bundle": "2.*",
->>>>>>> 67afdc7c64dd478eb04062d433619b5273f7452c
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {

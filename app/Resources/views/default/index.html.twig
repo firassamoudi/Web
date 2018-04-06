@@ -72,6 +72,16 @@
                                     </div>//-->
 
                                 <li class="nav-item active">
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_VISITEUR")) %}
+
+                                    <a style="color: #DA2D39" class="nav-link" href="{{ path('fos_user_profile_show') }}">Votre Compte  </a>
+                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_ADMIN")) %}
+                                    <a style="color: #DA2D39" class="nav-link" href="{{ path('Acceuil_back') }}">Votre Compte  </a>
+                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+                                    <a style="color: #DA2D39" class="nav-link" href="{{ path('Acceuil_back') }}">Votre Compte  </a>
+                                </li>
+                                {% endif %}
+                                <li class="nav-item active">
                                     <a style="color: #DA2D39" class="nav-link" href="{{ path('liste_Promotion_Visiteur') }}">Promotions </a>
                                 </li>
 
