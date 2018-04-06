@@ -5,6 +5,7 @@ namespace BonPlanBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 class AdminController extends Controller
 {
@@ -21,7 +22,7 @@ class AdminController extends Controller
             //..Send some data to your view if you need to //
         ));
 
-        $filename = 'myFirstSnappyPDF';
+        $filename = 'BonPlan';
 
         return new Response(
             $snappy->getOutputFromHtml($html),

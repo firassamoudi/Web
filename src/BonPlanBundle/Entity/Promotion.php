@@ -13,6 +13,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Promotion
 {
     /**
+     * @return int
+     */
+    public function getReduction()
+    {
+        return $this->reduction;
+    }
+
+    /**
+     * @param int $reduction
+     */
+    public function setReduction($reduction)
+    {
+        $this->reduction = $reduction;
+    }
+    /**
      * @var integer
      *
      * @ORM\Column(name="idPromotion", type="integer", nullable=false)
@@ -21,6 +36,12 @@ class Promotion
      */
     private $idpromotion;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="reduction", type="integer", length=45, nullable=true)
+     */
+    private $reduction;
     /**
      * @var string
      *

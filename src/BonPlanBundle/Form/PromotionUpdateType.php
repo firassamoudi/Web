@@ -14,7 +14,7 @@ class PromotionUpdateType extends AbstractType
     {
         $builder
             ->add('description')
-
+->add('reduction')
 
             ->add('datedebutp' )
             ->add('datefinp' )

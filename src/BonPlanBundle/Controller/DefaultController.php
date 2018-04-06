@@ -5,28 +5,30 @@ namespace BonPlanBundle\Controller;
 use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\ProfileType;
 use BonPlanBundle\Form\VisiteurType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
         return $this->render('BonPlanBundle:Default:index.html.twig');
+
     }
-    public function AjoutAction(Request $request )
+
+    public function AjoutAction(Request $request)
     {
         {
 
             $id = $this->getUser()->getId();
 
             $em = $this->getDoctrine()->getManager();
-            $user = $em->getRepository(User::class)->find($id);
+            $user = $em->getRepository(User::class)->findOneBy(array('id' => $id));
             $form = $this->createForm(VisiteurType::class, $user);
             $form->handleRequest($request);
             if ($form->isSubmitted()) {
+                $em->persist($user);
+
 
                 $em->flush();
 
@@ -37,7 +39,74 @@ class DefaultController extends Controller
             return $this->render('BonPlanBundle:Default:Ajouter.html.twig', array(
                 "form" => $form->createView()
             ));
-        }}
+        }
+    }
+
+    public function CategorieRestauAction()
+    {
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery(
+                'SELECT u FROM BonPlanBundle:User u WHERE 
+                  u.categorie LIKE :categorie'
+            )->setParameter('categorie', '%restaurant%'
+            );
+        $users = $query->getResult();
+
+
+        return $this->render('@BonPlan/Default/Categorie/CategorieRestaurant.html.twig', array('restau' => $users));
+    }
+
+    public function CategoriehotlesAction()
+    {
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery(
+                'SELECT u FROM BonPlanBundle:User u WHERE 
+                  u.categorie LIKE :categorie'
+            )->setParameter('categorie', '%hotel%'
+            );
+        $users = $query->getResult();
+        return $this->render('@BonPlan/Default/Categorie/CategorieHotels.html.twig', array('hotels' => $users));
+    }
+
+
+    public function CategorienightlifeAction()
+    {
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery(
+                'SELECT u FROM BonPlanBundle:User u WHERE 
+                  u.categorie LIKE :categorie'
+            )->setParameter('categorie', '%nightlife%'
+            );
+        $users = $query->getResult();
+        return $this->render('@BonPlan/Default/Categorie/CategorieNightlife.html.twig', array('nightlife' => $users));
+    }
+
+    public function CategorieCoffeAction()
+    {
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery(
+                'SELECT u FROM BonPlanBundle:User u WHERE 
+                  u.categorie LIKE :categorie'
+            )->setParameter('categorie', '%coffee%'
+            );
+        $users = $query->getResult();
+        return $this->render('@BonPlan/Default/Categorie/CategorieCoffee.html.twig', array('coffees' => $users));
+    }
+
+
+    public function CategoriecultureAction()
+    {
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery(
+                'SELECT u FROM BonPlanBundle:User u WHERE 
+                  u.categorie LIKE :categorie'
+            )->setParameter('categorie', '%culture%'
+            );
+        $users = $query->getResult();
+        return $this->render('@BonPlan/Default/Categorie/CategorieCulture.html.twig', array('cultures' => $users));
+    }
+
+
     public function AjoutPAction(Request $request)
     {
         $id = $this->getUser()->getId();
@@ -58,31 +127,24 @@ class DefaultController extends Controller
             "form" => $form->createView()
         ));
     }
-    /**
-     * @Route("/admin/", name="RoleAdmin")
-     */
+
+
+
     public function adminlogAction()
     {
-        $this->denyAccessUnlessGranted("ROLE_ADMIN");
-
         return $this->render('BonPlanBundle:Default:loginback.html.twig');
     }
-    public function ProfilPropAction()
-    {
-        return $this->render('BonPlanBundle:ProfilPlan:ProfilProp.html.twig');
-    }
-    public function EditProfilPropAction()
-    {
-        return $this->render('BonPlanBundle:ProfilPlan:EditProfilProp.html.twig');
-    }
+
     public function ConsulterAction()
     {
         return $this->render('BonPlanBundle:Default:Consulter.html.twig');
     }
+
     public function ConsulterPAction()
     {
         return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig');
     }
+
     public function indexAdminAction()
     {
         return $this->render('BonPlanBundle:Default:indexback.html.twig');
@@ -93,19 +155,18 @@ class DefaultController extends Controller
         return $this->render('BonPlanBundle:Default:Events.html.twig');
     }
 
-    /**
-     * @Route("/admin/", name="RoleAdmin")
-     */
     public function AcceuilBackAction()
     {
-        $this->denyAccessUnlessGranted("ROLE_ADMIN");
-        return $this->render('BonPlanBundle:Default:Acceuilback.html.twig');
-    }
-    public function CategorierestauAction()
-    {
-        return $this->render('@BonPlan/Default/CategorieRestaurant.html.twig');
-    }
+        $em = $this->getDoctrine()->getManager();
+        $NombreUser = $em->getRepository('BonPlanBundle:User');
+        $nb = $NombreUser->nombrePlan();
 
+        return $this->render('BonPlanBundle:Default:Acceuilback.html.twig', array('nombre' => $nb));
+    }
+    //public function CategorierestauAction()
+    //{
+    //  return $this->render('@BonPlan/Default/Categorie/CategorieRestaurant.html.twig');
+    //}
 
 
 }
