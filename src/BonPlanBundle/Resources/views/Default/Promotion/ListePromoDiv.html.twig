@@ -24,34 +24,34 @@
 
 
                                 {% for p in promo %}
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="border: black ; border-width: 2px" >
 
                         <div class="col-sm-6 col-lg-12 col-xl-6 featured-responsive" >
-                            <div class="row  detail-options-wrap" style="width: 700px; height: 550px; fill-opacity: 0.5" >
-                            <div class="featured-place-wrap "style="color: #3b97b5"   >
+                            <div class="row  detail-options-wrap" style="width: 700px; height: 600px; fill-opacity: 0.5" >
+                            <div class="featured-place-wrap "style="color: #3b97b5; border-color: black"   >
 
-                                <center ><img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}"  style="height: 300px ; width: 300px ;opacity: 1" class="img-fluid" alt="#" ></center>
+                                <center ><img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}"  style="height: 300px ; width: 300px ;opacity: 1" class="img-fluid" alt="#" >
 
-                                    <div class="featured-title-box"  >
+                                </center>
+
+                                    <div class="featured-title-box"  style="border-color: black; border-width: 2px" >
                                         <h6 style="color: black">{{  p.description}}</h6>
 
 
 
                                         <ul >
-                                            <li><span class="icon-location-pin"> date debut </span>
+                                            <li><span class="icon-calendar"> date debut </span>
                                                 <p style="color: black">{{ p.datedebutp |date("m/d/Y")}}</p>
                                             </li>
-                                            <li><span class="icon-screen-smartphone"> date fin </span>
+                                            <li><span class="icon-calendar"> date fin </span>
                                                 <p style="color: black">{{ p.datefinp |date("m/d/Y") }}</p>
                                             </li>
-                                            <li><span class="icon-link"></span>
-                                                <p style="color: black">{{  p.userPlan.username}}</p>
-                                            </li>
-                                            <div class="bottom-icons">
+                                            <li><span class="icon-location-pin"></span>
+                                                <p style="color: black"> {{  p.userPlan.username}}</p>
+                                            </li> <span class="ti-heart"> like </span>
+                                            <li > <span ><a href="{{ path('detail_promo', {'id' : p.idpromotion}) }} "<button type="button"  class="btn btn-info btn-xs" style="height: 28px">details</button></a>
+ </span> </li>
 
-                                                <span class="ti-heart">like </span>
-                                                <span class="ti-bookmark"></span>
-                                            </div>
                                     </div></div>
                                         </ul>
 
