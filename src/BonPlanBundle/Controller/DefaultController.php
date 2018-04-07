@@ -7,6 +7,7 @@ use BonPlanBundle\Form\ProfileType;
 use BonPlanBundle\Form\VisiteurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use BonPlanBundle\Controller\AdminController;
 
 class DefaultController extends Controller
 {
@@ -50,10 +51,15 @@ class DefaultController extends Controller
                   u.categorie LIKE :categorie'
             )->setParameter('categorie', '%restaurant%'
             );
+
         $users = $query->getResult();
+        $em = $this->getDoctrine()->getManager();
+        $NombreUser = $em->getRepository('BonPlanBundle:User');
+        $nb = $NombreUser->restaurant();
 
 
-        return $this->render('@BonPlan/Default/Categorie/CategorieRestaurant.html.twig', array('restau' => $users));
+
+        return $this->render('@BonPlan/Default/Categorie/CategorieRestaurant.html.twig', array('restau' => $users , 'nb' =>$nb ));
     }
 
     public function CategoriehotlesAction()
@@ -93,7 +99,14 @@ class DefaultController extends Controller
         return $this->render('@BonPlan/Default/Categorie/CategorieCoffee.html.twig', array('coffees' => $users));
     }
 
-
+    public function RechercheKbiraAction(Request $request)
+    {
+        $search =$request->query->get('user');
+        $en = $this->getDoctrine()->getManager();
+        $user=$en->getRepository("BonPlanBundle:User")->findPlan($search);
+        return $this->render("BonPlanBundle:Default:ConsulterP.html.twig",array(
+            'plans' => $user
+        ));}
     public function CategoriecultureAction()
     {
         $query = $this->getDoctrine()->getEntityManager()
@@ -127,7 +140,23 @@ class DefaultController extends Controller
             "form" => $form->createView()
         ));
     }
+            public function AllPlansAction (){
+                $query = $this->getDoctrine()->getEntityManager()
+                    ->createQuery(
+                        'SELECT u FROM BonPlanBundle:User u WHERE 
+                  u.roles LIKE :role 
+                  AND u.validite = 1'
 
+                    )->setParameter('role', '%"ROLE_PROP"%'
+                    );
+                $users = $query->getResult();
+
+
+
+                return $this->render('@BonPlan/Default/ConsulterP.html.twig', array('plans' => $users));
+
+
+            }
 
 
     public function adminlogAction()
@@ -149,7 +178,13 @@ class DefaultController extends Controller
     {
         return $this->render('BonPlanBundle:Default:indexback.html.twig');
     }
+    public function nombrerestauAction(){
+        $em = $this->getDoctrine()->getManager();
+        $NombreUser = $em->getRepository('BonPlanBundle:User');
+        $nb = $NombreUser->restaurant();
 
+        return $this->render('BonPlanBundle:Default/Categorie:CategorieRestaurant.html.twig',array('nb' => $nb));
+    }
     public function EventsAction()
     {
         return $this->render('BonPlanBundle:Default:Events.html.twig');
