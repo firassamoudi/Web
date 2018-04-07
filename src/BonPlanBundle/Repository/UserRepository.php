@@ -27,6 +27,12 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+    public function nombrePlan (){
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
     public function findCategorie($role,$categorie)
     {
 

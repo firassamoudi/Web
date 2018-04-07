@@ -6,13 +6,16 @@ Categorie_restau:
     defaults: { _controller: BonPlanBundle:Default:Categorierestau }
 Acceuil_back:
     path:     /Acceuilback
-    defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
+    defaults: { _controller: BonPlanBundle:Default:NombreUtilisateur }
 Ajouter:
     path:     /ajouter
     defaults: { _controller: BonPlanBundle:Default:Ajout }
 Adminlog:
     path:     /Adminlog
     defaults: { _controller: BonPlanBundle:Default:adminlog }
+detail_promo:
+    path:     /detail_promo/{id}
+    defaults: { _controller: BonPlanBundle:Promotion:detailPromo }
 ConsulterP:
     path:     /ConsulterP
     defaults: { _controller: BonPlanBundle:Default:ConsulterP }
@@ -43,6 +46,15 @@ bon_plan_homepage_back:
 liste_Promotion_Visiteur:
     path:     /PromotionVisiteur
     defaults: { _controller: BonPlanBundle:Promotion:listPromotionVisiteur }
+recherche_promotion:
+    path:   /recherche
+    defaults: { _controller: BonPlanBundle:Promotion:Recherche}
+recherche_promotionAdmin:
+    path:   /rechercheAdmin
+    defaults: { _controller: BonPlanBundle:Promotion:RechercheAdmin }
+recherche_compte:
+    path:   /rechercheP
+    defaults: { _controller: BonPlanBundle:Admin:Recherche }
 liste_Promotion_Prop:
     path:     /PromotionProp
     defaults: { _controller: BonPlanBundle:Promotion:Recherche_PromotionProp }
@@ -58,14 +70,8 @@ Validation:
 ajout_Categorie_admin:
     path:     /AjoutCategorie
     defaults: { _controller: BonPlanBundle:Categorie:CategAjout }
-supprimer_Categorie_admin:
-    path:     /SuppCategorie/{id}
-    defaults: { _controller: BonPlanBundle:Categorie:CategSupp }
-modifier_Categorie_admin:
-    path:     /ModifCategorie
-    defaults: { _controller: BonPlanBundle:Categorie:CategUpdate }
 Categorie_admin:
-    path:     /Categorie
+    path:     /Suggestion
     defaults: { _controller: BonPlanBundle:Categorie:CategorieA }
 ReservationVisiteur:
     path:     /ReservationVisiteur

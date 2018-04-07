@@ -2,6 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fdb5d709-72ce-4c33-94e8-30ab3ea8b13e" name="Default" comment="">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/uploads/images/Categorie/8202855-12813271.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/uploads/images/Categorie/find-place1.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/uploads/images/Categorie/find-place2.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/uploads/images/Categorie/find-place4.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/uploads/images/Categorie/find-place5.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/uploads/images/Categorie/transport.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/uploads/images/Categorie/拿鐵單卡-e6-8b-bf-e9-90-b5-e5-96-ae-e5-8d-a1--e6-a9-ab--e8-83-8c-e6-99-af-e7-b3-8a-1000x575.jpg" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_29_03_18_14_18_c.xml" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_29_03_18_14_18_c.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_29_03_18_16_00_c.xml" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_29_03_18_16_00_c.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_29_03_18_16_08_s.xml" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_29_03_18_16_08_s.xml" />
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
       <change beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
@@ -12,9 +28,17 @@
       <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Repository/CategorieRepository.php" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Repository/CategorieRepository.php" />
       <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Repository/UserRepository.php" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Repository/UserRepository.php" />
       <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Resources/config/routing.yml" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/AjouterP.html.twig" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/AjouterP.html.twig" />
       <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/ProfilPlan.html.twig" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/ProfilPlan.html.twig" />
       <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/index.html.twig" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/Categorie/CategorieAdmin.html.twig" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/Categorie/CategorieAdmin.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/indexback.html.twig" afterPath="$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/indexback.html.twig" />
+      <change beforePath="$PROJECT_DIR$/var/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/var/SymfonyRequirements.php" />
+      <change beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,9 +80,19 @@
       <file leaf-file-name="ProfilPlan.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/ProfilPlan.html.twig">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="259">
               <caret line="114" column="20" lean-forward="false" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="26" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="119">
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+=======
+            <state relative-caret-position="323">
+              <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
               <folding />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
             </state>
           </provider>
         </entry>
@@ -66,8 +100,18 @@
       <file leaf-file-name="AjouterP.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/AjouterP.html.twig">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="-786">
               <caret line="30" column="72" lean-forward="false" selection-start-line="30" selection-start-column="72" selection-end-line="30" selection-end-column="72" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="-533">
+              <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+=======
+            <state relative-caret-position="300">
+              <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
               <folding>
                 <element signature="e#477#501#0#HTML" expanded="true" />
                 <element signature="e#881#901#0#HTML" expanded="true" />
@@ -81,8 +125,37 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="CategorieController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Controller/CategorieController.php">
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="ProfilPlan.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/ProfilPlan.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+              <folding>
+                <element signature="e#12#44#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategorieController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Controller/CategorieController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-102" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateReservationVisiteur.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Reservation/UpdateReservationVisiteur.html.twig">
+=======
+      <file leaf-file-name="CategorieAdmin.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/Categorie/CategorieAdmin.html.twig">
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="214">
               <caret line="41" column="55" lean-forward="false" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
@@ -111,8 +184,15 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
+=======
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="UpdateCateg.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Form/UpdateCateg.php">
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
               <caret line="92" column="52" lean-forward="false" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="52" />
@@ -131,6 +211,7 @@
           </provider>
         </entry>
       </file>
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -310,10 +391,16 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
+    <option name="x" value="28" />
+    <option name="width" value="800" />
+    <option name="height" value="788" />
+=======
     <option name="x" value="63" />
     <option name="y" value="2" />
     <option name="width" value="1302" />
     <option name="height" value="765" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -336,8 +423,24 @@
         <subPane>
           <expand>
             <path>
+<<<<<<< HEAD
+              <item name="Piweb4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Piweb4" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Piweb4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Piweb4" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Piweb4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Piweb4" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="BonPlanBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+=======
               <item name="Web" type="b2602c69:ProjectViewProjectNode" />
               <item name="Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
             </path>
             <path>
               <item name="Web" type="b2602c69:ProjectViewProjectNode" />
@@ -583,20 +686,63 @@
       <workItem from="1522445924088" duration="3927000" />
       <workItem from="1522453199626" duration="4569000" />
       <workItem from="1522671375846" duration="36577000" />
+<<<<<<< HEAD
+      <workItem from="1522969089305" duration="3985000" />
+=======
       <workItem from="1522969089305" duration="1748000" />
+<<<<<<< HEAD
       <workItem from="1522974277361" duration="17365000" />
       <workItem from="1523064160070" duration="17357000" />
+=======
+      <workItem from="1522974277361" duration="1198000" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="246456000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="213971000" />
+=======
+    <option name="totallyTimeSpent" value="212932000" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18508998" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5025" side_tool="true" weight="0.32896462" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="11" sideWeight="0.4975" visible="true" weight="0.2931596" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32896462" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21961933" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" x="0" y="0" width="1920" height="1030" id="Documentation" order="3" type="FLOATING" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4975" weight="0.32736155" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19023137" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5025" order="7" side_tool="true" content_ui="tabs" />
@@ -617,6 +763,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32736155" sideWeight="0.4975" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,6 +784,87 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Form/ReservationType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Reservation/ReservationVisiteur.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/ProfileController.php" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/editProp.html.twig" />
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/all.xml" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/editProfil.html.twig" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/ProfilPlan/EditProfilProp.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hr.yml" />
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="47" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/ProfilPlan/ProfilProp.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Security/login_content.html.twig" />
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/SecurityController.php" />
     <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/loginback.html.twig">
@@ -689,6 +917,19 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/ProfilPlan.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1207">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
     <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/Consulter.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-544">
@@ -706,7 +947,14 @@
     <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Form/ReservationPropType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
+<<<<<<< HEAD
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#38#78#0#PHP" expanded="true" />
+          </folding>
+=======
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
         </state>
       </provider>
     </entry>
@@ -812,8 +1060,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="119">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Resources/views/Default/ProfilPlan.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+          <folding>
+            <element signature="e#12#44#0#Twig" expanded="true" />
+          </folding>
+=======
         <state relative-caret-position="323">
           <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+<<<<<<< HEAD
         </state>
       </provider>
     </entry>
@@ -822,6 +1085,30 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+=======
+          <folding />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Controller/CategorieController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BonPlanBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="-533">
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+=======
+        <state relative-caret-position="300">
+          <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+>>>>>>> 505d6fa750c40f1d2761827c693cf3eebb15b15f
+          <folding>
+            <element signature="e#44#74#0#PHP" expanded="true" />
+          </folding>
+>>>>>>> 60a271f6880e069d0e0d1af80fe9cd1f84429356
         </state>
       </provider>
     </entry>

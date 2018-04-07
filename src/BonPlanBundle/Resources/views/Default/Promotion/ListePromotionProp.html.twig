@@ -23,6 +23,7 @@
                             <tr>
                                 <th>descritpion</th>
                                 <th>Proprietaire</th>
+                                <th>Reduction</th>
 
                                 <th data-field="id" data-sortable="true">date Debut</th>
                                 <th data-field="id" data-sortable="true">date fin</th>
@@ -36,7 +37,7 @@
                                 <tr>
                                     <td>{{  p.description}}</td>
                                     <td>{{  p.userPlan.username}}</td>
-
+                                    <td>{{ p.reduction }}</td>
                                     <td>{{ p.datedebutp |date("m/d/Y")}}</td>
                                     <td>{{ p.datefinp |date("m/d/Y") }}</td>
                                     <td> <img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}" style="height: 70px; width: 100px" ></td>

@@ -1,0 +1,143 @@
+{% extends '@BonPlan/Default/index.html.twig' %}
+{% block body %}
+<body style="background-image: url({{ asset('images/backgrpund.jpg') }}) ; background-size: 100% 100%;background-repeat:no-repeat" >
+    {% for p in promo %}
+   <center>    <h3>{{  p.description}}</h3></center>
+        <center >
+        <div class="col-sm-4">
+        <div class="grid images_3_of_2">
+            <div class="flexslider">
+                <ul class="slides">
+                    <img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}" class="img-thumbnail" alt="Cinque Terre"></ul></div>
+
+
+</center><center>
+        <img onclick="changeLike(this)" height="80" width="80"
+               src="{{ asset('images/like.png') }}" id="{{ 'like' ~ p.idpromotion }}"
+               data-id="{{ p.idpromotion }}" name="imageLike"/>
+        <img onclick="changeDislike(this)" style="display: none" height="80" width="80"
+             src="{{ asset('images/dislike.png') }}" id="{{ 'dislike' ~ p.idpromotion }}"
+             data-id="{{ p.idpromotion }}" name="imageDislike"/>
+
+        <p id="{{ 'number' ~ p.idpromotion }}">
+            {{ p.likes }}
+        </p>
+         </di>
+    </center>
+{{ form_start() }}
+        {{ form_row(form.etat_promo, {'label':"Notes  " ,'attr': {'class': 'form-control border-input'}}) }}
+{{ form_end() }}
+        <center>
+        <div class="rating1">
+					<span class="rate" id='rate' name="rating">
+						<input id="rating5" type="radio" name="rating" value="5">
+						<label for="rating5">5</label>
+						<input id="rating4" type="radio" name="rating" value="4">
+						<label for="rating4">4</label>
+						<input id="rating3" type="radio" name="rating" value="3" >
+						<label for="rating3">3</label>
+						<input id="rating2" type="radio" name="rating" value="2">
+						<label for="rating2">2</label>
+						<input id="rating1" type="radio" name="rating" value="1">
+						<label for="rating1">1</label>
+					</span>
+
+
+
+</div>
+</center>
+<center>
+        <div class="container-fluid"style="color: #bd2130">
+
+                <span class="icon-people">  </span>
+                    <p style="color: black">{{ p.userPlan.username}}</p>
+
+                <span class="icon-wallet">  reduction</span>
+                    <p style="color: black">  {{ p.reduction}}</p>
+
+                <span class="icon-calendar"> date debut </span>
+                    <p style="color: black">{{ p.datedebutp |date("m/d/Y")}}</p>
+
+                <span class="icon-calendar"> date fin </span>
+                    <p style="color: black">{{ p.datefinp |date("m/d/Y") }}</p>
+
+
+
+        </div>
+        </center>
+                {% endfor %}
+
+</body>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // Check Radio-box
+            $(".rating input:radio").attr("checked", false);
+
+            $('.rating input').click(function () {
+                $(".rating span").removeClass('checked');
+                $(this).parent().addClass('checked');
+            });
+
+            $('input:radio').change(
+                function(){
+                    var userRating = this.value;
+                    alert(userRating);
+                });
+        });
+    </script>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script >
+
+
+    function changeLike(elem) {
+    var id = $(elem).data('id');
+    document.getElementById("like" + id).style.display = "none";
+    document.getElementById("dislike" + id).style.display = "block";
+
+    $.ajax({
+    url: '{{ path('ajouter_like') }}',
+    type: "POST",
+    data: {
+    "id": id
+    },
+    async: true,
+    success: function (data) {
+    $('#number' + id).html(data);
+
+
+    }
+    , error: function (data) {
+    console.log(data);
+    }
+    });
+
+
+    }
+
+    function changeDislike(elem) {
+    var id = $(elem).data('id');
+    document.getElementById("dislike" + id).style.display = "none";
+    document.getElementById("like" + id).style.display = "block";
+    $.ajax({
+    url: '{{ path('supprimer_like') }}',
+    type: "POST",
+    data: {
+    "id": id
+    },
+    async: true,
+    success: function (data) {
+    $('#number' + id).html(data);
+
+
+    }
+    , error: function (data) {
+    console.log(data);
+    }
+
+
+    })
+    };</script>
+        {% endblock %}
