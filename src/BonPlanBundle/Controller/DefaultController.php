@@ -2,6 +2,7 @@
 
 namespace BonPlanBundle\Controller;
 
+use BonPlanBundle\Entity\Categorie;
 use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\ProfileType;
 use BonPlanBundle\Form\VisiteurType;
@@ -14,7 +15,20 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BonPlanBundle:Default:index.html.twig');
+        $categories=new Categorie();
+        $em=$this->getDoctrine()->getManager();
+        $categories=$em->getRepository(Categorie::class)->findAll();
+        return $this->render('BonPlanBundle:Default:index.html.twig', array(
+            'categories'=>$categories
+        ));
+    }
+    public function indexViewAllAction()
+        {
+        $em=$this->getDoctrine()->getManager();
+        $user=$em->getRepository(User::class)->findByProp();
+        return $this->render('@BonPlan/Default/AfficherToutPlan.html.twig' ,array(
+            'users'=>$user
+        ));
     }
     public function AjoutAction(Request $request )
     {
@@ -38,16 +52,15 @@ class DefaultController extends Controller
                 "form" => $form->createView()
             ));
         }}
-    public function AjoutPAction(Request $request)
+    public function AjoutPAction(Request $request,$id)
     {
-        $id = $this->getUser()->getId();
-
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->find($id);
+        $user = $em->getRepository(User::class)->findOneBy(array('id'=>$id));
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
-
+            $user->upload();
+            $em->persist($user);
             $em->flush();
 
             return $this->redirectToRoute('bon_plan_homepage');
@@ -79,9 +92,13 @@ class DefaultController extends Controller
     {
         return $this->render('BonPlanBundle:Default:Consulter.html.twig');
     }
-    public function ConsulterPAction()
+    public function ConsulterPAction($id)
     {
-        return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository(User::class)->findById($id);
+        return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
+            'users_consult'=>$users
+        ));
     }
     public function indexAdminAction()
     {

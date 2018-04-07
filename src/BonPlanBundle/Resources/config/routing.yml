@@ -17,7 +17,7 @@ ConsulterP:
     path:     /ConsulterP
     defaults: { _controller: BonPlanBundle:Default:ConsulterP }
 AjouterP:
-    path:     /ajouterP
+    path:     /ajouterP/{id}
     defaults: { _controller: BonPlanBundle:Default:AjoutP }
 Events:
     path:     /Events
@@ -47,7 +47,7 @@ liste_Promotion_Prop:
     path:     /PromotionProp
     defaults: { _controller: BonPlanBundle:Promotion:Recherche_PromotionProp }
 Profil_Plan:
-    path:     /Profil_Plan
+    path:     /Profil_Plan/{id}
     defaults: { _controller: BonPlanBundle:Default:ConsulterP }
 Validation_Compte:
     path:     /Validation

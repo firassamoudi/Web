@@ -20,12 +20,10 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     }
     public function findRole($role)
     {
-
         $qb = $this->_em->createQueryBuilder();
         $qb->select('u')
-            ->from($this->User, 'u')
             ->where('u.roles LIKE "ROLE_PROP"')
-            ->setParameter('roles', '%"'.$role.'"%');
+            ->setParameter(':roles', "%$role%");
 
         return $qb->getQuery()->getResult();
     }
@@ -41,6 +39,25 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         ->setParameter(':categorie',"%$categorie%");
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function findByProp()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT u FROM BonPlanBundle:User u WHERE u.roles LIKE :role'
+            )->setParameter('role', '%"ROLE_PROP"%');
+
+        return $query->getResult();
+    }
+
+    public function findById($id)
+    {
+        $q=$this->createQueryBuilder('u')
+            ->Where('u.id = :iduser ')
+            ->setParameter(':iduser',$id);
+        return $q->getQuery()->getResult();
+
     }
 
 }

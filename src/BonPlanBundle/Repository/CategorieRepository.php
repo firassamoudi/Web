@@ -10,4 +10,5 @@ namespace BonPlanBundle\Repository;
  */
 class CategorieRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

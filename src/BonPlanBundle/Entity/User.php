@@ -4,6 +4,7 @@ namespace BonPlanBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * views
@@ -79,9 +80,9 @@ class User extends BaseUser
     private $telephone;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=45, nullable=true)
+     * @ORM\ManyToOne(targetEntity="BonPlanBundle\Entity\Categorie")
+     * @ORM\JoinColumn(name="Categorie",referencedColumnName="id")
      */
     private $categorie;
 
@@ -98,6 +99,11 @@ class User extends BaseUser
      * @ORM\Column(name="photodeprofil", type="string", length=45, nullable=true)
      */
     private $photodeprofil;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
 
     /**
      * @return string
@@ -418,4 +424,68 @@ class User extends BaseUser
         return $this->codePostal;
     }
 
+    public function getWebPath()
+    {
+        return null === $this->photodeprofil
+            ? null
+            : $this->getUploadDir().'/'.$this->photodeprofil;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/images/PhotoProfil';
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->photodeprofil = $this->getFile()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
+    }
 }
