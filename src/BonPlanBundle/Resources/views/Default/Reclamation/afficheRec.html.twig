@@ -1,6 +1,7 @@
 
 {% extends 'BonPlanBundle:Default:indexback.html.twig' %}
 {% block body %}
+<<<<<<< HEAD
     <h1>Liste des Reclamation</h1>
     <table border="1">
         <tr>
@@ -27,4 +28,32 @@
             </tr>
         {% endfor %}
     </table>
+=======
+<h1>Liste des Reclamation</h1>
+<table border="1">
+    <tr>
+        <th>id reclamation</th>
+        <th>etat</th>
+        <th>Type</th>
+        <th>Niv Rec</th>
+        <th>Description</th>
+        <th>user</th>
+        <th>Plan</th>
+
+    </tr>
+    {% for r in reclamation %}
+        <tr>
+            <td>{{ r.idreclamation }}</td>
+            <td><strong>{{ r.etat }}</strong></td>
+            <td>{{ r.type}}</td>
+            <td>{{ r.nivRec }}</td>
+            <td>{{ r.Description }}</td>
+            <td>{{ r.userPlan }}</td>
+            <td><a href="{{ path('Update_Reclamation',{'idreclamation':r.idreclamation })}}">update</a> </td>
+            <td><a href="{{ path('Delete_Recalamation',{'idreclamation':r.idreclamation })}}">Delete</a> </td>
+
+        </tr>
+    {% endfor %}
+</table>
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
 {% endblock %}

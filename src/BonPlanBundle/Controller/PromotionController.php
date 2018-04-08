@@ -177,6 +177,8 @@ class PromotionController extends Controller
 
         }
     }
+    public function like_ClikedAction(Request $request)
+    {}
     public function notesAction(Request $request) {
         $promotion = new Promotion();
         $user = $this->getUser();
@@ -205,11 +207,13 @@ class PromotionController extends Controller
                 $likes = new Likes();
                 $em = $this->getDoctrine()->getManager();
                 $likes->setIduser($this->getUser());
+                $likes->setPromotion($em->getRepository('BonPlanBundle:Promotion')->findOneBy(array('id' => $request->get('id'))));
                 $likes->setIdpromotion($em->getRepository('BonPlanBundle:Promotion')->findOneBy(array('id' => $request->get('id'))));
                 $em->persist($likes);
                 $em->flush();
                 $id = $request->get('id');
 
+                $resultat = $this->getDoctrine()->getRepository('GalleryBundle:Likes')->findBy(array('idpromotion' => $id));
                 $resultat = $this->getDoctrine()->getRepository('BonPlanBundle:Likes')->findBy(array('idpromotion' => $id));
 
                 $data = count($resultat);

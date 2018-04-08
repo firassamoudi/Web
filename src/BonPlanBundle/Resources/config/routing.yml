@@ -88,15 +88,33 @@ ReservationProp:
 ReservationPropUpdate:
     path:     /UpdateProp/{id}
     defaults: { _controller: BonPlanBundle:Reservation:updateReservationProp }
+RecherchePlan:
+    path:     /Recherche/{nomPlan}
+    defaults: { _controller: BonPlanBundle:Default:RechercherPlan }
+RechercheP:
+    path:     /RechercheP
+    defaults: { _controller: BonPlanBundle:Default:recherche }
 ProfilProp:
     path:     /ProfilProp
     defaults: { _controller: BonPlanBundle:Default:ProfilProp }
 EditProfilProp:
     path:     /EditProfilProp
     defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
+<<<<<<< HEAD
 bon_plan_ReclamationPlan:
     path:     /ReclamerPlan/{id}
     defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+=======
+bon_plan_ReclamationP:
+    path:     /ReclamerP
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerP }
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+Profil_Plan:
+    path:     /Profil_Plan/{id}
+    defaults: { _controller: BonPlanBundle:Default:ConsulterPl }
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
 Affiche_Rec:
     path:     /AfficheRec
     defaults: { _controller: BonPlanBundle:Reclamation:AfficheReclamation }
@@ -111,4 +129,11 @@ bon_plan_abonner:
     defaults: { _controller: BonPlanBundle:Abonner:abonner }
 bon_plan_desabonner:
     path:     /bonPlan/desabonner/{idPlan}/{idUser}
+<<<<<<< HEAD
     defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+=======
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+bon_plan_Stat:
+      path:     /stat
+      defaults: { _controller: BonPlanBundle:Stat:index}
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468

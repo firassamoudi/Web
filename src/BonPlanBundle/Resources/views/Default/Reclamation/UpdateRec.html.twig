@@ -1,5 +1,6 @@
 {% extends 'BonPlanBundle:Default:indexback.html.twig' %}
 {% block body %}
+<<<<<<< HEAD
     <h1>update</h1>
     {{ form_start(form) }}
     <table>
@@ -10,4 +11,16 @@
 
     </table>
     {{ form_end(form) }}
+=======
+<h1>update</h1>
+{{ form_start(form) }}
+<table>
+    <tr>
+        <td>Etat</td>
+        <td>{{ form_widget(form.etat) }}</td>
+    </tr>
+
+</table>
+{{ form_end(form) }}
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
 {% endblock %}

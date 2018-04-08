@@ -33,6 +33,7 @@ class ReclamationController extends Controller
 
     }
 
+<<<<<<< HEAD
     function ReclamerPlanAction(Request $request,$id)
     {
         $reclamation = new Reclamation();
@@ -52,6 +53,27 @@ class ReclamationController extends Controller
         return $this->render('BonPlanBundle:Default/Reclamation:ReclamerPlan.html.twig', array());
 
     }function AfficheReclamationAction (){
+=======
+function ReclamerPlanAction(Request $request,$id)
+{
+    $reclamation = new Reclamation();
+    if ($request->isMethod('POST')) {
+        $reclamation->setEtat('en cours');
+        $reclamation->setUserVisiteur($this->container->get('security.token_storage')->getToken()->getUser());
+        $reclamation->setType($request->get('type'));
+        $reclamation->setNivRec($request->get('nivRec'));
+        $reclamation->setDescription($request->get('description'));
+        $reclamation->setUserPlan($this->getDoctrine()->getRepository('BonPlanBundle:User')->findOneBy(array('id' => $id)));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($reclamation);
+        $em->flush();
+        return $this->redirectToRoute('Profil_Plan',array('id'=>$id));
+
+    }
+    return $this->render('BonPlanBundle:Default/Reclamation:ReclamerPlan.html.twig', array());
+
+}function AfficheReclamationAction (){
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
     $em=$this->getDoctrine()->getManager();
     $reclamation=$em->getRepository("BonPlanBundle:Reclamation")->findAll();
     return $this->render('BonPlanBundle:Default/Reclamation:afficheRec.html.twig',array("reclamation"=>$reclamation));
