@@ -94,3 +94,30 @@ ProfilProp:
 EditProfilProp:
     path:     /EditProfilProp
     defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
+bon_plan_ReclamationP:
+    path:     /ReclamerP
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerP }
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+Profil_Plan:
+    path:     /Profil_Plan/{id}
+    defaults: { _controller: BonPlanBundle:Default:ConsulterPl }
+Affiche_Rec:
+    path:     /AfficheRec
+    defaults: { _controller: BonPlanBundle:Reclamation:AfficheReclamation }
+Update_Reclamation:
+    path:     /UpdateRec/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:UpdateReclamation}
+Delete_Recalamation:
+    path:     /DeleteRecAdmin/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:DeleteReclamation }
+bon_plan_abonner:
+    path:     /bonPlan/abonner/{id}
+    defaults: { _controller: BonPlanBundle:Abonner:abonner }
+bon_plan_desabonner:
+    path:     /bonPlan/desabonner/{idPlan}/{idUser}
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+bon_plan_Stat:
+      path:     /stat
+      defaults: { _controller: BonPlanBundle:Stat:index}

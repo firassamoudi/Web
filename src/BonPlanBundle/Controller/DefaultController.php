@@ -99,6 +99,15 @@ class DefaultController extends Controller
             'users_consult'=>$users
         ));
     }
+	    public function ConsulterPlAction($id)
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $plan = $this->getDoctrine()->getManager()->getRepository('BonPlanBundle:Abonner')->findOneBy(array('userVisiteur' => $this->getUser()->getId()));
+            return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => $plan));
+        }
+        return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => null));
+
+    }
     public function indexAdminAction()
     {
         return $this->render('BonPlanBundle:Default:indexback.html.twig');
