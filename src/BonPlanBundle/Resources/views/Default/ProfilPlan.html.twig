@@ -22,7 +22,14 @@
                         <span>9.5</span>
                     </div>
                     <div class="review-btn">
-                        <a href="#" class="btn btn-outline-danger">WRITE A REVIEW</a>
+                        {% if is_granted("ROLE_VISITEUR") %}
+
+                            <a href="{{ path('bon_plan_ReclamationPlan', { 'id' : app.user.id}) }}"
+                               class="btn btn-outline-danger">Reclamer</a>
+                            <span>34 reviews</span>
+                        {% else %}
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-outline-danger">Reclamer</a>
+                        {% endif %}
                     </div>
                     <div class="reserve-btn">
                         <div class="featured-btn-wrap">
@@ -129,7 +136,17 @@
                                     <span>Followers</span>
                                 </li>
                             </ul>
-                        <a href="#">FOLLOW</a>
+                        {% if app.user %}
+                            {% if plan %}
+                                <a href="{{ path('bon_plan_desabonner', { 'idPlan' : 2, 'idUser' : app.user.id }) }}"
+                                   class="btn btn-outline-danger">Desabonner</a>
+                            {% else %}
+                                <a href="{{ path('bon_plan_abonner', { 'id' : 2 }) }}"
+                                   class="btn btn-outline-danger">Abonner</a>
+                            {% endif %}
+                        {% else %}
+                            <button type="button" class="btn btn-outline-danger" disabled>Abonner</button>
+                        {% endif %}
                     </div>
 
 

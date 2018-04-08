@@ -6,6 +6,7 @@ use BonPlanBundle\Entity\Categorie;
 use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\ProfileType;
 use BonPlanBundle\Form\VisiteurType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -22,7 +23,7 @@ class DefaultController extends Controller
         ));
     }
     public function indexViewAllAction()
-        {
+    {
         $em=$this->getDoctrine()->getManager();
         $user=$em->getRepository(User::class)->findByProp();
         return $this->render('@BonPlan/Default/AfficherToutPlan.html.twig' ,array(
@@ -95,9 +96,18 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository(User::class)->findById($id);
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        $plan = $this->getDoctrine()->getManager()->getRepository('BonPlanBundle:Abonner')->findOneBy(array('userVisiteur' => $this->getUser()->getId()));
+            return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
+                'users_consult'=>$users,'plan' => $plan));
+
+        }
+
+
         return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
-            'users_consult'=>$users
+            'users_consult'=>$users,'plan' => null
         ));
+
     }
     public function indexAdminAction()
     {
@@ -120,6 +130,18 @@ class DefaultController extends Controller
     public function CategorierestauAction()
     {
         return $this->render('@BonPlan/Default/CategorieRestaurant.html.twig');
+    }
+
+
+
+    public function ConsulterPlAction($id)
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $plan = $this->getDoctrine()->getManager()->getRepository('BonPlanBundle:Abonner')->findOneBy(array('userVisiteur' => $this->getUser()->getId()));
+            return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => $plan));
+        }
+        return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => null));
+
     }
 
 
