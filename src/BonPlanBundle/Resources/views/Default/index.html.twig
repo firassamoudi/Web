@@ -19,9 +19,9 @@
                             <div class="col-md-10">
                                 <form class="form-wrap mt-4">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <input type="text" placeholder="What are your looking for?" class="btn-group1">
+                                        <input type="text" placeholder="What are your looking for?" >
                                         <input type="text" placeholder="Tunisia" class="btn-group2">
-                                        <button style="background-color: #DA2D39" type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
+                                        <button style="background-color: #DA2D39" type="submit" class="btn-form"  ><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
                                     </div>
                                 </form>
                                 <div class="slider-link">
@@ -244,5 +244,38 @@
             </div>
         </div>
     </section>
+ <!--   <script>
+        $("document").ready(function () {
 
+            $(".recherche").keyup(function () {
+                var plan=$('.recherche').val();
+                var DATA = 'plan=' + plan;
+                $.ajax({
+                    type:"GET",
+                    data: DATA,
+                    success: function (data) {
+                        console.log(data);
+                        $("recherche").val(data.plan);
+                        console.log("trouvé");
+                    }
+                });
+
+
+            })
+
+        });
+    </script>-->
+
+        <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script >
+    $(function () {
+        $("#recherche").keyup(function () {
+            $.ajax({
+                data : { 'plan' : $(this).val() },
+                success: function (data) {
+                    console.log("trouvé");
+                }
+        });
+    })
+    });
+</script>-->
 {% endblock %}

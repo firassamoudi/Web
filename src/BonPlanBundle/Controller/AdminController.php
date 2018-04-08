@@ -2,6 +2,8 @@
 
 namespace BonPlanBundle\Controller;
 
+use BonPlanBundle\Entity\Promotion;
+use BonPlanBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,13 +16,20 @@ class AdminController extends Controller
         return $this->render('', array('name' => $name));
 
     }
-    public function ToPDFAction(){
+    public function ToPDFAction(Request $request, $id){
+        $user_id= $request->get('id');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $user= $em->getRepository('BonPlanBundle:User')->find($user_id);
+
+
+
+        $html = $this->renderView('BonPlanBundle:Default/validation:TESTPDF.html.twig' , array('user'=>$user) );
 
         $snappy = $this->get('knp_snappy.pdf');
 
-        $html = $this->renderView('BonPlanBundle:Default/validation:TESTPDF.html.twig', array(
-            //..Send some data to your view if you need to //
-        ));
+
 
         $filename = 'BonPlan';
 

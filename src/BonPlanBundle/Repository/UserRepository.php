@@ -1,6 +1,7 @@
 <?php
 
 namespace BonPlanBundle\Repository;
+
 use BonPlanBundle\Entity\User;
 
 /**
@@ -13,11 +14,12 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findProp($nomPlan)
     {
-        $q=$this->createQueryBuilder('p')
+        $q = $this->createQueryBuilder('p')
             ->where('p.nomPlan LIKE :nomPlan')
-            ->setParameter(':nomPlan',"%$nomPlan%");
+            ->setParameter(':nomPlan', "%$nomPlan%");
         return $q->getQuery()->getResult();
     }
+
     public function findRole($role)
     {
 
@@ -25,17 +27,20 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         $qb->select('u')
             ->from($this->User, 'u')
             ->where('u.roles LIKE "ROLE_PROP"')
-            ->setParameter('roles', '%"'.$role.'"%');
+            ->setParameter('roles', '%"' . $role . '"%');
 
         return $qb->getQuery()->getResult();
     }
-    public function nombrePlan (){
+
+    public function nombrePlan()
+    {
         return $this->createQueryBuilder('user')
             ->select('COUNT(user)')
             ->getQuery()
             ->getSingleScalarResult();
     }
-    public function findCategorie($role,$categorie)
+
+    public function findCategorie($role, $categorie)
     {
 
         $qb = $this->_em->createQueryBuilder();
@@ -43,10 +48,27 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->from($this->User, 'u')
             ->where('u.roles LIKE "ROLE_PROP"')
             ->andWhere('u.categorie LIKE :categorie')
-            ->setParameter('roles', '%"'.$role.'"%')
-        ->setParameter(':categorie',"%$categorie%");
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter(':categorie', "%$categorie%");
 
         return $qb->getQuery()->getResult();
     }
 
+    public function findGlobale($nomPlan)
+    {
+        $q = $this->createQueryBuilder('p')
+            ->where('p.nomPlan LIKE :nomPlan')
+            ->orWhere('p.description LIKE :des')
+            ->orWhere('p.codePostal LIKE :cp')
+            ->orWhere('p.adresse LIKE :add')
+            ->orWhere('p.telephone LIKE :tel')
+            ->orWhere('p.ville LIKE :ville')
+            ->setParameter(':ville', "%$nomPlan%")
+            ->setParameter(':tel', "%$nomPlan%")
+            ->setParameter(':nomPlan', "%$nomPlan%")
+            ->setParameter(':add', "%$nomPlan%")
+            ->setParameter(':cp', "%$nomPlan%")
+            ->setParameter(':des', "%$nomPlan%");
+        return $q->getQuery()->getResult();
+    }
 }

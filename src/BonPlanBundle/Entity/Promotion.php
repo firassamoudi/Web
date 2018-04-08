@@ -12,21 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Promotion
 {
-    /**
-     * @return int
-     */
-    public function getReduction()
-    {
-        return $this->reduction;
-    }
 
-    /**
-     * @param int $reduction
-     */
-    public function setReduction($reduction)
-    {
-        $this->reduction = $reduction;
-    }
     /**
      * @var integer
      *
@@ -68,13 +54,16 @@ class Promotion
      *
      * @ORM\Column(name="dateFinP", type="date", nullable=false)
      */
+
     private $datefinp;
+
     /**
-     * @var \ boolean
+     * @var \ integer
      *
-     * @ORM\Column(name="etat_promo", type="boolean", nullable=true)
+     * @ORM\Column(name="etat_promo", type="integer", nullable=true)
      */
     private $etat_promo;
+
     /**
      * @ORM\ManyToOne(targetEntity="BonPlanBundle\Entity\User")
      *
@@ -162,6 +151,38 @@ class Promotion
     public function getDatedebutp()
     {
         return $this->datedebutp;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReduction()
+    {
+        return $this->reduction;
+    }
+
+    /**
+     * @param int $reduction
+     */
+    public function setReduction($reduction)
+    {
+        $this->reduction = $reduction;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEtatPromo()
+    {
+        return $this->etat_promo;
+    }
+
+    /**
+     * @param int $etat_promo
+     */
+    public function setEtatPromo($etat_promo)
+    {
+        $this->etat_promo = $etat_promo;
     }
 
     /**
