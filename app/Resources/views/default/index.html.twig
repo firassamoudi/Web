@@ -46,11 +46,7 @@
                                         <span class="icon-arrow-down"></span>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                     //   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                       // <a class="dropdown-item" href="{{ path('Ajouter') }}">Profil</a>
-                                        //{% else %}
-                                        //<a class="dropdown-item" href="{{ path('Ajouter') }}">Inscription</a>
-                                        //{% endif %}
+
 
 
                         </div>
@@ -62,12 +58,7 @@
                                         Espace Plans
                                         <span class="icon-arrow-down"></span>
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                            <a class="dropdown-item" href="{{ path('AjouterP') }}">Profil</a>
-                                        {% else %}
-                                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">Inscription</a>
-                                        {% endif %}
+
 
                                     </div>//-->
 
@@ -110,7 +101,7 @@
 
                                         <a style="color: #FF3A6D" href="{{ path('Ajouter') }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Visiteur</a>
                                     {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
-                                        <a style="color: #FF3A6D" href="{{ path('AjouterP') }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Proprietaire</a>
+                                        <a style="color: #FF3A6D" href="{{ path(('AjouterP'),{'id': app.user.id }) }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Proprietaire</a>
                                     {% endif %}
 
 

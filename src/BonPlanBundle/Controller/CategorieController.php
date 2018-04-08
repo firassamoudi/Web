@@ -66,15 +66,4 @@ class CategorieController extends Controller
         ));
     }
 
-    private function createEditForm(Categorie $categorie)
-    {
-        $form = $this->createForm(new \BonPlanBundle\Form\Categorie(), $categorie, array(
-            'action' => $this->generateUrl('modifier_Categorie_admin', array('id' => $categorie->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
-        return $form;
-    }
 }

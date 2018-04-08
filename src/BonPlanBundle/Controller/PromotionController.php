@@ -7,6 +7,7 @@ use BonPlanBundle\Entity\Promotion;
 use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\PromotionType;
 use BonPlanBundle\Form\PromotionUpdateType;
+use BonPlanBundle\Form\RatePromoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -177,6 +178,27 @@ class PromotionController extends Controller
         }
     }
     public function like_ClikedAction(Request $request)
+    {}
+    public function notesAction(Request $request) {
+        $promotion = new Promotion();
+        $user = $this->getUser();
+
+
+        $form = $this->createForm(RatePromoType::class, $promotion);
+        $form->handleRequest($request);
+        $session = new Session();
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($promotion);
+
+            $em->flush();
+            return $this->redirect($this->generateUrl('detail_promo'));
+        }
+        return $this->render('BonPlanBundle:Default/Promotion:detail_promo.html.twig', array('form' => $form->createView()));
+
+
+    }
+    public function LikesAction(Request $request)
     {
         if ($request->isXmlHttpRequest())
         {
@@ -186,11 +208,13 @@ class PromotionController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $likes->setIduser($this->getUser());
                 $likes->setPromotion($em->getRepository('BonPlanBundle:Promotion')->findOneBy(array('id' => $request->get('id'))));
+                $likes->setIdpromotion($em->getRepository('BonPlanBundle:Promotion')->findOneBy(array('id' => $request->get('id'))));
                 $em->persist($likes);
                 $em->flush();
                 $id = $request->get('id');
 
                 $resultat = $this->getDoctrine()->getRepository('GalleryBundle:Likes')->findBy(array('idpromotion' => $id));
+                $resultat = $this->getDoctrine()->getRepository('BonPlanBundle:Likes')->findBy(array('idpromotion' => $id));
 
                 $data = count($resultat);
                 return new JsonResponse($data);
