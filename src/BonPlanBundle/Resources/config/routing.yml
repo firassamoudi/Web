@@ -88,6 +88,12 @@ ReservationProp:
 ReservationPropUpdate:
     path:     /UpdateProp/{id}
     defaults: { _controller: BonPlanBundle:Reservation:updateReservationProp }
+RecherchePlan:
+    path:     /Recherche/{nomPlan}
+    defaults: { _controller: BonPlanBundle:Default:RechercherPlan }
+RechercheP:
+    path:     /RechercheP
+    defaults: { _controller: BonPlanBundle:Default:recherche }
 ProfilProp:
     path:     /ProfilProp
     defaults: { _controller: BonPlanBundle:Default:ProfilProp }

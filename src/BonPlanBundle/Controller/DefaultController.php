@@ -5,14 +5,55 @@ namespace BonPlanBundle\Controller;
 use BonPlanBundle\Entity\Categorie;
 use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\ProfileType;
+use BonPlanBundle\Form\RechercheType;
 use BonPlanBundle\Form\VisiteurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+
+    public function RechercherPlanAction(Request $request,$nomPlan)
+    {
+        $modele=new User();
+
+        $em=$this->getDoctrine()->getManager();
+
+
+        $form=$this->createForm(RechercheType::class,$modele);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()){
+            $modele=$em->getRepository("BonPlanBundle:User")->findGlobale($nomPlan);
+
+        }else{
+            $modele=$em->getRepository("BonPlanBundle:User")->findAll();
+
+        }
+        return $this->render('@BonPlan/Default/Rechercher.html.twig',
+            array("form"=>$form->createView(),'model'=>$modele));
+
+    }
+
+
+   /* public function rechercheAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()){
+            $search =$request->query->get('reche');
+            $en = $this->getDoctrine()->getManager();
+            $plan=$en->getRepository("BonPlanBundle:User")->findGlobale($search);
+            $response = new JsonResponse();
+            return $response->setData(array('p'=>$plan));}
+
+        return $this->render("@BonPlan/Default/index.html.twig",array(
+            'plans' => $plan
+        ));
+    }*/
+
+    public function indexAction(Request $request)
     {
         $categories=new Categorie();
         $em=$this->getDoctrine()->getManager();
@@ -70,6 +111,8 @@ class DefaultController extends Controller
             "form" => $form->createView()
         ));
     }
+
+
     /**
      * @Route("/admin/", name="RoleAdmin")
      */
@@ -110,6 +153,8 @@ class DefaultController extends Controller
     }
     public function indexAdminAction()
     {
+        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+
         return $this->render('BonPlanBundle:Default:indexback.html.twig');
     }
 
@@ -124,13 +169,18 @@ class DefaultController extends Controller
     public function AcceuilBackAction()
     {
         $this->denyAccessUnlessGranted("ROLE_ADMIN");
+
+        $em = $this->getDoctrine()->getManager();
+        $NombreUser = $em->getRepository('BonPlanBundle:User');
+        $nb = $NombreUser->nombrePlan();
+
+        return $this->render('BonPlanBundle:Default:Acceuilback.html.twig', array('nombre' => $nb));
         return $this->render('BonPlanBundle:Default:Acceuilback.html.twig');
     }
     public function CategorierestauAction()
     {
         return $this->render('@BonPlan/Default/CategorieRestaurant.html.twig');
     }
-
 
 
 }
