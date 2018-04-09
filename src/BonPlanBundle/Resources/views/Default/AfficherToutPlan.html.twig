@@ -1,0 +1,24 @@
+{% for user in users %}
+    <div class="col-md-4 featured-responsive">
+        <div class="featured-place-wrap">
+            <a href="{{ path('Profil_Plan',{'id': user.id})  }}">
+                <img src="{{ asset('uploads/images/PhotoProfil/'~user.photodeprofil) }}" class="img-fluid" alt="#">
+                <span class="featured-rating">3.2</span>
+                <div class="featured-title-box">
+                    <p>{{ user.id }}</p>
+                    <h6>{{ user.nomPlan }}</h6>
+                    <p>3 Reviews</p> <span> • </span>
+                    <p><span>$$$</span>$$</p>
+                    <ul>
+                        <li>
+                            <p class="icon-location-pin"> {{ user.adresse }}</p>
+                        </li>
+                        <li><span class="icon-screen-smartphone"></span>
+                            <p>{{ user.telephone }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endfor %}

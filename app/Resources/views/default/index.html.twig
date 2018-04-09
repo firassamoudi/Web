@@ -46,11 +46,7 @@
                                         <span class="icon-arrow-down"></span>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                     //   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                       // <a class="dropdown-item" href="{{ path('Ajouter') }}">Profil</a>
-                                        //{% else %}
-                                        //<a class="dropdown-item" href="{{ path('Ajouter') }}">Inscription</a>
-                                        //{% endif %}
+
 
 
                         </div>
@@ -62,18 +58,20 @@
                                         Espace Plans
                                         <span class="icon-arrow-down"></span>
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                            <a class="dropdown-item" href="{{ path('AjouterP') }}">Profil</a>
-                                        {% else %}
-                                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">Inscription</a>
-                                        {% endif %}
+
 
                                     </div>//-->
-                                </li>
+
                                 <li class="nav-item active">
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_VISITEUR")) %}
+
                                     <a style="color: #DA2D39" class="nav-link" href="{{ path('fos_user_profile_show') }}">Votre Compte  </a>
+                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_ADMIN")) %}
+                                    <a style="color: #DA2D39" class="nav-link" href="{{ path('Acceuil_back') }}">Votre Compte  </a>
+                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+                                    <a style="color: #DA2D39" class="nav-link" href="{{ path('Acceuil_back') }}">Votre Compte  </a>
                                 </li>
+                                {% endif %}
                                 <li class="nav-item active">
                                     <a style="color: #DA2D39" class="nav-link" href="{{ path('liste_Promotion_Visiteur') }}">Promotions </a>
                                 </li>
@@ -103,7 +101,7 @@
 
                                         <a style="color: #FF3A6D" href="{{ path('Ajouter') }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Visiteur</a>
                                     {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
-                                        <a style="color: #FF3A6D" href="{{ path('AjouterP') }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Proprietaire</a>
+                                        <a style="color: #FF3A6D" href="{{ path(('AjouterP'),{'id': app.user.id }) }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Proprietaire</a>
                                     {% endif %}
 
 
@@ -118,14 +116,8 @@
     </div>
 </div>
 <!--//END HEADER -->
-<section class="main-block">
-
+<section class="main-block" style="height: 1500px">
 {% block body %}{% endblock %}
-</section>
-
-<!--============================= FIND PLACES =============================-->
-<!--//END FEATURED PLACES -->
-<!--============================= CATEGORIES =============================-->
 <!--============================= FOOTER =============================-->
 <footer class="main-block dark-bg">
     <div class="container">
@@ -157,6 +149,7 @@
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 
 <script>
     $(window).scroll(function() {

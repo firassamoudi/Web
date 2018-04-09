@@ -40,4 +40,15 @@ class promotionRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getQuery()->getResult();
     }
+    public function findById($id){
+        $q=$this->createQueryBuilder('p')
+            ->andWhere('p.idpromotion LIKE :id')
+
+
+            ->setParameter(':id',$id);
+
+
+        return $q->getQuery()->getResult();
+    }
+
 }

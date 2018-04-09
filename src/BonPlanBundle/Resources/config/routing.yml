@@ -13,11 +13,14 @@ Ajouter:
 Adminlog:
     path:     /Adminlog
     defaults: { _controller: BonPlanBundle:Default:adminlog }
+detail_promo:
+    path:     /detail_promo/{id}
+    defaults: { _controller: BonPlanBundle:Promotion:detailPromo }
 ConsulterP:
     path:     /ConsulterP
     defaults: { _controller: BonPlanBundle:Default:ConsulterP }
 AjouterP:
-    path:     /ajouterP
+    path:     /ajouterP/{id}
     defaults: { _controller: BonPlanBundle:Default:AjoutP }
 Events:
     path:     /Events
@@ -43,11 +46,20 @@ bon_plan_homepage_back:
 liste_Promotion_Visiteur:
     path:     /PromotionVisiteur
     defaults: { _controller: BonPlanBundle:Promotion:listPromotionVisiteur }
+recherche_promotion:
+    path:   /recherche
+    defaults: { _controller: BonPlanBundle:Promotion:Recherche}
+recherche_promotionAdmin:
+    path:   /rechercheAdmin
+    defaults: { _controller: BonPlanBundle:Promotion:RechercheAdmin }
+recherche_compte:
+    path:   /rechercheP
+    defaults: { _controller: BonPlanBundle:Admin:Recherche }
 liste_Promotion_Prop:
     path:     /PromotionProp
     defaults: { _controller: BonPlanBundle:Promotion:Recherche_PromotionProp }
 Profil_Plan:
-    path:     /Profil_Plan
+    path:     /Profil_Plan/{id}
     defaults: { _controller: BonPlanBundle:Default:ConsulterP }
 Validation_Compte:
     path:     /Validation
@@ -76,12 +88,19 @@ ReservationProp:
 ReservationPropUpdate:
     path:     /UpdateProp/{id}
     defaults: { _controller: BonPlanBundle:Reservation:updateReservationProp }
+RecherchePlan:
+    path:     /Recherche/{nomPlan}
+    defaults: { _controller: BonPlanBundle:Default:RechercherPlan }
+RechercheP:
+    path:     /RechercheP
+    defaults: { _controller: BonPlanBundle:Default:recherche }
 ProfilProp:
     path:     /ProfilProp
     defaults: { _controller: BonPlanBundle:Default:ProfilProp }
 EditProfilProp:
     path:     /EditProfilProp
     defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
+<<<<<<< HEAD
 
   #routing du module event
 addEvent:
@@ -93,3 +112,42 @@ EventProp_consult:
 PageEvent:
     path:     /pageEvent/{id}
     defaults: { _controller: BonPlanBundle:Events:afficherEvent }
+=======
+<<<<<<< HEAD
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+=======
+bon_plan_ReclamationP:
+    path:     /ReclamerP
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerP }
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+Profil_Plan:
+    path:     /Profil_Plan/{id}
+    defaults: { _controller: BonPlanBundle:Default:ConsulterPl }
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
+Affiche_Rec:
+    path:     /AfficheRec
+    defaults: { _controller: BonPlanBundle:Reclamation:AfficheReclamation }
+Update_Reclamation:
+    path:     /UpdateRec/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:UpdateReclamation}
+Delete_Recalamation:
+    path:     /DeleteRecAdmin/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:DeleteReclamation }
+bon_plan_abonner:
+    path:     /bonPlan/abonner/{id}
+    defaults: { _controller: BonPlanBundle:Abonner:abonner }
+bon_plan_desabonner:
+    path:     /bonPlan/desabonner/{idPlan}/{idUser}
+<<<<<<< HEAD
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+=======
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+bon_plan_Stat:
+      path:     /stat
+      defaults: { _controller: BonPlanBundle:Stat:index}
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
+>>>>>>> b820972144c8f32a32d404d0bb685d1561150cce

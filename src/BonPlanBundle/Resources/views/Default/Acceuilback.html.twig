@@ -6,7 +6,9 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Admin Dashboard</h2>
-                <h5>Welcome Jhon Deo , Love to see you back. </h5>
+                {% if app.user %}
+                <h5>Welcome {{ app.user.username }} , Love to see you back. </h5>
+                    {% endif %}
             </div>
         </div>
         <!-- /. ROW  -->
@@ -66,7 +68,10 @@
                     <i class="fa fa-warning"></i>
                 </span>
                     <div class="text-box" >
-                        <p class="main-text">52 Important Issues to Fix </p>
+                        <p >
+
+
+                        </p>
                         <p class="text-muted">Please fix these issues to work smooth</p>
                         <p class="text-muted">Time Left: 30 mins</p>
                         <hr />
