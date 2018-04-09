@@ -1,0 +1,30 @@
+
+{% extends '@BonPlan/Default/index.html.twig' %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+
+    <body style="background-size: 100% 100%;background-image: url({{ asset('images/slider.jpg') }}) ;">
+    <center>
+        <div class="col-lg-8 col-md-7">
+            <div class="header">
+                <h3 class="title" style="color: indianred">Reclamation </h3>
+            </div>
+            <br>
+
+            <br>
+            <center >
+                <form method="post" style="height: 500px ; color: #f3f4f7 ">
+                    Type:<input type="text" name="type"> </input>
+                    Niveau de reclamation:   <input type="text" name="nivRec"> </input>
+                    Description:   <textarea type="text" name="description"> </textarea>
+
+                    <input type="submit" value="submit"> </input>
+                </form>
+            </center>
+        </div>
+        </div>
+    </center>
+    </body>
+{% endblock %}

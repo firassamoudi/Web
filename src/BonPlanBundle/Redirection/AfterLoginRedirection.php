@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: escobar
- * Date: 04/02/2018
- * Time: 11:14
- */
 
 namespace BonPlanBundle\Redirection;
 
@@ -17,49 +11,45 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerI
 class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
 {
 
-    private $router;
-
     /**
-     * AfterLoginRedirection constructor.
-     *
+     * @var \Symfony\Component\Routing\RouterInterface
+     */
+    private $router;
+    /**
      * @param RouterInterface $router
      */
     public function __construct(RouterInterface $router)
     {
         $this->router = $router;
     }
-
     /**
-     * @param Request        $request
-     *
+     * @param Request $request
      * @param TokenInterface $token
-     *
      * @return RedirectResponse
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
+        // Get list of roles for current user
         $roles = $token->getRoles();
-
-        $rolesTab = array_map(function ($role) {
+        // Tranform this list in array
+        $rolesTab = array_map(function($role){
             return $role->getRole();
         }, $roles);
+        // If is a admin or super admin we redirect to the backoffice area
 
-        if (in_array('ROLE_AMIN', $rolesTab, true)) {
-            // c'est un aministrateur : on le rediriger vers l'espace admin
+        if (in_array('ROLE_ADMIN', $rolesTab, true) )
+            $redirection = new RedirectResponse($this->router->generate('Acceuil_back'));
+        // otherwise, if is a commercial user we redirect to the crm area
+        elseif (in_array('ROLE_PROP', $rolesTab, true))
+            if ($token->getUser()->getValidite()!=null)
             $redirection = new RedirectResponse($this->router->generate('bon_plan_homepage_back'));
-        } else{
-            if (in_array('ROLE_PROP', $rolesTab, true)) {
-            // c'est un utilisaeur client : on le rediriger vers l'accueil
-            $redirection = new RedirectResponse($this->router->generate('AjouterP'));
-        }
+        else
+            $redirection = new RedirectResponse($this->router->generate('homepage'));
 
-                else
-                {
-                // c'est un utilisaeur formateur : on le rediriger vers l'accueil formateur
-                $redirection = new RedirectResponse($this->router->generate('Ajouter'));
-                }
-            }
 
+        // otherwise we redirect user to the member area
+        else
+            $redirection = new RedirectResponse($this->router->generate('homepage'));
         return $redirection;
     }
 }

@@ -8,6 +8,7 @@ use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\ProfileType;
 use BonPlanBundle\Form\RechercheType;
 use BonPlanBundle\Form\VisiteurType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -65,7 +66,7 @@ class DefaultController extends Controller
         ));
     }
     public function indexViewAllAction()
-        {
+    {
         $em=$this->getDoctrine()->getManager();
         $user=$em->getRepository(User::class)->findByProp();
         return $this->render('@BonPlan/Default/AfficherToutPlan.html.twig' ,array(
@@ -120,7 +121,7 @@ class DefaultController extends Controller
      */
     public function adminlogAction()
     {
-        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+       // $this->denyAccessUnlessGranted("ROLE_ADMIN");
 
         return $this->render('BonPlanBundle:Default:loginback.html.twig');
     }
@@ -140,6 +141,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository(User::class)->findById($id);
+<<<<<<< HEAD
 
         if ($request->isMethod('POST')){
             $modele=new Reservation();
@@ -159,12 +161,29 @@ class DefaultController extends Controller
             return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
                 'users_consult'=>$users
             ));
+=======
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        $plan = $this->getDoctrine()->getManager()->getRepository('BonPlanBundle:Abonner')->findOneBy(array('userVisiteur' => $this->getUser()->getId()));
+            return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
+                'users_consult'=>$users,'plan' => $plan));
+
+>>>>>>> f4659b75fc35a8fa471a7353ef0e073b121ec555
         }
 
 
         return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
-            'users_consult'=>$users
+            'users_consult'=>$users,'plan' => null
         ));
+
+    }
+	    public function ConsulterPlAction($id)
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $plan = $this->getDoctrine()->getManager()->getRepository('BonPlanBundle:Abonner')->findOneBy(array('userVisiteur' => $this->getUser()->getId()));
+            return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => $plan));
+        }
+        return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => null));
+
     }
 
     public function indexAdminAction()
@@ -184,6 +203,9 @@ class DefaultController extends Controller
      */
     public function AcceuilBackAction()
     {
+<<<<<<< HEAD
+       // $this->denyAccessUnlessGranted("ROLE_ADMIN");
+=======
         $this->denyAccessUnlessGranted("ROLE_ADMIN");
 
         $em = $this->getDoctrine()->getManager();
@@ -191,6 +213,11 @@ class DefaultController extends Controller
         $nb = $NombreUser->nombrePlan();
 
         return $this->render('BonPlanBundle:Default:Acceuilback.html.twig', array('nombre' => $nb));
+<<<<<<< HEAD
+=======
+>>>>>>> b820972144c8f32a32d404d0bb685d1561150cce
+        return $this->render('BonPlanBundle:Default:Acceuilback.html.twig');
+>>>>>>> f4659b75fc35a8fa471a7353ef0e073b121ec555
     }
     public function CategorierestauAction()
     {
@@ -198,4 +225,20 @@ class DefaultController extends Controller
     }
 
 
+<<<<<<< HEAD
+
+    public function ConsulterPlAction($id)
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $plan = $this->getDoctrine()->getManager()->getRepository('BonPlanBundle:Abonner')->findOneBy(array('userVisiteur' => $this->getUser()->getId()));
+            return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => $plan));
+        }
+        return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array('plan' => null));
+
+    }
+
+
+
+=======
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
 }

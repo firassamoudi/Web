@@ -6,7 +6,7 @@ Categorie_restau:
     defaults: { _controller: BonPlanBundle:Default:Categorierestau }
 Acceuil_back:
     path:     /Acceuilback
-    defaults: { _controller: BonPlanBundle:Default:NombreUtilisateur }
+    defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
 Ajouter:
     path:     /ajouter
     defaults: { _controller: BonPlanBundle:Default:Ajout }
@@ -101,3 +101,54 @@ ProfilProp:
 EditProfilProp:
     path:     /EditProfilProp
     defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
+<<<<<<< HEAD
+
+  #routing du module event
+addEvent:
+    path:     /Ajout_event
+    defaults: { _controller: BonPlanBundle:Events:addEvent }
+EventProp_consult:
+    path:     /malisteEvent
+    defaults: { _controller: BonPlanBundle:Events:afficherEventsProp }
+PageEvent:
+    path:     /pageEvent/{id}
+    defaults: { _controller: BonPlanBundle:Events:afficherEvent }
+=======
+<<<<<<< HEAD
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+=======
+bon_plan_ReclamationP:
+    path:     /ReclamerP
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerP }
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+Profil_Plan:
+    path:     /Profil_Plan/{id}
+    defaults: { _controller: BonPlanBundle:Default:ConsulterPl }
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
+Affiche_Rec:
+    path:     /AfficheRec
+    defaults: { _controller: BonPlanBundle:Reclamation:AfficheReclamation }
+Update_Reclamation:
+    path:     /UpdateRec/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:UpdateReclamation}
+Delete_Recalamation:
+    path:     /DeleteRecAdmin/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:DeleteReclamation }
+bon_plan_abonner:
+    path:     /bonPlan/abonner/{id}
+    defaults: { _controller: BonPlanBundle:Abonner:abonner }
+bon_plan_desabonner:
+    path:     /bonPlan/desabonner/{idPlan}/{idUser}
+<<<<<<< HEAD
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+=======
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+bon_plan_Stat:
+      path:     /stat
+      defaults: { _controller: BonPlanBundle:Stat:index}
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
+>>>>>>> b820972144c8f32a32d404d0bb685d1561150cce

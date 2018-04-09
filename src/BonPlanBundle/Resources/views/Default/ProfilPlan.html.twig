@@ -6,6 +6,7 @@
     <div xmlns="http://www.w3.org/1999/html">
     <!-- Swiper -->
 
+<<<<<<< HEAD
     {% for user in users_consult %}
     <!--============================= RESERVE A SEAT =============================-->
     <section class="reserve-block">
@@ -28,6 +29,36 @@
                             <div class="featured-btn-wrap">
                                 <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Réserver</a>
                             </div>
+=======
+{% for user in users_consult %}
+<!--============================= RESERVE A SEAT =============================-->
+<section class="reserve-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>{{ user.nomPlan }}</h5>
+                <p><span>$$$</span>$$</p>
+                <p class="reserve-description">{{ user.description }}</p>
+            </div>
+            <div class="col-md-6">
+                <div class="reserve-seat-block">
+                    <div class="reserve-rating">
+                        <span>9.5</span>
+                    </div>
+                    <div class="review-btn">
+                        {% if is_granted("ROLE_VISITEUR") %}
+
+                            <a href="{{ path('bon_plan_ReclamationPlan', { 'id' : app.user.id}) }}"
+                               class="btn btn-outline-danger">Reclamer</a>
+                            <span>34 reviews</span>
+                        {% else %}
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-outline-danger">Reclamer</a>
+                        {% endif %}
+                    </div>
+                    <div class="reserve-btn">
+                        <div class="featured-btn-wrap">
+                            <a href="#" class="btn btn-danger">RESERVE A SEAT</a>
+>>>>>>> f4659b75fc35a8fa471a7353ef0e073b121ec555
                         </div>
                     </div>
                 </div>
@@ -143,8 +174,24 @@
                                     <span>Followers</span>
                                 </li>
                             </ul>
+<<<<<<< HEAD
                             <a href="#">FOLLOW</a>
                         </div>
+=======
+                        {% if app.user %}
+                            {% if plan %}
+                                <a href="{{ path('bon_plan_desabonner', { 'idPlan' : 2, 'idUser' : app.user.id }) }}"
+                                   class="btn btn-outline-danger">Desabonner</a>
+                            {% else %}
+                                <a href="{{ path('bon_plan_abonner', { 'id' : 2 }) }}"
+                                   class="btn btn-outline-danger">Abonner</a>
+                            {% endif %}
+                        {% else %}
+                            <button type="button" class="btn btn-outline-danger" disabled>Abonner</button>
+                        {% endif %}
+                    </div>
+
+>>>>>>> f4659b75fc35a8fa471a7353ef0e073b121ec555
 
 
                         <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
