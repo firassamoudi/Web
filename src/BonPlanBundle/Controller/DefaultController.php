@@ -3,6 +3,7 @@
 namespace BonPlanBundle\Controller;
 
 use BonPlanBundle\Entity\Categorie;
+use BonPlanBundle\Entity\Reservation;
 use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\ProfileType;
 use BonPlanBundle\Form\RechercheType;
@@ -12,7 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultController extends Controller
 {
@@ -134,14 +136,37 @@ class DefaultController extends Controller
     {
         return $this->render('BonPlanBundle:Default:Consulter.html.twig');
     }
-    public function ConsulterPAction($id)
+    public function ConsulterPAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository(User::class)->findById($id);
+
+        if ($request->isMethod('POST')){
+            $modele=new Reservation();
+
+            $modele->setNbrplace($request->get('nbrplace'));
+            $modele->setDate(new \DateTime($request->get('dateReservation')));
+            $modele->setHeure(new \DateTime($request->get('heure')));
+            $modele->setEtat('en cours');
+            $modele->setTelephone($request->get('telephone'));
+            $modele->setUserVisiteur($this->getUser());
+
+            $modele->setUserPlan($users['0']);
+
+            $emm=$this->getDoctrine()->getManager();
+            $emm->persist($modele);
+            $emm->flush();
+            return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
+                'users_consult'=>$users
+            ));
+        }
+
+
         return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig', array(
             'users_consult'=>$users
         ));
     }
+
     public function indexAdminAction()
     {
         $this->denyAccessUnlessGranted("ROLE_ADMIN");
@@ -166,7 +191,6 @@ class DefaultController extends Controller
         $nb = $NombreUser->nombrePlan();
 
         return $this->render('BonPlanBundle:Default:Acceuilback.html.twig', array('nombre' => $nb));
-        return $this->render('BonPlanBundle:Default:Acceuilback.html.twig');
     }
     public function CategorierestauAction()
     {

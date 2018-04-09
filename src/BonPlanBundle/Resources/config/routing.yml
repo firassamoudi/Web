@@ -61,6 +61,7 @@ liste_Promotion_Prop:
 Profil_Plan:
     path:     /Profil_Plan/{id}
     defaults: { _controller: BonPlanBundle:Default:ConsulterP }
+
 Validation_Compte:
     path:     /Validation
     defaults: { _controller: BonPlanBundle:Admin:ValiderCompte }

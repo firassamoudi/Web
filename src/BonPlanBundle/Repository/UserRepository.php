@@ -25,11 +25,8 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->_em->createQueryBuilder();
         $qb->select('u')
             ->where('u.roles LIKE "ROLE_PROP"')
-<<<<<<< HEAD
-            ->setParameter('roles', '%"' . $role . '"%');
-=======
+            ->setParameter('roles', '%"' . $role . '"%')
             ->setParameter(':roles', "%$role%");
->>>>>>> 73dd65bfd005cc96e0a310b6d1d53a6d69cffe38
 
         return $qb->getQuery()->getResult();
     }
@@ -56,7 +53,6 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-<<<<<<< HEAD
     public function findGlobale($nomPlan)
     {
         $q = $this->createQueryBuilder('p')
@@ -74,7 +70,6 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter(':des', "%$nomPlan%");
         return $q->getQuery()->getResult();
     }
-=======
     public function findByProp()
     {
         $query = $this->getEntityManager()
@@ -94,5 +89,4 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
->>>>>>> 73dd65bfd005cc96e0a310b6d1d53a6d69cffe38
 }
