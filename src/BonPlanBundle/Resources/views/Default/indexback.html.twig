@@ -93,6 +93,17 @@ font-size: 16px;">   &nbsp; <a href={{ path('Adminlog') }} class="btn btn-danger
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a  href="{{ path('EventProp_consult') }}"><i class="fa fa-edit fa-3x"></i> Evènements </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('addEvent') }}">Ajouter un évènement</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('EventProp_consult') }}">Consulter un évènement</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
@@ -149,16 +160,20 @@ font-size: 16px;">   &nbsp; <a href={{ path('Adminlog') }} class="btn btn-danger
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
-<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="{{ asset('back/js/jquery-1.10.2.js') }}"></script>
 <!-- BOOTSTRAP SCRIPTS -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{{ asset('back/js/bootstrap.min.js') }}"></script>
+
 <!-- METISMENU SCRIPTS -->
-<script src="assets/js/jquery.metisMenu.js"></script>
+
+<script src="{{ asset('back/js/jquery.metisMenu.js') }}"></script>
 <!-- MORRIS CHART SCRIPTS -->
-<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="assets/js/morris/morris.js"></script>
+<script src="{{ asset('back/js/morris/raphael-2.1.0.min.js') }}"></script>
+<script src="{{  asset('back/js/morris/morris.js') }}"></script>
 <!-- CUSTOM SCRIPTS -->
-<script src="assets/js/custom.js"></script>
+<script src="{{ asset('back/js/custom.js') }}"></script>
+
+
 {% block javascript %}{% endblock %}
 
 </body>

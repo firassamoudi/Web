@@ -82,3 +82,14 @@ ProfilProp:
 EditProfilProp:
     path:     /EditProfilProp
     defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
+
+  #routing du module event
+addEvent:
+    path:     /Ajout_event
+    defaults: { _controller: BonPlanBundle:Events:addEvent }
+EventProp_consult:
+    path:     /malisteEvent
+    defaults: { _controller: BonPlanBundle:Events:afficherEventsProp }
+PageEvent:
+    path:     /pageEvent/{id}
+    defaults: { _controller: BonPlanBundle:Events:afficherEvent }

@@ -63,7 +63,7 @@ class DefaultController extends Controller
      */
     public function adminlogAction()
     {
-        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+       // $this->denyAccessUnlessGranted("ROLE_ADMIN");
 
         return $this->render('BonPlanBundle:Default:loginback.html.twig');
     }
@@ -98,7 +98,7 @@ class DefaultController extends Controller
      */
     public function AcceuilBackAction()
     {
-        $this->denyAccessUnlessGranted("ROLE_ADMIN");
+       // $this->denyAccessUnlessGranted("ROLE_ADMIN");
         return $this->render('BonPlanBundle:Default:Acceuilback.html.twig');
     }
     public function CategorierestauAction()

@@ -77,12 +77,12 @@ fos_user:
         address: "firas.samoudi@esprit.tn"
         sender_name: "firas"
     service:
-        mailer: fos_user.mailer.twig_swift
+       # mailer: fos_user.mailer.twig_swift
     registration:
                form:
                    type: BonPlanBundle\Form\RegistrationFormType
-               confirmation:
-                   enabled: true
-                   from_email:
-                       address: noreply@hayawin.com
-                       sender_name: Admin
+              # confirmation:
+              #     enabled: true
+                 #  from_email:
+                   #    address: noreply@hayawin.com
+                   #    sender_name: Admin
