@@ -19,8 +19,7 @@ class PromotionType extends AbstractType
         ->add('description')
         ->add('reduction')
         ->add('datedebutp')
-        ->add('datefinp',DateType::class, [
-            'attr' => ['class' => 'js-datepicker']])
+        ->add('datefinp')
 
 
 

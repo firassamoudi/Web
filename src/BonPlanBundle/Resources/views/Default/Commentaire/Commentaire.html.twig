@@ -1,0 +1,40 @@
+<div class="col-md-8 responsive-wrap">
+    {% for comment in commentaires %}
+    <div class="booking-checkbox_wrap">
+        <div class="customer-review_wrap">
+            <div class="customer-img">
+                <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
+                <p>{{ comment.userVisiteur.prenomVisiteur }} {{ comment.userVisiteur.nomVisiteur }}</p>
+                <span>{{ comment.datecomment|date }}</span>
+            </div>
+            <div class="customer-content-wrap">
+                <div class="customer-content">
+                <p class="customer-text">{{ comment.commentaire }}</p><br/>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id==comment.userVisiteur.id %}
+                <a href="{{ path('supprimer_Commentaire',{'id':comment.idavis}) }}"><span class="icon-trash"></span>Supprimer</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    {% endfor %}
+    {{ form_start(form) }}
+    <div>
+
+    <div class="content">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="form-group">
+        <div class="booking-checkbox_wrap">
+        {{ form_row(form.commentaire ,{'attr': {'class': 'form-control border-input' , 'placeholder':'Commenter...'}})}}<br/>
+    <button type="submit" href="#" class="btn-success" ><span class="ti-comment-alt"></span>   Commenter</button>
+    {{ form_row(form._token) }}
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    {{ form_end(form) }}
+</div>

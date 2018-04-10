@@ -32,6 +32,16 @@ class promotionRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter(':description',"%$description%");
         return $q->getQuery()->getResult();
     }
+    public function likenumber ($id){
+        return $this->createQueryBuilder('promotion')
+            ->select('COUNT(promotion)')
+            ->where('promotion.idpromotion LIKE :idpromotion')
+            ->setParameter('idpromotion', "%$id%")
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+    }
     public function findByuser($user){
         $query=$this->createQueryBuilder('c')
             ->where('c.userPlan= :user')

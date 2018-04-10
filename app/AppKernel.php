@@ -18,8 +18,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new BonPlanBundle\BonPlanBundle(),
-            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

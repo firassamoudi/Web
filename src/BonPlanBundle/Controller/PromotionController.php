@@ -26,7 +26,7 @@ class PromotionController extends Controller
         $authChecker = $this->container->get('security.authorization_checker');
         $em = $this->getDoctrine()->getManager();
 
-        if (($authChecker->isGranted('ROLE_SUPER_ADMIN'))) {
+        if (($authChecker->isGranted('ROLE_ADMIN'))) {
 
 
             $promotion = $em->getRepository('BonPlanBundle:Promotion')->findAll();
@@ -87,13 +87,19 @@ class PromotionController extends Controller
             $form->handleRequest($request);
             $session = new Session();
             $promotion->setUserPlan($this->getUser());
+
+
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($promotion);
 
                 $em->flush();
                 $session->getFlashBag()->add('success', 'Promotion ajouté avec succes');
-                return $this->redirect($this->generateUrl('liste_Promotion_Prop'));
+
+                $promo = $em->getRepository('BonPlanBundle:Promotion')->findByuser($this->getUser()->getId());
+                return $this->render('@BonPlan/Default/Promotion/ListePromotionProp.html.twig', array('promo' => $promo));
+
+
             }
             return $this->render('BonPlanBundle:Default/Promotion:AjoutPromotion.html.twig', array('form' => $form->createView()));
        // }else{
@@ -118,21 +124,61 @@ class PromotionController extends Controller
            // $promotion->setUrlpromo($filename);
             $em->persist($promotion);
             $em->flush();
-            return $this->redirectToRoute("liste_Promotion_Admin");
+            return $this->redirectToRoute("liste_Promotion_Prop");
         }
         return $this->render('BonPlanBundle:Default/Promotion:Ajouter_Promotion.html.twig', array(
             "form"=>$form->createView()
-        ));}
+        ));
 
-    public function detailPromoAction(Request $request,$id)
+}
+    public function UpdatePromotion1Action(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $promotion = $em->getRepository(Promotion::class)->findById($id);
+        $promotion = $em->getRepository(Promotion::class)->find($id);
+        $form=$this->createForm(PromotionUpdateType::class,$promotion);
+        $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $em->persist($promotion);
+            //Mettre a jour
+            $em->flush();
+            //Rederiger vers read
+            // $promotion =$em->getRepository(Promotion::class)->findByidUser($this->getUser());
+            return $this->redirect($this->generateUrl('liste_Promotion_Prop'));
+        }
+        return $this->render('BonPlanBundle:Default/Promotion:ModifierPromotion.html.twig',array(
+                "form"=>$form->createView(),"promo"=>$promotion)
+        );
+    }
 
+
+    public function detailPromoAction(Request $request,$id)
+    { $promotion = new Promotion();
+
+        $em = $this->getDoctrine()->getManager();
+        $promo = $em->getRepository(Promotion::class)->findById($id);
+        $promotion=$em->getRepository(Promotion::class)->findOneBy(array('idpromotion'=>$id));
+        $form = $this->createForm(RatePromoType::class, $promotion);
+        $form->handleRequest($request);
+        $p= $form->get("etat_promo")->getData();
+        $m=$promotion->getEtatPromo()+$p;
+$promotion->setEtatPromo($p);
+        if (($form->isSubmitted() )) {
+
+            $em->persist($promotion);
+
+
+
+            $em->flush();
+         }
 
         return $this->render("BonPlanBundle:Default/Promotion:detail_promo.html.twig",array(
-            'promo' => $promotion
+            'promo' => $promo ,"form"=>$form->createView()
         ));
+
+
+
+
 
     }
     private function generateUniqueFileName()
@@ -177,52 +223,42 @@ class PromotionController extends Controller
 
         }
     }
-    public function notesAction(Request $request) {
-        $promotion = new Promotion();
-        $user = $this->getUser();
 
-
-        $form = $this->createForm(RatePromoType::class, $promotion);
-        $form->handleRequest($request);
-        $session = new Session();
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($promotion);
-
-            $em->flush();
-            return $this->redirect($this->generateUrl('detail_promo'));
-        }
-        return $this->render('BonPlanBundle:Default/Promotion:detail_promo.html.twig', array('form' => $form->createView()));
-
-
-    }
     public function LikesAction(Request $request)
     {
         if ($request->isXmlHttpRequest())
         {
             if ($request->get('id'))
             {
+
                 $likes = new Likes();
                 $em = $this->getDoctrine()->getManager();
-                $likes->setIduser($this->getUser());
-                $likes->setIdpromotion($em->getRepository('BonPlanBundle:Promotion')->findOneBy(array('id' => $request->get('id'))));
+                $likes->setIduser($this->getUser()->getId());
+                $likes->setIdpromotion($request->get('id'));
+                $likes->setNumber($likes->getNumber()+1);
+                $id = $request->get('idpromotion');
+                $resultat = $this->getDoctrine()->getRepository('BonPlanBundle:Likes')->findBy(array('idpromotion' => $id));
+                $nb = $this->getDoctrine()->getRepository('BonPlanBundle:Promotion')->likenumber($id);
+
+                $data = ($resultat);
                 $em->persist($likes);
                 $em->flush();
-                $id = $request->get('id');
 
-                $resultat = $this->getDoctrine()->getRepository('BonPlanBundle:Likes')->findBy(array('idpromotion' => $id));
 
-                $data = count($resultat);
-                return new JsonResponse($data);
+                return new JsonResponse($nb);
 
             }
+
 
         }
         return $this->redirectToRoute('liste_Promotion_Visiteur');
 
 
     }
+    public function promotionVisiteurAction(Request $request)
+    {
 
+    }
 
     public function Recherche_PromotionPropAction(Request $request)
     {
@@ -254,32 +290,12 @@ class PromotionController extends Controller
 
                 $em->persist($promotion);
                 $em->flush();
-                return $this->redirect($this->generateUrl('liste_Promotion_Prop'));
+                return $this->render('@BonPlan/Default/Promotion/ListePromotionProp.html.twig');
             }
             return $this->render('@BonPlan/Default/Promotion/ModifierPromotion.html.twig', array('form'=>$form->createView()));
        // }else{
          //   return $this->render('@BonPlan/Default/index.html.twig');
         }
-    public function UpdatePromotion1Action(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $promotion = $em->getRepository(Promotion::class)->find($id);
-        $form=$this->createForm(PromotionUpdateType::class,$promotion);
-        $form->handleRequest($request);
-        if($form->isSubmitted())
-        {
-            $promotion->setDatedebutp($request->get(""));
-            //Mettre a jour
-            $em->flush();
-            //Rederiger vers read
-           // $promotion =$em->getRepository(Promotion::class)->findByidUser($this->getUser());
-            return $this->redirect($this->generateUrl('liste_Promotion_Prop'));
-        }
-        return $this->render('BonPlanBundle:Default/Promotion:ModifierPromotion.html.twig',array(
-                "form"=>$form->createView(),"promo"=>$promotion)
-        );
-    }
-
 
 
     public function deletePromotionAction(Request $request)

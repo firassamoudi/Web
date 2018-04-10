@@ -71,16 +71,7 @@
                         </div>
                     </div>
 
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <h5 style="color: azure">Photo</h5>
-                                    {{ form_widget(form.file, {'label':"Photo de Profil" ,'attr': {'class': 'form-control border-input'}}) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="content">
                         <div class="row">
                             <div class="col-md-4">
@@ -101,13 +92,22 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h5 style="color: azure">PHOTO DE PROFIL </h5>
+                                {{ form_widget(form.file, {'label':"Description" ,'attr': {'class': 'form-control border-input'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <div>
 <!--   <input style="background-color: #bd2130 " ; type="submit" class="btn btn-info btn-fill btn-wd" value="Enregistrer" />-->
                         {{ form_widget(form.Ajouter,{'attr': {'class': 'btn btn-info btn-fill btn-wd'}}) }}
                     </div>
                     {{ form_end(form) }}
-                </div>
+
 
                 <div class="col-sm">
                     <div class="map-fix">
@@ -116,12 +116,12 @@
                         <div id="map" style=" position: center; "></div>
                     </div>
                 </div>
-                <div class="col-sm">
-                </div>
-
             </div>
 
 </body>
+
+
+
     <script>
         // This example adds a search box to a map, using the Google Place Autocomplete
         // feature. People can enter geographical searches. The search box will return a

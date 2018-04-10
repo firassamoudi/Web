@@ -41,28 +41,40 @@ class CategorieController extends Controller
 
     public function CategUpdateAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
-        $categorie = $em->getRepository(Categorie::class)->findOneBy(array('id'=>$request->get('id')));
-        $form = $this->createForm(UpdateCateg::class, $categorie);
+        $categ = $em->getRepository(Categorie::class)->findOneBy(array('id'=>$request->get('id')));
+        $form = $this->createForm(UpdateCateg::class,$categ);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
-            $categorie->upload();
-            $em->persist($categorie);
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($categ);
             $em->flush();
             return $this->redirectToRoute('Categorie_admin');
         }
         return new JsonResponse(array('html' => $this->renderView('BonPlanBundle:Default/Categorie:Modifier_Categorie.html.twig', array(
-            "edit_form" => $form->createView()
+            "edit_form" => $form->createView(),
+            "Categories"=>$categ
         ))));
     }
 
-    public function CategorieAAction()
+    public function CategorieAAction(Request $request)
     {
         $events=new Categorie();
         $em=$this->getDoctrine()->getManager();
         $events=$em->getRepository(Categorie::class)->findAll();
+        $categ = $em->getRepository(Categorie::class)->findOneBy(array('id'=>$request->get('id')));
+        $form = $this->createForm(UpdateCateg::class,$categ);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($categ);
+            $em->flush();
+            return $this->redirectToRoute('Categorie_admin');
+        }
+        $form->handleRequest($request);
         return $this->render('BonPlanBundle:Default/Categorie:CategorieAdmin.html.twig', array(
-            'events'=>$events
+            'events'=>$events,"edit_form" => $form->createView(),"Categories"=>$categ
         ));
     }
 

@@ -63,26 +63,14 @@
         <hr />
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-blue">
-                    <i class="fa fa-warning"></i>
-                </span>
-                    <div class="text-box" >
-                        <p >
-                        </p>                            {{ nombre }}
+                <div id="div_chart"></div>
+
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                    {{ gc_draw(piechart, 'div_chart') }}
+                </script>
 
 
-                        </p>
-                        <p class="text-muted">Please fix these issues to work smooth</p>
-                        <p class="text-muted">Time Left: 30 mins</p>
-                        <hr />
-                        <p class="text-muted">
-                          <span class="text-muted color-bottom-txt"><i class="fa fa-edit"></i>
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                               </span>
-                        </p>
-                    </div>
                 </div>
             </div>
 {% endblock  %}

@@ -13,9 +13,8 @@ class Categorie extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nomCategorie')
-            ->add('imageCategorie',FileType::class , array(
+            ->add('file',FileType::class , array(
                 'attr' => array('accept' => 'image/*')))
-            ->add('iconeCategorie')
             ->add('Ajouter', SubmitType::class);
     }
 

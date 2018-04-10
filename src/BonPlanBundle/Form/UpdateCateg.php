@@ -12,10 +12,7 @@ class UpdateCateg extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomCategorie')
-        ->add('file',FileType::class , array(
-        'attr' => array('accept' => 'image/*')))
-        ->add('modifier', SubmitType::class);
+        $builder->add('nomCategorie');
     }
 
     public function configureOptions(OptionsResolver $resolver)
