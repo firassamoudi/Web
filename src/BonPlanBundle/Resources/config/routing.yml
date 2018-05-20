@@ -3,7 +3,15 @@ bon_plan_homepage:
     defaults: { _controller: BonPlanBundle:Default:index }
 Acceuil_back:
     path:     /Acceuilback
+<<<<<<< HEAD
     defaults: { _controller: BonPlanBundle:Default:AcceuilBack}
+=======
+<<<<<<< HEAD
+    defaults: { _controller: BonPlanBundle:Default:AcceuilBack}
+=======
+    defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 Ajouter:
     path:     /ajouter
     defaults: { _controller: BonPlanBundle:Default:Ajout }
@@ -56,6 +64,12 @@ ConsulterP:
 AjouterP:
     path:     /ajouterP/{id}
     defaults: { _controller: BonPlanBundle:Default:AjoutP }
+<<<<<<< HEAD
+=======
+Events:
+    path:     /Events
+    defaults: { _controller: BonPlanBundle:Default:Events }
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 bon_plan_homepage_back:
     path:     /admin
     defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
@@ -70,7 +84,11 @@ liste_Promotion_Prop:
     defaults: { _controller: BonPlanBundle:Promotion:listPromotionProp }
 ##CATEGORIE
 Categorie_restau:
+<<<<<<< HEAD
     path:     /categorieRestau/{id}
+=======
+    path:     /categorieRestau
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     defaults: { _controller: BonPlanBundle:Default:Categorierestau }
 Categorie_coffe:
     path:     /categorieCoffe
@@ -87,6 +105,19 @@ Categorie_nightlife:
 Profil_Plan:
     path:     /Profil_Plan/{id}
     defaults: { _controller: BonPlanBundle:Default:ConsulterP }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+Validation_Compte:
+    path:     /Validation
+    defaults: { _controller: BonPlanBundle:Admin:ValiderCompte }
+Validation:
+    path:     /Validation/{id}
+    defaults: { _controller: BonPlanBundle:Admin:Valider }
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 ajout_Categorie_admin:
     path:     /AjoutCategorie
     defaults: { _controller: BonPlanBundle:Categorie:CategAjout }
@@ -94,7 +125,11 @@ supprimer_Categorie_admin:
     path:     /SuppCategorie/{id}
     defaults: { _controller: BonPlanBundle:Categorie:CategSupp }
 modifier_Categorie_admin:
+<<<<<<< HEAD
     path:     /ModifCategorie/{id}
+=======
+    path:     /ModifCategorie
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     defaults: { _controller: BonPlanBundle:Categorie:CategUpdate }
 Categorie_admin:
     path:     /Categorie
@@ -124,6 +159,7 @@ ReservationPropNotif:
 ReservationPropUpdate:
     path:     /UpdateProp/{id}
     defaults: { _controller: BonPlanBundle:Reservation:updateReservationProp }
+<<<<<<< HEAD
 #Rating
 AjoutRateMobile:
     path:     /AjoutRateMobile
@@ -132,12 +168,24 @@ AjoutRateMobile:
 AfficheRateMobile:
     path:     /AfficheRateMobile
     defaults: { _controller: BonPlanBundle:Rate:afficheRate }
+=======
+RecherchePlan:
+    path:     /Recherche/{nomPlan}
+    defaults: { _controller: BonPlanBundle:Default:RechercherPlan }
+RechercheP:
+    path:     /RechercheP
+    defaults: { _controller: BonPlanBundle:Default:recherche }
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 ProfilProp:
     path:     /ProfilProp
     defaults: { _controller: BonPlanBundle:Default:ProfilProp }
 EditProfilProp:
     path:     /EditProfilProp
     defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 Commentaire:
     path:     /Commentaire/{userPlan}
     defaults: { _controller: BonPlanBundle:Avis:Commentaire }
@@ -150,6 +198,39 @@ supprimer_Commentaire:
 bon_plan_ReclamationPlan:
     path:     /ReclamerPlan/{id}
     defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+
+  #routing du module event
+addEvent:
+    path:     /Ajout_event
+    defaults: { _controller: BonPlanBundle:Events:addEvent }
+EventProp_consult:
+    path:     /malisteEvent
+    defaults: { _controller: BonPlanBundle:Events:afficherEventsProp }
+PageEvent:
+    path:     /pageEvent/{id}
+    defaults: { _controller: BonPlanBundle:Events:afficherEvent }
+=======
+<<<<<<< HEAD
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+=======
+bon_plan_ReclamationP:
+    path:     /ReclamerP
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerP }
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+Profil_Plan:
+    path:     /Profil_Plan/{id}
+    defaults: { _controller: BonPlanBundle:Default:ConsulterPl }
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 Affiche_Rec:
     path:     /AfficheRec
     defaults: { _controller: BonPlanBundle:Reclamation:AfficheReclamation }
@@ -164,6 +245,10 @@ bon_plan_abonner:
     defaults: { _controller: BonPlanBundle:Abonner:abonner }
 bon_plan_desabonner:
     path:     /bonPlan/desabonner/{idPlan}/{idUser}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     defaults: { _controller: BonPlanBundle:Abonner:desabonner }
 bon_plan_recherche:
     path:     /rechercher
@@ -171,6 +256,7 @@ bon_plan_recherche:
 bon_plan_ReclamationSite:
     path:     /ReclamerPlan
     defaults: { _controller: BonPlanBundle:Reclamation:ReclamerSite }
+<<<<<<< HEAD
 
 
   #routing du module event
@@ -281,3 +367,16 @@ SupprimerCommentaire:
 listeCommentaire:
     path:     /listeCommentaire/{id}
     defaults: { _controller: BonPlanBundle:Avis:afficherCommentaireMobile }
+=======
+=======
+<<<<<<< HEAD
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+=======
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+bon_plan_Stat:
+      path:     /stat
+      defaults: { _controller: BonPlanBundle:Stat:index}
+>>>>>>> 2fc00991a238d4670f325c3fd33b98e2396eb468
+>>>>>>> b820972144c8f32a32d404d0bb685d1561150cce
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e

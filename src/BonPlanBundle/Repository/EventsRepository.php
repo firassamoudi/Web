@@ -21,6 +21,7 @@ class EventsRepository extends EntityRepository
         return $query->getQuery()->getResult();
     }
 
+<<<<<<< HEAD
     public function findPublic()
      {
          $query = $this->createQueryBuilder('e')
@@ -43,3 +44,8 @@ class EventsRepository extends EntityRepository
 }
 
 
+=======
+
+
+}
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e

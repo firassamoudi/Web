@@ -29,6 +29,10 @@ security:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
                 success_handler: redirect.after.login
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
             logout: true
             anonymous: true
             # activate different ways to authenticate

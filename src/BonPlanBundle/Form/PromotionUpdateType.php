@@ -20,6 +20,7 @@ class PromotionUpdateType extends AbstractType
             ->add('datedebutp' )
             ->add('datefinp' )
     ->add('reduction')
+<<<<<<< HEAD
             ->add('etat',ChoiceType::class,array(
                 'label'=>'Etat',
                 'choices'=>array(
@@ -30,6 +31,9 @@ class PromotionUpdateType extends AbstractType
                 'required'=>true,
                 'multiple'=>true))
         ;
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
             ;
 

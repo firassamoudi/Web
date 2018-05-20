@@ -56,6 +56,7 @@ class CategorieController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
+<<<<<<< HEAD
         $categorie = $em->getRepository(Categorie::class)->findOneBy(array('id'=>$request->get('id')));
         $form = $this->createForm(UpdateCateg::class,$categorie);
         $form->handleRequest($request);
@@ -76,6 +77,23 @@ class CategorieController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
+=======
+        $categ = $em->getRepository(Categorie::class)->findOneBy(array('id'=>$request->get('id')));
+        $form = $this->createForm(UpdateCateg::class,$categ);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($categ);
+            $em->flush();
+            return $this->redirectToRoute('Categorie_admin');
+        }
+        return new JsonResponse(array('html' => $this->renderView('BonPlanBundle:Default/Categorie:Modifier_Categorie.html.twig', array(
+            "edit_form" => $form->createView(),
+            "Categories"=>$categ
+        ))));
+    }
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     public function CategorieAAction(Request $request)
     {
         $events=new Categorie();
@@ -90,6 +108,10 @@ class CategorieController extends Controller
             $em->flush();
             return $this->redirectToRoute('Categorie_admin');
         }
+<<<<<<< HEAD
+=======
+        $form->handleRequest($request);
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
         return $this->render('BonPlanBundle:Default/Categorie:CategorieAdmin.html.twig', array(
             'events'=>$events,"edit_form" => $form->createView(),"Categories"=>$categ
         ));

@@ -89,7 +89,11 @@ class PromotionController extends Controller
             $form->handleRequest($request);
             $session = new Session();
             $promotion->setUserPlan($this->getUser());
+<<<<<<< HEAD
 $promotion->setEtat("en cours");
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -97,7 +101,11 @@ $promotion->setEtat("en cours");
 
                 $em->flush();
                 $session->getFlashBag()->add('success', 'Promotion ajouté avec succes');
-                return $this->redirect($this->generateUrl('liste_Promotion_Prop'));
+
+                $promo = $em->getRepository('BonPlanBundle:Promotion')->findByuser($this->getUser()->getId());
+                return $this->render('@BonPlan/Default/Promotion/ListePromotionProp.html.twig', array('promo' => $promo));
+
+
             }
             return $this->render('BonPlanBundle:Default/Promotion:AjoutPromotion.html.twig', array('form' => $form->createView()));
        // }else{
@@ -122,7 +130,7 @@ $promotion->setEtat("en cours");
            // $promotion->setUrlpromo($filename);
             $em->persist($promotion);
             $em->flush();
-            return $this->redirectToRoute("liste_Promotion_Admin");
+            return $this->redirectToRoute("liste_Promotion_Prop");
         }
         return $this->render('BonPlanBundle:Default/Promotion:Ajouter_Promotion.html.twig', array(
             "form"=>$form->createView()
@@ -164,9 +172,15 @@ $promotion->setEtatPromo($p);
         if (($form->isSubmitted() )) {
 
             $em->persist($promotion);
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
             $em->flush();
          }
 
@@ -221,7 +235,33 @@ $promotion->setEtatPromo($p);
 
         }
     }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+    public function like_ClikedAction(Request $request)
+    {}
+    public function notesAction(Request $request) {
+        $promotion = new Promotion();
+        $user = $this->getUser();
+
+
+        $form = $this->createForm(RatePromoType::class, $promotion);
+        $form->handleRequest($request);
+        $session = new Session();
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($promotion);
+
+            $em->flush();
+            return $this->redirect($this->generateUrl('detail_promo'));
+        }
+        return $this->render('BonPlanBundle:Default/Promotion:detail_promo.html.twig', array('form' => $form->createView()));
+
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     public function LikesAction(Request $request)
     {
         if ($request->isXmlHttpRequest())
@@ -231,6 +271,10 @@ $promotion->setEtatPromo($p);
 
                 $likes = new Likes();
                 $em = $this->getDoctrine()->getManager();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                 $likes->setIduser($this->getUser()->getId());
                 $likes->setIdpromotion($request->get('id'));
                 $likes->setNumber($likes->getNumber()+1);
@@ -239,9 +283,25 @@ $promotion->setEtatPromo($p);
                 $nb = $this->getDoctrine()->getRepository('BonPlanBundle:Promotion')->likenumber($id);
 
                 $data = ($resultat);
+<<<<<<< HEAD
                 $em->persist($likes);
                 $em->flush();
 
+=======
+=======
+                $likes->setIduser($this->getUser());
+                $likes->setPromotion($em->getRepository('BonPlanBundle:Promotion')->findOneBy(array('id' => $request->get('id'))));
+                $likes->setIdpromotion($em->getRepository('BonPlanBundle:Promotion')->findOneBy(array('id' => $request->get('id'))));
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+                $em->persist($likes);
+                $em->flush();
+
+<<<<<<< HEAD
+=======
+                $resultat = $this->getDoctrine()->getRepository('GalleryBundle:Likes')->findBy(array('idpromotion' => $id));
+                $resultat = $this->getDoctrine()->getRepository('BonPlanBundle:Likes')->findBy(array('idpromotion' => $id));
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
                 return new JsonResponse($nb);
 
@@ -253,7 +313,10 @@ $promotion->setEtatPromo($p);
 
 
     }
+    public function promotionVisiteurAction(Request $request)
+    {
 
+    }
 
     public function Recherche_PromotionPropAction(Request $request)
     {

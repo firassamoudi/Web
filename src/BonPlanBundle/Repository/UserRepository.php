@@ -1,6 +1,7 @@
 <?php
 
 namespace BonPlanBundle\Repository;
+
 use BonPlanBundle\Entity\User;
 
 /**
@@ -14,8 +15,18 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
     public function findProp($nomPlan)
     {
+        $q = $this->createQueryBuilder('p')
+            ->where('p.nomPlan LIKE :nomPlan')
+<<<<<<< HEAD
+
+            ->setParameter(':nomPlan',"%$nomPlan%");
+        return $q->getQuery()->getResult();
+    }
+    public function findPlan($nomPlan)
+    {
         $q=$this->createQueryBuilder('p')
             ->where('p.nomPlan LIKE :nomPlan')
+<<<<<<< HEAD
 
             ->setParameter(':nomPlan',"%$nomPlan%");
         return $q->getQuery()->getResult();
@@ -46,6 +57,8 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     {
         $q=$this->createQueryBuilder('p')
             ->where('p.nomPlan LIKE :nomPlan')
+=======
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
             ->andWhere('p.validite = 1')
             ->setParameter(':nomPlan',"%$nomPlan%");
         return $q->getQuery()->getResult();
@@ -80,8 +93,36 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
 
     }
+<<<<<<< HEAD
 
 
+=======
+    public function nightlife (){
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->where('user.categorie LIKE :categorie')
+            ->setParameter('categorie', '%nightlife%')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+    }
+    public function restaurant (){
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->where('user.categorie LIKE :categorie')
+            ->setParameter('categorie', '%restaurant%')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+    }
+=======
+            ->setParameter(':nomPlan', "%$nomPlan%");
+        return $q->getQuery()->getResult();
+    }
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
     public function findRole($role)
     {
@@ -90,17 +131,29 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         $qb->select('u')
             ->from($this->User, 'u')
             ->where('u.roles LIKE "ROLE_PROP"')
+<<<<<<< HEAD
             ->setParameter('roles', '%"'.$role.'"%');
+=======
+<<<<<<< HEAD
+            ->setParameter('roles', '%"'.$role.'"%');
+=======
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter(':roles', "%$role%");
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
         return $qb->getQuery()->getResult();
     }
-    public function nombrePlan (){
+
+    public function nombrePlan()
+    {
         return $this->createQueryBuilder('user')
             ->select('COUNT(user)')
             ->getQuery()
             ->getSingleScalarResult();
     }
-    public function findCategorie($role,$categorie)
+
+    public function findCategorie($role, $categorie)
     {
 
         $qb = $this->_em->createQueryBuilder();
@@ -108,12 +161,29 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->from($this->User, 'u')
             ->where('u.roles LIKE "ROLE_PROP"')
             ->andWhere('u.categorie LIKE :categorie')
-            ->setParameter('roles', '%"'.$role.'"%')
-        ->setParameter(':categorie',"%$categorie%");
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter(':categorie', "%$categorie%");
 
         return $qb->getQuery()->getResult();
     }
 
+    public function findGlobale($nomPlan)
+    {
+        $q = $this->createQueryBuilder('p')
+            ->where('p.nomPlan LIKE :nomPlan')
+            ->orWhere('p.description LIKE :des')
+            ->orWhere('p.codePostal LIKE :cp')
+            ->orWhere('p.adresse LIKE :add')
+            ->orWhere('p.telephone LIKE :tel')
+            ->orWhere('p.ville LIKE :ville')
+            ->setParameter(':ville', "%$nomPlan%")
+            ->setParameter(':tel', "%$nomPlan%")
+            ->setParameter(':nomPlan', "%$nomPlan%")
+            ->setParameter(':add', "%$nomPlan%")
+            ->setParameter(':cp', "%$nomPlan%")
+            ->setParameter(':des', "%$nomPlan%");
+        return $q->getQuery()->getResult();
+    }
     public function findByProp()
     {
         $query = $this->getEntityManager()
@@ -133,6 +203,10 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $q->getResult();
 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     function findid($userPlan){
 
         $query=$this->getEntityManager()
@@ -140,6 +214,14 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('plan','%'.$userPlan.'%');
 
         return $query->getResult();
+<<<<<<< HEAD
+=======
+    }
+    function nombreVisiteur()
+    {
+        $query=$this->getEntityManager()->createQuery("Select count(v) FROM BonPlanBundle:USER v WHERE v.roles like'a:1:{i:0;s:13:\"ROLE_VISITEUR\";}%'");
+        return $query->getSingleScalarResult();
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     }
 
     function nombreVisiteur()

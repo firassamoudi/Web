@@ -8,10 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 use BonPlanBundle\Form\ReservationPropType;
 use BonPlanBundle\Entity\Reservation;
 use BonPlanBundle\Entity\User;
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\JsonResponse;
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
 class ReservationController extends Controller
 {
@@ -216,4 +220,31 @@ class ReservationController extends Controller
         return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig',
             array('users_consult' => $users));
     }
+<<<<<<< HEAD
 }
+=======
+    function ajoutReservationAction(Request $request,$id){
+
+        if ($request->isMethod('POST')){
+            $modele=new Reservation();
+
+            $modele->setNbrplace($request->get('nbrplace'));
+            $modele->setDate($request->get('dateReservation'));
+            $modele->setEtat('en cours');
+            $modele->setHeure($request->get('heure'));
+            $modele->setTelephone($request->get('telephone'));
+            $modele->setUserVisiteur($request->get('userConnecté'));
+            $modele->setUserPlan($request->get('Plan'));
+
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($modele);
+            $em->flush();
+            return $this->redirectToRoute('AjoutReservation');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository(User::class)->findById($id);
+        return $this->render('BonPlanBundle:Default:ProfilPlan.html.twig',
+            array('users_consult'=>$users));
+    }
+}
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e

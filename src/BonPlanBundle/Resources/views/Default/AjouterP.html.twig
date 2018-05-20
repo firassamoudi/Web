@@ -64,6 +64,7 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
                     <div class="content">
                         <div class="row">
                             <div class="col-md-4">
@@ -74,6 +75,8 @@
                             </div>
                         </div>
                     </div>
+=======
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
                     <div class="content">
                         <div class="row">
@@ -105,6 +108,7 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         <div class="content">
                             <div class="row">
                                 <div class="col-md-4">
@@ -123,6 +127,26 @@
                 </div>
                 </form>
                 </div>
+=======
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h5 style="color: azure">PHOTO DE PROFIL </h5>
+                                {{ form_widget(form.file, {'label':"Description" ,'attr': {'class': 'form-control border-input'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div>
+<!--   <input style="background-color: #bd2130 " ; type="submit" class="btn btn-info btn-fill btn-wd" value="Enregistrer" />-->
+                        {{ form_widget(form.Ajouter,{'attr': {'class': 'btn btn-info btn-fill btn-wd'}}) }}
+                    </div>
+                    {{ form_end(form) }}
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
                 <div class="col-sm">
                     <div class="content">
@@ -140,9 +164,25 @@
             </div>
 
 </body>
+<<<<<<< HEAD
     <script language="JavaScript">
         $(function initMap() {
             var latlng = new google.maps.LatLng(36.8064948, 10.181531599999971);
+=======
+
+
+
+    <script>
+        // This example adds a search box to a map, using the Google Place Autocomplete
+        // feature. People can enter geographical searches. The search box will return a
+        // pick list containing a mix of places and predicted search terms.
+
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        function initAutocomplete() {
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
             var map = new google.maps.Map(document.getElementById('map'), {
                 //les element required pour map
                 zoom: 10,

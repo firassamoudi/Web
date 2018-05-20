@@ -75,7 +75,11 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
 
 
                 <li>
+<<<<<<< HEAD
                     <a class="active-menu"  href="{{ path('Acceuil_back') }}  "><i class="fa fa-dashboard fa-3x"></i> Acceuil</a>
+=======
+                    <a class=""  href="{{ path('Acceuil_back') }}  "><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                 </li>
 
                 <li>
@@ -85,7 +89,23 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
                 </li>
 
                 <li  >
+<<<<<<< HEAD
                     <a  href="{{ path('Affiche_Rec') }}"><i class="fa fa-table fa-3x"></i> Gerer Reclamation</a>
+=======
+                    <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                </li>
+                <li  >
+<<<<<<< HEAD
+                    <a  href="{{ path('Affiche_Rec') }}"><i class="fa fa-table fa-3x"></i> Gerer Reclamation</a>
+                </li>
+=======
+                <li  >
+                    <a  href="{{ path('Affiche_Rec') }}"><i class="fa fa-table fa-3x"></i> Gerer Reclamation</a>
+                </li>                </li>
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+                <li  >
+                    <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                 </li>
 
                 <li  >
@@ -114,11 +134,31 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
                         </li>
                     </ul>
                 </li>
+<<<<<<< HEAD
             </ul>
             <li>
                 <a  href="#"><i class="fa fa-edit fa-3x"></i> Evènements </a>
                 <ul class="nav nav-second-level">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+=======
+                <li>
+                    <a  href="{{ path('EventProp_consult') }}"><i class="fa fa-edit fa-3x"></i> Evènements </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('addEvent') }}">Ajouter un évènement</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('EventProp_consult') }}">Consulter un évènement</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <li>
+                    <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                         <li>
                             <a href="{{ path('addEvent') }}">Ajouter évènements</a>
                         </li>
@@ -188,10 +228,34 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
 
 
 
+<<<<<<< HEAD
     });
 </script>
 {% block javascript %}
 {% endblock %}
+=======
+<<<<<<< HEAD
+<!-- /. WRAPPER  -->
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="{{ asset('back/js/jquery-1.10.2.js') }}"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="{{ asset('back/js/bootstrap.min.js') }}"></script>
+
+<!-- METISMENU SCRIPTS -->
+
+<script src="{{ asset('back/js/jquery.metisMenu.js') }}"></script>
+<!-- MORRIS CHART SCRIPTS -->
+<script src="{{ asset('back/js/morris/raphael-2.1.0.min.js') }}"></script>
+<script src="{{  asset('back/js/morris/morris.js') }}"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="{{ asset('back/js/custom.js') }}"></script>
+
+
+=======
+>>>>>>> b820972144c8f32a32d404d0bb685d1561150cce
+{% block javascript %}{% endblock %}
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
 </body>
 </html>

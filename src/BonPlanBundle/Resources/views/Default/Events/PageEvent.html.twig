@@ -3,6 +3,7 @@
 {% block body %}
     <body   style="background-repeat:no-repeat ; stroke:5px ; height:700px ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }}) ">
 
+<<<<<<< HEAD
        <div class="content">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -41,6 +42,38 @@
                         {% endif %}
                     </div>
                 {% endfor %}
+=======
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+
+                <div class="col-sm-11">
+                    <h3  align="center" class="text-primary">Evenement</h3> <br>
+                    {% for e in event %}
+                    <div class="col-sm-6">
+                        <label>nom de l'évènement:</label>
+                        <p   id="idnomEv" class="editable">  {{ e.nomev}} </p> <BR>
+                        <label >Description de l'évènement:</label>
+                        <p id="iddescEv" class="editable">{{ e.description}}</p><br>
+                        <label >Nombre de place disponible: </label>
+                        <p id="idnbplace" class="editable">  {{ e.nbrplace}}</p><br>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Date début de l'évènement:</label>
+                        <p  id="iddebut" class="text-ch"> {{ e.datedebutev|date("d/m/Y")}}</p><br>
+                        <label>Date fin de l'évènement:</label>
+                        <p id="idfin" class="text-ch">  {{ e.datefinev|date("d/m/Y")}}</p><br>
+                        <label >Nombre de participants de l'évènement </label>
+                        <p id="idnbparticipant" class="text-ch">  {{ e.nbparticipant}}</p>
+                    </div>
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" id='mdfEv' class="btn btn-success" data-toggle="modal" data-target="modifEvent">Ouvrir modifier</button>
+
+                        <a href="{{ path('PageEvent',{'id':e.idevents}) }}"> Annuller</a>
+
+                    {% endfor %}
+                </div>
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
             </div>
         </div>
     </div>
@@ -65,7 +98,11 @@
 
                                  <div class="form-group">
                                      <label for="nom"><span class="glyphicon-pencil"></span> Nom de l'évènement</label>
+<<<<<<< HEAD
                                      <input type="text" class="form-control" id="nom"   placeholder="{{  e.nomev}}">
+=======
+                                     <input type="text" class="form-control" id="nom" placeholder="{{  e.nomev}}">
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                                  </div>
                                  <div class="form-group">
                                      <label for="desc"><span class="glyphicon glyphicon-pencil"></span> Description:</label>
@@ -83,7 +120,11 @@
                                      <label for="nb"><span class="glyphicon glyphicon-pencil"></span> nombre de places </label>
                                      <input type="number" class="form-control" id="nb" placeholder="{{ e.nbrplace}} " >
                                  </div>
+<<<<<<< HEAD
                                 <button type="submit" id="validbtn" class="btn btn-success btn-block" onclick="update({{ e.idevents }})">
+=======
+                                <button type="submit" id="validbtn" class="btn btn-success btn-block">
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                                     <span class="glyphicon glyphicon-ok-sign"></span> valider la modification</button>
                              </form>
                         {% endfor %}
@@ -113,6 +154,7 @@
         });
 
 
+<<<<<<< HEAD
         function update($id) {
 
             var idev=$id;
@@ -181,6 +223,18 @@
             });
 
         }
+=======
+            $("#validbtn").submit(function () {
+
+                var nom = $("#nom").val();
+                var desc = $("#desc").val();
+                var deb = $("#deb").val();
+                var fin = $("#fin").val();
+                var nbpl = $("#nb").val();
+                return
+
+            });
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     </script>
 
 {% endblock %}

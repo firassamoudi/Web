@@ -39,7 +39,25 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    <script language="JavaScript">
+        function ShowModal(event_id){
+            $.ajax({
+               type:    "POST",
+               url: "{{ path('modifier_Categorie_admin') }}",
+                data:   "id="+event_id,
+                success:    function (data) {
+                    $('#fromAjax').html(data.html);
+                }
+            });
+            $('#exampleModal').modal('toggle');
+        }
+        $('#mybtn').click(function(){
+        });
+    </script>
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
 {% endblock %}
 

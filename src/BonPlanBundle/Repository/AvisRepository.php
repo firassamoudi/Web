@@ -29,6 +29,7 @@ class AvisRepository extends \Doctrine\ORM\EntityRepository
 
         return $q->getResult();
     }
+<<<<<<< HEAD
     public function findByuserP($user){
         $query=$this->createQueryBuilder('c')
             ->where('c.userPlan= :user_iduser1')
@@ -37,5 +38,8 @@ class AvisRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getQuery()->getResult();
     }
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
 }

@@ -2,6 +2,15 @@ services:
 #    bon_plan.example:
 #        class: BonPlanBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+<<<<<<< HEAD
   redirect.after.login:
     class: BonPlanBundle\Redirection\AfterLoginRedirection
     arguments: ["@router"]
+=======
+
+  redirect.after.login:
+    class: BonPlanBundle\Redirection\AfterLoginRedirection
+    arguments: ["@router"]
+
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e

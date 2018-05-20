@@ -64,7 +64,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
-    host: '%mailer_host%'
+   # host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
@@ -74,11 +74,34 @@ fos_user:
     firewall_name: main
     user_class: BonPlanBundle\Entity\User
     from_email:
+<<<<<<< HEAD
+        address: "firas.samoudi@esprit.tn"
+        sender_name: "firas"
+    service:
+       # mailer: fos_user.mailer.twig_swift
+    registration:
+               form:
+                   type: BonPlanBundle\Form\RegistrationFormType
+              # confirmation:
+              #     enabled: true
+                 #  from_email:
+                   #    address: noreply@hayawin.com
+                   #    sender_name: Admin
+=======
         address: you@example.com
         sender_name: You
     registration:
                form:
                    type: BonPlanBundle\Form\RegistrationFormType
 
+<<<<<<< HEAD
 cmen_google_charts:
     version: "current"
+=======
+<<<<<<< HEAD
+cmen_google_charts:
+    version: "current"
+=======
+>>>>>>> b820972144c8f32a32d404d0bb685d1561150cce
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e

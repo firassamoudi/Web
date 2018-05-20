@@ -18,10 +18,18 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new BonPlanBundle\BonPlanBundle(),
+<<<<<<< HEAD
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
 
+=======
+<<<<<<< HEAD
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+
+=======
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

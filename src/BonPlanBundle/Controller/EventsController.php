@@ -3,6 +3,7 @@
 namespace BonPlanBundle\Controller;
 
 use BonPlanBundle\Entity\Events;
+<<<<<<< HEAD
 use BonPlanBundle\Entity\Participation;
 use BonPlanBundle\Form\AnnulationEventType;
 use BonPlanBundle\Form\EventsType;
@@ -17,6 +18,12 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
+=======
+use BonPlanBundle\Form\EventsType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
 class EventsController extends Controller
 {
@@ -24,10 +31,14 @@ class EventsController extends Controller
     {
         return $this->render('', array('name' => $name));}
 
+<<<<<<< HEAD
 
     //**********************Espace propriétaire************************
 
     function addEventAction(Request $request)
+=======
+        public function addEventAction(Request $request)
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
     {
         //$usr = $this->getUser()->getRole();
         //  $authChecker = $this->container->get('security.authorization_checker');
@@ -53,6 +64,7 @@ class EventsController extends Controller
             //
         }}
 
+<<<<<<< HEAD
     function updateEventAction(Request $request, $id)
     {
 
@@ -123,17 +135,24 @@ class EventsController extends Controller
 
 
     }
+=======
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
     function afficherEventsPropAction(){
 
 
         $em = $this->getDoctrine()->getManager();
         $ev = $em->getRepository('BonPlanBundle:Events')->findByUser($this->getUser()->getId());
+<<<<<<< HEAD
         return $this->render('BonPlanBundle:Default/Events:consultSesEvent.html.twig', array("events"=>$ev));
+=======
+        return $this->render('BonPlanBundle:Default/Events:consultationPropEvent.html.twig', array("events"=>$ev));
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
 
     }
 
+<<<<<<< HEAD
     function afficherEventAction(Request $request,$id){
 
         $em = $this->getDoctrine()->getManager();
@@ -150,10 +169,18 @@ class EventsController extends Controller
 
 
         return $this->render('BonPlanBundle:Default/Events:PageEvent.html.twig', array("event"=>$ev,"form"=>$form->createView()));
+=======
+    function afficherEventAction($id){
+
+    $em = $this->getDoctrine()->getManager();
+    $ev = $em->getRepository('BonPlanBundle:Events')->findBy(array("idevents"=>$id));
+    return $this->render('BonPlanBundle:Default/Events:PageEvent.html.twig', array("event"=>$ev));
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
 
     }
 
+<<<<<<< HEAD
 
     //**********************Espace visiteur************************
 
@@ -349,5 +376,62 @@ class EventsController extends Controller
         $serializer=new Serializer([new ObjectNormalizer()]);
         $formatted=$serializer->normalize($p);
         return new JsonResponse($formatted);
+=======
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('BonPlanBundle:Events')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find events entity.');
+        }
+
+
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('PageEvent'));
+        }
+
+        return $this->render('BonPlanBundle:Default/Events:PageEvent.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+
+        ));
     }
+
+    private function createEditForm(Events $entity)
+    {
+        $form = $this->createForm(new EventsType(), $entity, array(
+            'action' => $this->generateUrl('Event_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Update'));
+
+        return $form;
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
+    }
+
+
+
+    function annulerEventAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $ev = $em->getRepository('BonPlanBundle:Events')->findBy(array("idevents"=>$id));
+
+
+        return $this->render('BonPlanBundle:Default/Events:PageEvent.html.twig', array("event"=>$ev));
+    }
+
+
+
+
+
+
+
 }

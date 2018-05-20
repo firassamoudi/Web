@@ -2,10 +2,34 @@
 
 {% block body %}
 
-<!--============================= BOOKING =============================-->
-<div>
+    <!--============================= BOOKING =============================-->
+    <div xmlns="http://www.w3.org/1999/html">
     <!-- Swiper -->
 
+<<<<<<< HEAD
+    {% for user in users_consult %}
+    <!--============================= RESERVE A SEAT =============================-->
+    <section class="reserve-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>{{ user.nomPlan }}</h5>
+                    <p><span>$$$</span>$$</p>
+                    <p class="reserve-description">{{ user.description }}</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="reserve-seat-block">
+                        <div class="reserve-rating">
+                            <span>9.5</span>
+                        </div>
+                        <div class="review-btn">
+                            <a href="#" class="btn btn-outline-danger">WRITE A REVIEW</a>
+                        </div>
+                        <div class="reserve-btn">
+                            <div class="featured-btn-wrap">
+                                <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Réserver</a>
+                            </div>
+=======
 {% for user in users_consult %}
 <!--============================= RESERVE A SEAT =============================-->
 <section class="reserve-block">
@@ -25,23 +49,47 @@
                         <span>9.5</span>
                     </div>
                     <div class="review-btn">
+<<<<<<< HEAD
                         {% if is_granted("ROLE_VISITEUR") and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
                             <a href="{{ path('bon_plan_ReclamationPlan', { 'id' : idreclam}) }}"
+=======
+                        {% if is_granted("ROLE_VISITEUR") %}
+
+<<<<<<< HEAD
+                            <a href="{{ path('bon_plan_ReclamationPlan', { 'id' : idreclam}) }}"
+=======
+                            <a href="{{ path('bon_plan_ReclamationPlan', { 'id' : app.user.id}) }}"
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                                class="btn btn-outline-danger">Reclamer</a>
                             <span>34 reviews</span>
                         {% else %}
                             <a href="{{ path('fos_user_registration_register') }}" class="btn btn-outline-danger">Reclamer</a>
+<<<<<<< HEAD
                         {% endif %}                                        </div>
 
                     <div class="reserve-btn">
                         <div class="featured-btn-wrap">
                             <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Réserver</a>
+=======
+<<<<<<< HEAD
+                        {% endif %}                    </div>
+=======
+                        {% endif %}
+                    </div>
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+                    <div class="reserve-btn">
+                        <div class="featured-btn-wrap">
+                            <a href="#" class="btn btn-danger">RESERVE A SEAT</a>
+>>>>>>> f4659b75fc35a8fa471a7353ef0e073b121ec555
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 </section>
 <!--//END RESERVE A SEAT -->
@@ -49,6 +97,10 @@
     <div class="featured-btn-wrap">
         <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalP">PROMOTION</a>
     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 <section class="light-bg booking-details_wrap">
     <div class="container">
         <div class="row">
@@ -57,19 +109,116 @@
                 <div class="follow">
                     <div class="follow-img">
                         <img src="{{ asset('uploads/images/PhotoProfil/'~user.photodeprofil) }}" class="img-fluid" alt="#">
+<<<<<<< HEAD
+=======
+=======
+    </section>
+    <!--//END RESERVE A SEAT -->
+    <!--============================= BOOKING DETAILS =============================-->
+    <section class="light-bg booking-details_wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 responsive-wrap">
+
+                    <div class="booking-checkbox_wrap">
+                        <div class="customer-review_wrap">
+                            <div class="customer-img">
+                                <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
+                                <p>Amanda G</p>
+                                <span>35 Reviews</span>
+                            </div>
+                            <div class="customer-content-wrap">
+                                <div class="customer-content">
+                                    <div class="customer-review">
+                                        <h6>Best noodles in the Newyork city</h6>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span class="round-icon-blank"></span>
+                                        <p>Reviewed 2 days ago</p>
+                                    </div>
+                                    <div class="customer-rating">8.0</div>
+                                </div>
+                                <p class="customer-text">I love the noodles here but it is so rare that I get to come
+                                    here. Tasty Hand-Pulled Noodles is the best type of whole in the wall restaurant.
+                                    The staff are really nice, and you should be seated quickly. I usually get the
+                                    hand pulled noodles in a soup. House Special #1 is amazing and the lamb noodles are
+                                    also great. If you want your noodles a little chewier, get the knife cut noodles,
+                                    which are also amazing. Their dumplings are great
+                                    dipped in their chili sauce.
+                                </p>
+                                <p class="customer-text">I love how you can see into the kitchen and watch them make the
+                                    noodles and you can definitely tell that this is a family run establishment. The
+                                    prices are are great with one dish maybe being $9. You just have to remember
+                                    to bring cash.
+                                </p>
+                                <span>28 people marked this review as helpful</span>
+                                <a href="#"><span class="icon-like"></span>Helpful</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="customer-review_wrap">
+                            <div class="customer-img">
+                                <img src="images/customer-img2.jpg" class="img-fluid" alt="#">
+                                <p>Kevin W</p>
+                                <span>17 Reviews</span>
+                            </div>
+                            <div class="customer-content-wrap">
+                                <div class="customer-content">
+                                    <div class="customer-review">
+                                        <h6>A hole-in-the-wall old school shop.</h6>
+                                        <span class="customer-rating-red"></span>
+                                        <span class="round-icon-blank"></span>
+                                        <span class="round-icon-blank"></span>
+                                        <span class="round-icon-blank"></span>
+                                        <span class="round-icon-blank"></span>
+                                        <p>Reviewed 3 months ago</p>
+                                    </div>
+                                    <div class="customer-rating customer-rating-red">2.0</div>
+                                </div>
+                                <p class="customer-text">The dumplings were so greasy...the pan-fried shrimp noodles
+                                    were the same. So much oil and grease it was difficult to eat. The shrimp noodles
+                                    only come with 3 shrimp (luckily the dish itself is cheap) </p>
+                                <p class="customer-text">The beef noodle soup was okay. I added black vinegar into the
+                                    broth to give it some extra flavor. The soup has bok choy which I liked - it's a
+                                    nice textural element. The shop itself is really unclean (which is the case
+                                    in many restaurants in Chinatown) They don't wipe down the tables after customers
+                                    have eaten. If you peak into the kitchen many of their supplies are on the ground
+                                    which is unsettling... </p>
+                                <span>10 people marked this review as helpful</span>
+                                <a href="#"><span class="icon-like"></span>Helpful</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 responsive-wrap">
+                    <div class="follow">
+                        <div class="follow-img">
+                            <img src="{{ asset('uploads/images/PhotoProfil/'~user.photodeprofil) }}" class="img-fluid"
+                                 alt="#">
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                             <div class="address">
-                                <span class="icon-location-pin" ></span><p>{{ user.adresse }}</p>
+                                <span class="icon-location-pin"></span>
+                                <p>{{ user.adresse }}</p>
                             </div>
                             <div class="address">
                                 <span class="icon-screen-smartphone"></span>
                                 <p>{{ user.telephone }}</p>
                             </div>
+<<<<<<< HEAD
 
                     </div>
 
 
                     <div id="map" class="img-fluid" style="width: 100%; height: 200px; top: 0px; position: relative; overflow: hidden;" ></div>
                     <div class="contact-info">
+=======
+                        </div>
+                        <div class="contact-info">
+                            <img src="{{ asset('images/map.jpg') }}" class="img-fluid" alt="#">
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                             <ul class="social-counts">
                                 <li>
                                     <h6>26</h6>
@@ -84,16 +233,37 @@
                                     <span>Followers</span>
                                 </li>
                             </ul>
+<<<<<<< HEAD
                         {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+=======
+<<<<<<< HEAD
+                        {% if app.user %}
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                             {% if plan %}
                                 <a href="{{ path('bon_plan_desabonner', { 'idPlan' : idreclam, 'idUser' : app.user.id }) }}"
                                    class="btn btn-outline-danger">Desabonner</a>
                             {% else %}
                                 <a href="{{ path('bon_plan_abonner', { 'id' : idreclam }) }}"
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+                            <a href="#">FOLLOW</a>
+                        </div>
+=======
+                        {% if app.user %}
+                            {% if plan %}
+                                <a href="{{ path('bon_plan_desabonner', { 'idPlan' : 2, 'idUser' : app.user.id }) }}"
+                                   class="btn btn-outline-danger">Desabonner</a>
+                            {% else %}
+                                <a href="{{ path('bon_plan_abonner', { 'id' : 2 }) }}"
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                                    class="btn btn-outline-danger">Abonner</a>
                             {% endif %}
                         {% else %}
                             <button type="button" class="btn btn-outline-danger" disabled>Abonner</button>
+<<<<<<< HEAD
                         {% endif %}                     </div>
 
                 </div>
@@ -142,14 +312,26 @@
                             {% endfor %}
 
                         </table>
+=======
+<<<<<<< HEAD
+                        {% endif %}                    </div>
+=======
+                        {% endif %}
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                     </div>
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
 
+<<<<<<< HEAD
                 </form>
+=======
+>>>>>>> f4659b75fc35a8fa471a7353ef0e073b121ec555
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 
                 </span></div>
         </div>
     </div>
 
+<<<<<<< HEAD
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     <!-- popup firas-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -161,6 +343,10 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+=======
+                        <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
+                    </div>
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
                 </div>
                 <span class="modal-body">
                     <form method="POST">
@@ -196,48 +382,122 @@
 
             </div>
         </div>
+<<<<<<< HEAD
     </div>
+<<<<<<< HEAD
 {% endif %}
 </section>
 <!--//END BOOKING DETAILS -->
+=======
+    <div class="modal fade" id="exampleModalP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 700px ;alignment: center">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <span class="modal-body">
+                    <form method="POST">
+                      <div class="content table-responsive table-full-width">
+                        <br>
+                        <table  style=outline-color:#bee5eb    class="table ; table-striped"  id="tableau">
+                            <thead style="color: #0b0b0b ;size:A5" >
+                            <tr>
+                                <th>descritpion</th>
+                                <th>detail</th>
+
+                                <th data-field="date debut" data-sortable="true">date Debut</th>
+                                <th data-field="date fin" data-sortable="true">date fin</th>
+
+                                <th data-field="image" data-sortable="true">Image de Promotion </th>
+
+                            </tr>
+                            </thead>
+
+
+                        </table>
+                    </div>
+
+                </form>
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
+
+                </span></div>
+        </div>
+    </div>
+=======
+        <!-- popup firas-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Remplir le formulaire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <span class="modal-body">
+                    <form method="POST">
+                        <input name="userConnecté" type="hidden" value="{{ app.user.id }}">
+                        <input name="Plan" type="hidden" value="{{ user.id }}">
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
+
+                          <div class="form-group">
+    <label for="exampleInputNbr">Nombre des places</label>
+    <input type="text" class="form-control" id="exampleInputNbr"
+           placeholder="entrer le nombre de place" name="nbrplace">
+  </div>
+                                                  <div class="form-group">
+    <label for="exampleInputDate">Date de réservation</label>
+    <input type="date" class="form-control" id="exampleInputDate"
+           placeholder="Choisir la date" name="dateReservation">
+  </div>
+                                                                         <div class="form-group">
+    <label for="exampleInputDate">Heure de réservation</label>
+    <input type="time" class="form-control" id="exampleInputDate"
+           placeholder="Choisir la date" name="heure">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputTel">Téléphone</label>
+    <input type="text" class="form-control" id="exampleInputTel" placeholder="Téléphone " name="telephone">
+  </div>
+                </span>
+                    <span class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">annuler</button>
+
+                        <input type="submit" value="Réserver" class="btn btn-primary">
+                </span>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    <!--//END BOOKING DETAILS -->
 
 
 
 
-
-
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 3,
-        slidesPerGroup: 3,
-        loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>
-<script>
-    if ($('.image-link').length) {
-        $('.image-link').magnificPopup({
-            type: 'image',
-            gallery: {
-                enabled: true
-            }
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
-    }
-    if ($('.image-link2').length) {
-        $('.image-link2').magnificPopup({
-            type: 'image',
-            gallery: {
-                enabled: true
-            }
-        });
+<<<<<<< HEAD
     }
 </script>
 
@@ -256,3 +516,25 @@
 {% endfor %}
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE1NK3hPy4e4XIry3HF7fz8sXjd4cXDK4&callback=initMap"></script>
 {% endblock  %}
+=======
+    </script>
+    <script>
+        if ($('.image-link').length) {
+            $('.image-link').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+        }
+        if ($('.image-link2').length) {
+            $('.image-link2').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+        }
+    </script>
+{% endblock %}
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e

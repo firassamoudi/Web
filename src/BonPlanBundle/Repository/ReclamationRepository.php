@@ -21,6 +21,7 @@ function findRecByPlan($userPlan){
     return $query->getResult();
 }
 
+<<<<<<< HEAD
     function findRecByUs($userVisiteur){
 
         $query=$this->getEntityManager()
@@ -30,4 +31,7 @@ function findRecByPlan($userPlan){
 
         return $query->getResult();
     }
+=======
+
+>>>>>>> 1c4d0f271342a3deebb8766ad8e9dbb8d20e4b6e
 }
