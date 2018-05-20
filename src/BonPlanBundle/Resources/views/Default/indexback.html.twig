@@ -67,7 +67,7 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
 
 
                 <li>
-                    <a class="active-menu"  href="{{ path('Acceuil_back') }}  "><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    <a class=""  href="{{ path('Acceuil_back') }}  "><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                 </li>
 
                 <li>
@@ -80,8 +80,14 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
                     <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
                 </li>
                 <li  >
+<<<<<<< HEAD
                     <a  href="{{ path('Affiche_Rec') }}"><i class="fa fa-table fa-3x"></i> Gerer Reclamation</a>
                 </li>
+=======
+                <li  >
+                    <a  href="{{ path('Affiche_Rec') }}"><i class="fa fa-table fa-3x"></i> Gerer Reclamation</a>
+                </li>                </li>
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
                 <li  >
                     <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
                 </li>
@@ -111,6 +117,17 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
                         </li>
                         <li>
                             <a href="#">Supprimer Categorie</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a  href="{{ path('EventProp_consult') }}"><i class="fa fa-edit fa-3x"></i> Evènements </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('addEvent') }}">Ajouter un évènement</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('EventProp_consult') }}">Consulter un évènement</a>
                         </li>
                     </ul>
                 </li>
@@ -169,6 +186,26 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
     <!-- /. PAGE WRAPPER  -->
 </div>
 
+<<<<<<< HEAD
+<!-- /. WRAPPER  -->
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="{{ asset('back/js/jquery-1.10.2.js') }}"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="{{ asset('back/js/bootstrap.min.js') }}"></script>
+
+<!-- METISMENU SCRIPTS -->
+
+<script src="{{ asset('back/js/jquery.metisMenu.js') }}"></script>
+<!-- MORRIS CHART SCRIPTS -->
+<script src="{{ asset('back/js/morris/raphael-2.1.0.min.js') }}"></script>
+<script src="{{  asset('back/js/morris/morris.js') }}"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="{{ asset('back/js/custom.js') }}"></script>
+
+
+=======
+>>>>>>> b820972144c8f32a32d404d0bb685d1561150cce
 {% block javascript %}{% endblock %}
 
 </body>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <framework xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schemas/frameworkDescriptionVersion1.1.4.xsd" frameworkId="com.symfony" name="Symfony_10/04/18 10:32_s" invoke="php.exe C:\wamp_2\www\PIDEV\bin\console" alias="s" enabled="false" version="2">
+=======
+<framework xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schemas/frameworkDescriptionVersion1.1.4.xsd" frameworkId="com.symfony" name="Symfony_10/04/18 10:32_s" invoke="php.exe C:\wamp_2\www\PIDEV\bin\console" alias="s" enabled="true" version="2">
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
   <extraData><![CDATA[version:3]]></extraData>
   <command>
     <name>about</name>

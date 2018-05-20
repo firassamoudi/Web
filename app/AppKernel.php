@@ -18,8 +18,11 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new BonPlanBundle\BonPlanBundle(),
+<<<<<<< HEAD
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
 
+=======
+>>>>>>> 98c1bff408d5bf6b674b2043121740432770b49e
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,0 +1,65 @@
+{% extends '@BonPlan/Default/indexback.html.twig' %}
+{% block body %}
+    <div class="col-sm-12">
+        <h4 class="text-secondary"> Mes évènements</h4>
+
+        <div class="table-responsive-sm">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+
+                    <td>Nom de l'évènement </td>
+                    <td>Description </td>
+                    <td>Date debut</td>
+                    <td>Date fin</td>
+                    <td>Nombre de places </td>
+                    <td>Nombre de participant</td>
+                    <td>Type</td>
+                    <td>Etat</td>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for e in events %}
+                <tr>
+                    <td>
+                        {{ e.nomev}}
+                    </td>
+                    <td>
+                        {{ e.description}}
+                    </td>
+                    <td>
+                        {{ e.datedebutev|date("d/m/Y")}}
+                    </td>
+                    <td>
+                        {{ e.datefinev|date("d/m/Y")}}
+                    </td>
+                    <td>
+                        {{ e.nbrplace}}
+                    </td>
+                    <td>
+                        {{ e.nbparticipant}}
+                    </td>
+
+                    <td>
+                        {{ e.type}}
+                    </td>
+                    <td>
+                        {{ e.etatev}}
+                    </td>
+                    <td>
+                        <a href="{{ path('PageEvent',{'id':e.idevents}) }}"> Afficher</a>
+                    </td>
+                    {% else %}
+                        liste vide
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
