@@ -1,0 +1,107 @@
+{% extends 'BonPlanBundle:Default:indexback.html.twig' %}
+{% block body %}
+<h1>Liste des Reclamation</h1>
+<select id="nom" onchange="test()">
+<option>  </option>
+{% for m in reclamations %}
+    <option value="{{ m.userPlan }}"> {{ m.userPlan }} </option>
+{% endfor %}
+</select>
+    <div class="row">
+        <div class="col-md-5">
+
+            <input type="text" class="form-control" name="name" id="chercher" placeholder="Search" >
+
+        </div>
+
+    </div>
+    {% block javascript %}
+        <script>
+
+            $("#chercher").keyup(function(){
+                _this = this;
+                $.each($("table tbody tr"), function() {
+                    if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                    {if($(this).text().toLowerCase().indexOf('Name') === -1)
+                        $(this).hide();}
+                    else
+                        $(this).show();
+                });
+            });
+        </script>
+    {% endblock %}
+
+<table border="2" id="affichage">
+    <tr>
+        <th>etat</th>
+        <th>Niveau de Reclamation</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Utilsateur</th>
+        <th>Plan</th>
+        <th>update</th>
+        <th>delete</th>
+
+    </tr>
+    {% for r in reclamations %}
+        <tr>
+            <td><strong>{{ r.etat }}</strong></td>
+            <td>{{ r.nivRec }}</td>
+            <td>{{ r.type}}</td>
+            <td><textarea disabled> {{ r.Description }}</textarea></td>
+            <td>{{ r.userVisiteur}}</td>
+            <td>{{ r.userPlan }}</td>
+            <td><a href="{{ path('Update_Reclamation',{'idreclamation':r.idreclamation })}}">update</a> </td>
+            <td><a href="{{ path('Delete_Recalamation',{'idreclamation':r.idreclamation })}}">Delete</a> </td>
+
+        </tr>
+    {% endfor %}
+</table>
+<div id="div"></div>
+<script src="{{ asset('jquery-1.11.3.min.js') }}"></script>
+
+<script>
+  function test() {
+     var i = ($('#nom option:selected').val());
+      $.ajax({
+          url : '{{ path('bon_plan_recherche') }}' ,
+          type : 'post' ,
+          data : {'userPlan':i},
+          success:function (data) {
+              $("#affichage").empty();
+              $("#affichage").append(
+                  "<tr>"+
+                  "<th>"+"Etat"+"</th>"+
+                  "<th>"+"Niveau de Reclamation"+"</th>"+
+                  "<th>"+"Type"+"</th>"+
+                  "<th>"+"Description"+"</th>"+
+                  "<th>"+"Utilsateur"+"</th>"
+
+
+          );
+
+              $.each(data,function (i,el) {
+
+                  $("#affichage").append(
+
+                  "</tr>"+
+                      "<tr>"+
+                      "<td>"+el.etat+"</td>"+
+                      "<td>"+el.nivRec+"</td>"+
+                      "<td>"+el.type+"</td>"+
+                      "<td><textarea disabled>"+el.description+"</textarea></td>"+
+                      "<td>"+el.userVisiteur.username+"</td>"+
+
+                      +"</tr>"
+
+                  );
+
+
+
+
+              });
+          }
+      })
+  }
+</script>
+{% endblock %}

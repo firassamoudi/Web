@@ -2,6 +2,7 @@
 
 namespace BonPlanBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -21,11 +22,8 @@ class RegistrationFormType extends AbstractType
             ),
             'required'=>true,
             'multiple'=>true))
-            ->add('photodeprofil',FileType::class,array(
-                'required' => false
+            ;
 
-
-            ));
 
     }
     public function getParent()

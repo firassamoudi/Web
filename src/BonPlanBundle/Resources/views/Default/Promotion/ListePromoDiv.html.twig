@@ -3,7 +3,7 @@
 
 
 
-<div  style="background-repeat:no-repeat ; stroke:5px ; height:1500px ; width: 1500px; color: white ; background-size: 100% 100%;background-image: url({{ asset('images/back.jpg') }})" class="content">
+<div  style="background-repeat:no-repeat ; stroke:5px ; height:1500px ; width: 1500px; color: white ; background-size: 100% 100%;background-image: url({{ asset('images/backgrpund.jpg') }})" class="content">
 
 <br>
     <br> <br>
@@ -48,7 +48,7 @@
                                             </li>
                                             <li><span class="icon-location-pin"></span>
                                                 <p style="color: black"> {{  p.userPlan.username}}</p>
-                                            </li> <span class="ti-heart"> like </span>
+                                            </li> <span class="ti-heart">{{ p.etatpromo }} </span>
                                             <li > <span ><a href="{{ path('detail_promo', {'id' : p.idpromotion}) }} "<button type="button"  class="btn btn-info btn-xs" style="height: 28px">details</button></a>
  </span> </li>
 

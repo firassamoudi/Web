@@ -15,7 +15,9 @@ class VisiteurType extends AbstractType
             ->add('nomVisiteur')
             ->add('prenomVisiteur')
 
-            ->add('telephone');
+            ->add('telephone')
+            ->add('file',FileType::class , array(
+            'attr' => array('accept' => 'image/*')));
 
 
 

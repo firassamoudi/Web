@@ -23,11 +23,11 @@
                                     <th>NOM PLAN </th>
                                     <th>Adresse</th>
                                     <th>Telephone </th>
-                                    <th>Valider </th>
+
 
                                     <th>categorie </th>
-
-
+                                    <th>Valider </th>
+                                    <th>PDF </th>
 
                                 </tr>
                                 </thead>
@@ -36,8 +36,9 @@
                                         <td>{{ p.nomPlan}}</td>
                                         <td>{{ p.adresse}}</td>
                                         <td>{{ p.telephone}}</td>
+                                        <td>{{ p.categorie.nomCategorie}}</td>
                                         <td> <a class="btn btn-common btn-sm" href="{{ path('Validation', {'id' : p.id}) }}"  onclick="if(window.confirm('Voulez-vous vraiment Valider Ce Plan?')){return true;}else{return false;}">Valider</a></td>
-                                        <td>{{ p.categorie}}</td>
+                                        <td><a href="{{ path('bonplan_pdfexample', {'id' : p.id}) }}"> pdf </a></td>
 
 
 

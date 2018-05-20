@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="{{ asset('css/set1.css') }}">
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- Font awesome CSS -->
+    <link rel="stylesheet" href="{{ asset('back/css/font-awesome.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
 
 </head>
 {% block stylesheet %}{% endblock %}
@@ -68,7 +72,7 @@
                                     <a style="color: #DA2D39" class="nav-link" href="{{ path('fos_user_profile_show') }}">Votre Compte  </a>
                                     {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_ADMIN")) %}
                                     <a style="color: #DA2D39" class="nav-link" href="{{ path('Acceuil_back') }}">Votre Compte  </a>
-                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) and (app.user.validite == 1) %}
                                     <a style="color: #DA2D39" class="nav-link" href="{{ path('Acceuil_back') }}">Votre Compte  </a>
                                 </li>
                                 {% endif %}
@@ -80,7 +84,7 @@
                                     <a style="color: #DA2D39" class="nav-link" href="{{ path('Events') }}">Evenements </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: #DA2D39"class="nav-link" href="#">Recclamation</a>
+                                    <a style="color: #DA2D39"class="nav-link" href="{{ path('bon_plan_ReclamationSite') }}">Reclamation</a>
                                 </li>
                                 <li>
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -100,7 +104,7 @@
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_VISITEUR")) %}
 
                                         <a style="color: #FF3A6D" href="{{ path('Ajouter') }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Visiteur</a>
-                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+                                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) and app.user.nomPlan=="" %}
                                         <a style="color: #FF3A6D" href="{{ path(('AjouterP'),{'id': app.user.id }) }}" id="auth" class="btn btn-outline-dark top-btn"><span class="ti-plus"></span> Inscription Proprietaire</a>
                                     {% endif %}
 
@@ -116,18 +120,13 @@
     </div>
 </div>
 <!--//END HEADER -->
-<section class="main-block" style="height: 1500px">
-
+<section class="main-block" style="height: 1500px" >
 {% block body %}{% endblock %}
 
-</section>
-<!--============================= FIND PLACES =============================-->
-<!--//END FEATURED PLACES -->
-<!--============================= CATEGORIES =============================-->
 <!--============================= FOOTER =============================-->
-<footer class="main-block dark-bg">
-    <div class="container">
-        <div class="row">
+<footer class="main-block dark-bg" >
+    <div class="container" >
+        <div class="row" >
             <div class="col-md-12">
                 <div class="copyright">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -155,6 +154,7 @@
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
 
 <script>
     $(window).scroll(function() {

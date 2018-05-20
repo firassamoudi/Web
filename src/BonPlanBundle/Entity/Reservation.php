@@ -25,21 +25,21 @@ class Reservation
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbrPlace", type="integer", nullable=false)
+     * @ORM\Column(name="nbrPlace", type="integer", nullable=true)
      */
-    private $nbrplace;
+    private $nbrplace=0;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
+     * @ORM\Column(name="etat", type="string", length=45, nullable=true)
      */
     private $etat;
 
@@ -50,6 +50,27 @@ class Reservation
      */
     private $telephone;
 
+    /**
+     * @return int
+     */
+    public function getNotif()
+    {
+        return $this->notif;
+    }
+
+    /**
+     * @param int $notif
+     */
+    public function setNotif($notif)
+    {
+        $this->notif = $notif;
+    }
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="notif", type="integer", nullable=true)
+     */
+    private $notif;
     /**
      * @var \DateTime
      *

@@ -1,20 +1,33 @@
 <body>
 
 <img src="{{ asset('images/logo.png') }}">
-<h5 > Convention de partenariat
-</h5>
-<h3>ENTRE :
-   Le plateforme "Haya win "
-    Representee par M. ...... , President</h3>
-<h3 >
-    {% for p in user %}
-    Et
-    L’entreprise : {{ p.userPlan.username }}
-    Adresse : {{ p.userPlan.telephone }}
-    Tel :{{ p.userPlan.adresse }}
-    Fax :_______________________________________________________
-    Courriel :_____________________________________________________
-    Nom du signataire :_____________________________________________</h3>
-{% endfor %}
+ <center>
+    <h1 style="color: #bd2130"><span>Convention de partenariat</span></h1></center>
 
+<br>
+<h3 style="color: #0c5460">ENTRE :</h3>
+
+<h3>
+    Le plateforme "Haya win "</h3>
+<h3>
+    Representee par M___________________________________________________________ , President</h3>
+<br>
+
+<h3 style="color: #0c5460"> ET :</h3>
+<h3>
+{% for p in plan %}
+    Entreprise : {{ p.nomPlan }}
+    <br>  <br>
+    Adresse : {{ p.adresse }}
+    <br>  <br>
+    Tel :{{ p.telephone }}
+    <br>  <br>
+    Fax :_______________________________________________________
+    <br>  <br>
+    Courriel :_____________________________________________________
+    <br>  <br>
+    Nom du signataire :_____________________________________________</h3>
+<br>
+{% endfor %}
+</body>
 </body>

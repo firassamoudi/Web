@@ -18,6 +18,8 @@ class ProfileType extends AbstractType
         $builder->add('telephone')
             ->add('nomPlan')
             ->add('adresse')
+            ->add('latitude')
+            ->add('longitude')
             ->add('description', TextareaType::class, array(
         'attr' => array('class' => 'tinymce'),))
             ->add('categorie',EntityType::class,array(
@@ -27,6 +29,7 @@ class ProfileType extends AbstractType
             ))
             ->add('file',FileType::class , array(
                 'attr' => array('accept' => 'image/*')))
+
             ->add('Ajouter', SubmitType::class);
         }
 

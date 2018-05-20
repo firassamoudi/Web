@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Rate
  *
  * @ORM\Table(name="rate")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BonPlanBundle\Repository\RateRepository")
  */
 class Rate
 {
@@ -22,11 +22,11 @@ class Rate
     private $idrate;
 
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(name="rate", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="rating", type="integer", nullable=false)
      */
-    private $rate;
+    private $rating;
 
     /**
      * @ORM\ManyToOne(targetEntity="BonPlanBundle\Entity\User")
@@ -53,28 +53,22 @@ class Rate
     }
 
     /**
-     * Set rate
-     *
-     * @param float $rate
-     *
-     * @return Rate
+     * @return int
      */
-    public function setRate($rate)
+    public function getRating()
     {
-        $this->rate = $rate;
-
-        return $this;
+        return $this->rating;
     }
 
     /**
-     * Get rate
-     *
-     * @return float
+     * @param int $rating
      */
-    public function getRate()
+    public function setRating($rating)
     {
-        return $this->rate;
+        $this->rating = $rating;
     }
+
+
 
 
     /**

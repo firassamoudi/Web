@@ -56,35 +56,38 @@
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class="btn btn-danger square-btn-adjust">Déconnexion</a> </div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell " style="font-size:20px; color:#d9534f;" ></span></a>
+                    <ul class="dropdown-menu"></ul>
+                </li>
+            </ul>
+        {% endif %}
     </nav>
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li class="text-center">
-       ush             <img href="#"  src="{{ asset('images/logo.png') }}" class="user-image img-responsive"/>
+                    <img href="#"  src="{{ asset('images/logo.png') }}" class="user-image img-responsive"/>
                 </li>
 
 
                 <li>
-                    <a class="active-menu"  href="{{ path('Acceuil_back') }}  "><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    <a class="active-menu"  href="{{ path('Acceuil_back') }}  "><i class="fa fa-dashboard fa-3x"></i> Acceuil</a>
                 </li>
 
                 <li>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_SUPER_ADMIN")) %}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_ADMIN")) %}
                     <a  href="{{ path('Validation_Compte') }}"><i class="fa fa-desktop fa-3x"></i> Validation des Comptes</a>
                     {% endif %}
                 </li>
 
                 <li  >
-                    <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                    <a  href="{{ path('Affiche_Rec') }}"><i class="fa fa-table fa-3x"></i> Gerer Reclamation</a>
                 </li>
-                <li  >
-                    <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
-                </li>
-                <li  >
-                    <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                </li>
+
                 <li  >
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
                     <a  href="{{ path('Ajouter_Promotion') }}"><i class="fa fa-edit fa-3x"></i> Ajouter Promotion </a>
@@ -101,56 +104,35 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
                     <a  href="{{ path('liste_Promotion_Admin') }}"><i class="fa fa-edit fa-3x"></i>Liste Promotion </a>
                 </li>
                 <li>
-                    <a  href="{{ path('Categorie_admin') }}"><i class="fa fa-edit fa-3x"></i> Categorie </a>
+                    <a  href="#"><i class="fa fa-edit fa-3x"></i> Categorie </a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ path('ajout_Categorie_admin') }}">Ajout Categorie</a>
                         </li>
                         <li>
-                            <a href="#">Modifier Categorie</a>
-                        </li>
-                        <li>
-                            <a href="#">Supprimer Categorie</a>
+                            <a href="{{ path('Categorie_admin') }}">Consultation Categorie</a>
                         </li>
                     </ul>
-                </li>
-
-
-
-                <li>
-                    <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="#">Second Level Link</a>
-                        </li>
-                        <li>
-                            <a href="#">Second Level Link</a>
-                        </li>
-                        <li>
-                            <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-
-                            </ul>
-
-                        </li>
-                    </ul>
-                </li>
-                <li  >
-                    <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
                 </li>
             </ul>
+            <li>
+                <a  href="#"><i class="fa fa-edit fa-3x"></i> Evènements </a>
+                <ul class="nav nav-second-level">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP")) %}
+                        <li>
+                            <a href="{{ path('addEvent') }}">Ajouter évènements</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('EventProp_consult') }}">Mes évènements</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="{{ path('général_consult') }}">Touts les évènements</a>
+                    </li>
 
+                </ul>
+            </li>
         </div>
-
     </nav>
     <!-- /. NAV SIDE  -->
     <div id="page-wrapper" >
@@ -168,8 +150,48 @@ font-size: 16px;">   &nbsp; <a href={{ path('fos_user_security_logout') }} class
     </div>
     <!-- /. PAGE WRAPPER  -->
 </div>
+<script>
+    $(document).ready(function(){
 
-{% block javascript %}{% endblock %}
+        function load_unseen_notification(view = '')
+        {
+            $.ajax({
+                url:"{{ path('ReservationPropNotif') }}",
+                method:"POST",
+                data:{view:view},
+                dataType:"json",
+                success:function(data)
+                {
+                    $('.dropdown-menu').html(data.notification);
+                    if(data.unseen_notification > 0)
+                    {
+                        $('.count').html(data.unseen_notification);
+                    }
+                }
+            });
+        }
+
+        load_unseen_notification();
+
+
+
+        $(document).on('click', '.dropdown-toggle', function(){
+            $('.count').html('');
+
+        }).on('click',function () {
+            load_unseen_notification('yes');
+        });
+
+        setInterval(function(){
+            load_unseen_notification();;
+        }, 5000);
+
+
+
+    });
+</script>
+{% block javascript %}
+{% endblock %}
 
 </body>
 </html>

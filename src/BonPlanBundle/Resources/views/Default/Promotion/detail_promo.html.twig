@@ -20,15 +20,21 @@
              data-id="{{ p.idpromotion }}" name="imageDislike"/>
 
         <p id="{{ 'number' ~ p.idpromotion }}">
-            {{ p.likes }}
+            {{ p.etatpromo }}
+
         </p>
-         </di>
+         </div>
     </center>
-{{ form_start() }}
-        {{ form_row(form.etat_promo, {'label':"Notes  " ,'attr': {'class': 'form-control border-input'}}) }}
-{{ form_end() }}
+<center> <br>
+    {{ form_start(form) }}
+
+    {{ form_row(form.etat_promo ) }}
+        {{ form_row(form.Noter ) }}
+    {{ form_end(form) }}
+
+</center>
         <center>
-        <div class="rating1">
+            <br><br>        <div class="rating1">
 					<span class="rate" id='rate' name="rating">
 						<input id="rating5" type="radio" name="rating" value="5">
 						<label for="rating5">5</label>
@@ -45,7 +51,8 @@
 
 
 </div>
-</center>
+
+        </center>
 <center>
         <div class="container-fluid"style="color: #bd2130">
 
@@ -66,7 +73,6 @@
         </div>
         </center>
                 {% endfor %}
-
 </body>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
     <script type="text/javascript">
@@ -140,4 +146,83 @@
 
     })
     };</script>
-        {% endblock %}
+    <style type="text/css" >
+        @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+        /****** Style Star Rating Widget *****/
+
+        .ratingqualite {
+            border: none;
+            float: left;
+        }
+
+        .ratingqualite > input { display: none; }
+        .ratingqualite > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .ratingqualite > .halfq:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .ratingqualite > label {
+            color: #ddd;
+            float: right;
+        }
+
+        /***** CSS Magic to Highlight Stars on Hover *****/
+
+        .ratingqualite > input:checked ~ label, /* show gold star when clicked */
+        .ratingqualite:not(:checked) > label:hover, /* hover current star */
+        .ratingqualite:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+        .ratingqualite > input:checked + label:hover, /* hover current star when changing rating */
+        .ratingqualite > input:checked ~ label:hover,
+        .ratingqualite > label:hover ~ input:checked ~ label, /* lighten current selection */
+        .ratingqualite > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+        /****************/
+
+        .ratingservice {
+            border: none;
+            float: left;
+        }
+
+        .ratingservice > input { display: none; }
+        .ratingservice > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .ratingservice > .halfs:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .ratingservice > label {
+            color: #ddd;
+            float: right;
+        }
+
+        /***** CSS Magic to Highlight Stars on Hover *****/
+
+        .ratingservice > input:checked ~ label, /* show gold star when clicked */
+        .ratingservice:not(:checked) > label:hover, /* hover current star */
+        .ratingservice:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+        .ratingservice > input:checked + label:hover, /* hover current star when changing rating */
+        .ratingservice > input:checked ~ label:hover,
+        .ratingservice > label:hover ~ input:checked ~ label, /* lighten current selection */
+        .ratingservice > input:checked ~ label:hover ~ label { color: #FFED85;  }
+    </style>
+
+
+{% endblock %}

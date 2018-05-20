@@ -44,19 +44,22 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
             return $role->getRole();
         }, $roles);
 
-        if (in_array('ROLE_AMIN', $rolesTab, true)) {
+        if (in_array('ROLE_ADMIN', $rolesTab, true)) {
             // c'est un aministrateur : on le rediriger vers l'espace admin
             $redirection = new RedirectResponse($this->router->generate('bon_plan_homepage_back'));
         } else{
             if (in_array('ROLE_PROP', $rolesTab, true)) {
-            // c'est un utilisaeur client : on le rediriger vers l'accueil
-            $redirection = new RedirectResponse($this->router->generate('AjouterP'));
+            // c'est un utilisaeur Proppriétaire : on le rediriger vers son accueil si son compte est validé sinon la page d'acceuil générale
+                if ($token->getUser()->getValidite()!=0)
+                    $redirection = new RedirectResponse($this->router->generate('bon_plan_homepage_back'));
+                else
+                    $redirection = new RedirectResponse($this->router->generate('homepage'));
         }
 
                 else
                 {
-                // c'est un utilisaeur formateur : on le rediriger vers l'accueil formateur
-                $redirection = new RedirectResponse($this->router->generate('Ajouter'));
+                // c'est un utilisaeur Visiteur : on le rediriger vers la page d'acceuil générale
+                $redirection = new RedirectResponse($this->router->generate('homepage'));
                 }
             }
 

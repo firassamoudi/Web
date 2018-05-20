@@ -7,7 +7,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="header">
                         <h2 class="title" style="color:indianred"><center >Liste des Promotions de Votre Plan  </center></h2>
                         <br>
@@ -24,6 +23,7 @@
                                 <th>descritpion</th>
                                 <th>Proprietaire</th>
                                 <th>Reduction</th>
+                                <th>Etat</th>
 
                                 <th data-field="id" data-sortable="true">date Debut</th>
                                 <th data-field="id" data-sortable="true">date fin</th>
@@ -38,6 +38,7 @@
                                     <td>{{  p.description}}</td>
                                     <td>{{  p.userPlan.username}}</td>
                                     <td>{{ p.reduction }}</td>
+                                    <td>{{ p.etat }}</td>
                                     <td>{{ p.datedebutp |date("m/d/Y")}}</td>
                                     <td>{{ p.datefinp |date("m/d/Y") }}</td>
                                     <td> <img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}" style="height: 70px; width: 100px" ></td>
@@ -56,6 +57,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script >
     $(function () {
         $("#recherche").keyup(function () {
+            $.ajax({
+                url : "{{ path('recherche_promotion') }}",
+                data : { 'promotion' : $(this).val() }
+            }).done(function (response) {
+                var tableau = $(response).find("#tableau");
+                $('#tableau').empty();
+                $('#tableau').append(tableau);
+            });
+        });
+        $("#rechercheP").keyup(function () {
             $.ajax({
                 url : "{{ path('recherche_promotion') }}",
                 data : { 'promotion' : $(this).val() }

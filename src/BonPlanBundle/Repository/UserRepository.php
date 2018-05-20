@@ -11,19 +11,86 @@ use BonPlanBundle\Entity\User;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
     public function findProp($nomPlan)
     {
         $q=$this->createQueryBuilder('p')
             ->where('p.nomPlan LIKE :nomPlan')
+
             ->setParameter(':nomPlan',"%$nomPlan%");
         return $q->getQuery()->getResult();
     }
+    public function restaurant ($id){
+        return
+            $q=$this->getEntityManager()
+                ->createQuery("select count(user) from BonPlanBundle:User user 
+                              where user.categorie = :id ")
+                ->setParameter('id',$id)
+
+                ->getSingleScalarResult();
+
+
+    }
+
+    public function findbyCategorie($id)
+    {
+
+
+        $query=$this->getEntityManager()->createQuery(
+            "select p from BonPlanBundle:User p JOIN BonPlanBundle:Categorie s where  p.categorie=:id")
+
+            ->setParameter('id',$id);
+        return $query->getResult();
+    }
+    public function findPlan($nomPlan)
+    {
+        $q=$this->createQueryBuilder('p')
+            ->where('p.nomPlan LIKE :nomPlan')
+            ->andWhere('p.validite = 1')
+            ->setParameter(':nomPlan',"%$nomPlan%");
+        return $q->getQuery()->getResult();
+    }
+    public function hotel (){
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->where('user.categorie LIKE :categorie')
+            ->setParameter('categorie', '%hotel%')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+    }
+    public function coffee (){
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->where('user.categorie LIKE :categorie')
+            ->setParameter('categorie', '%coffee%')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+    }
+    public function culture (){
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->where('user.categorie LIKE :categorie')
+            ->setParameter('categorie', '%culture%')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+    }
+
+
+
     public function findRole($role)
     {
+
         $qb = $this->_em->createQueryBuilder();
         $qb->select('u')
+            ->from($this->User, 'u')
             ->where('u.roles LIKE "ROLE_PROP"')
-            ->setParameter(':roles', "%$role%");
+            ->setParameter('roles', '%"'.$role.'"%');
 
         return $qb->getQuery()->getResult();
     }
@@ -50,20 +117,36 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     public function findByProp()
     {
         $query = $this->getEntityManager()
-            ->createQuery(
-                'SELECT u FROM BonPlanBundle:User u WHERE u.roles LIKE :role'
-            )->setParameter('role', '%"ROLE_PROP"%');
+            ->createQuery('SELECT u FROM BonPlanBundle:User u WHERE u.roles LIKE :role')
+        ->setParameter('role', '%"ROLE_PROP"%');
 
         return $query->getResult();
     }
 
     public function findById($id)
     {
-        $q=$this->createQueryBuilder('u')
-            ->Where('u.id = :iduser ')
+        $q = $this->getEntityManager()
+            ->createQuery('SELECT u FROM BonPlanBundle:User u WHERE u.id = :iduser')
             ->setParameter(':iduser',$id);
-        return $q->getQuery()->getResult();
+
+
+        return $q->getResult();
 
     }
+    function findid($userPlan){
+
+        $query=$this->getEntityManager()
+            ->createQuery("select r from BonPlanBundle:USER r  where r.username LIKE :plan ")
+            ->setParameter('plan','%'.$userPlan.'%');
+
+        return $query->getResult();
+    }
+
+    function nombreVisiteur()
+    {
+        $query=$this->getEntityManager()->createQuery("Select count(v) FROM BonPlanBundle:USER v WHERE v.roles like'a:1:{i:0;s:13:\"ROLE_VISITEUR\";}%'");
+        return $query->getSingleScalarResult();
+    }
+
 
 }

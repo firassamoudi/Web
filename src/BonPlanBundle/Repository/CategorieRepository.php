@@ -10,5 +10,14 @@ namespace BonPlanBundle\Repository;
  */
 class CategorieRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getnomcat ($id){
+        $query=$this->getEntityManager()->createQuery(
+            "select c.nomCategorie from BonPlanBundle:Categorie c where  c.id=:id")
+
+            ->setParameter('id',$id);
+        return $query->getResult();
+    }
+
+
 
 }

@@ -4,6 +4,7 @@ namespace BonPlanBundle\Form;
 
 use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,11 +15,21 @@ class PromotionUpdateType extends AbstractType
     {
         $builder
             ->add('description')
-->add('reduction')
+
 
             ->add('datedebutp' )
             ->add('datefinp' )
+    ->add('reduction')
+            ->add('etat',ChoiceType::class,array(
+                'label'=>'Etat',
+                'choices'=>array(
+                    'en cours'=>'en cours',
+                    'annulee'=>'annulee',
 
+                ),
+                'required'=>true,
+                'multiple'=>true))
+        ;
 
             ;
 

@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="reclamation")
  * @ORM\Entity
  */
+/**
+ *
+ * @ORM\Entity(repositoryClass="BonPlanBundle\Repository\ReclamationRepository")
+
+ */
 class Reclamation
 {
     /**

@@ -1,30 +1,28 @@
 bon_plan_homepage:
     path:     /
     defaults: { _controller: BonPlanBundle:Default:index }
-Categorie_restau:
-    path:     /categorieRestau
-    defaults: { _controller: BonPlanBundle:Default:Categorierestau }
 Acceuil_back:
     path:     /Acceuilback
-    defaults: { _controller: BonPlanBundle:Default:NombreUtilisateur }
+    defaults: { _controller: BonPlanBundle:Default:AcceuilBack}
 Ajouter:
     path:     /ajouter
     defaults: { _controller: BonPlanBundle:Default:Ajout }
 Adminlog:
     path:     /Adminlog
     defaults: { _controller: BonPlanBundle:Default:adminlog }
+##PROMOTION + VALIDATION
+bonplan_pdfexample:
+    path:     /pdf/{id}
+    defaults: { _controller: BonPlanBundle:Admin:ToPDF }
+ajouter_like:
+    path:     /like
+    defaults: { _controller: BonPlanBundle:Promotion:Likes}
+supprimer_like:
+    path:     /dislike
+    defaults: { _controller: BonPlanBundle:Promotion:Likes}
 detail_promo:
     path:     /detail_promo/{id}
     defaults: { _controller: BonPlanBundle:Promotion:detailPromo }
-ConsulterP:
-    path:     /ConsulterP
-    defaults: { _controller: BonPlanBundle:Default:ConsulterP }
-AjouterP:
-    path:     /ajouterP/{id}
-    defaults: { _controller: BonPlanBundle:Default:AjoutP }
-Events:
-    path:     /Events
-    defaults: { _controller: BonPlanBundle:Default:Events }
 liste_Promotion_Admin:
     path:     /Promotion
     defaults: { _controller: BonPlanBundle:Promotion:listPromotionAdmin }
@@ -38,41 +36,76 @@ Supprimer_Promotion:
     path:     /Supprimer_Promotion
     defaults: { _controller: BonPlanBundle:Promotion:deletePromotion }
 recherche_promotion:
-    path:   /Recherche
-    defaults: { _controller: BonPlanBundle:Promotion:Recherche }
-bon_plan_homepage_back:
-    path:     /admin
-    defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
-liste_Promotion_Visiteur:
-    path:     /PromotionVisiteur
-    defaults: { _controller: BonPlanBundle:Promotion:listPromotionVisiteur }
-recherche_promotion:
     path:   /recherche
     defaults: { _controller: BonPlanBundle:Promotion:Recherche}
 recherche_promotionAdmin:
     path:   /rechercheAdmin
     defaults: { _controller: BonPlanBundle:Promotion:RechercheAdmin }
-recherche_compte:
-    path:   /rechercheP
-    defaults: { _controller: BonPlanBundle:Admin:Recherche }
-liste_Promotion_Prop:
-    path:     /PromotionProp
-    defaults: { _controller: BonPlanBundle:Promotion:Recherche_PromotionProp }
-Profil_Plan:
-    path:     /Profil_Plan/{id}
-    defaults: { _controller: BonPlanBundle:Default:ConsulterP }
 Validation_Compte:
     path:     /Validation
     defaults: { _controller: BonPlanBundle:Admin:ValiderCompte }
 Validation:
     path:     /Validation/{id}
     defaults: { _controller: BonPlanBundle:Admin:Valider }
+recherche_Kbira:
+    path:   /recherchePlan
+    defaults: { _controller: BonPlanBundle:Default:RechercheKbira }
+ConsulterP:
+    path:     /ConsulterP
+    defaults: { _controller: BonPlanBundle:Default:ConsulterP }
+AjouterP:
+    path:     /ajouterP/{id}
+    defaults: { _controller: BonPlanBundle:Default:AjoutP }
+bon_plan_homepage_back:
+    path:     /admin
+    defaults: { _controller: BonPlanBundle:Default:AcceuilBack }
+liste_Promotion_Visiteur:
+    path:     /PromotionVisiteur
+    defaults: { _controller: BonPlanBundle:Promotion:listPromotionVisiteur }
+recherche_compte:
+    path:   /rechercheP
+    defaults: { _controller: BonPlanBundle:Admin:Recherche }
+liste_Promotion_Prop:
+    path:     /PromotionProp
+    defaults: { _controller: BonPlanBundle:Promotion:listPromotionProp }
+##CATEGORIE
+Categorie_restau:
+    path:     /categorieRestau/{id}
+    defaults: { _controller: BonPlanBundle:Default:Categorierestau }
+Categorie_coffe:
+    path:     /categorieCoffe
+    defaults: { _controller: BonPlanBundle:Default:CategorieCoffe }
+Categorie_hotles:
+    path:     /categorieHotels
+    defaults: { _controller: BonPlanBundle:Default:Categoriehotles }
+Categorie_culture:
+    path:     /categorieCulture
+    defaults: { _controller: BonPlanBundle:Default:Categorieculture}
+Categorie_nightlife:
+    path:     /categorieNightlife
+    defaults: { _controller: BonPlanBundle:Default:Categorienightlife }
+Profil_Plan:
+    path:     /Profil_Plan/{id}
+    defaults: { _controller: BonPlanBundle:Default:ConsulterP }
 ajout_Categorie_admin:
     path:     /AjoutCategorie
     defaults: { _controller: BonPlanBundle:Categorie:CategAjout }
+supprimer_Categorie_admin:
+    path:     /SuppCategorie/{id}
+    defaults: { _controller: BonPlanBundle:Categorie:CategSupp }
+modifier_Categorie_admin:
+    path:     /ModifCategorie/{id}
+    defaults: { _controller: BonPlanBundle:Categorie:CategUpdate }
 Categorie_admin:
-    path:     /Suggestion
+    path:     /Categorie
     defaults: { _controller: BonPlanBundle:Categorie:CategorieA }
+#Reservation
+AjoutReservationVisiteurMobile:
+    path:     /AjoutReservationVisiteurMobile
+    defaults: { _controller: BonPlanBundle:Reservation:AjoutReservationVisiteurMobile }
+ReservationVisiteurMobile:
+    path:     /ReservationVisiteurMobile/{id}
+    defaults: { _controller: BonPlanBundle:Reservation:afficherReservationVisiteurMobile }
 ReservationVisiteur:
     path:     /ReservationVisiteur
     defaults: { _controller: BonPlanBundle:Reservation:afficherReservationVisiteur }
@@ -85,12 +118,166 @@ ReservationVisiteurUpdate:
 ReservationProp:
     path:     /ReservationProp
     defaults: { _controller: BonPlanBundle:Reservation:afficherReservationProp }
+ReservationPropNotif:
+    path:     /ReservationPropNotif
+    defaults: { _controller: BonPlanBundle:Reservation:notif }
 ReservationPropUpdate:
     path:     /UpdateProp/{id}
     defaults: { _controller: BonPlanBundle:Reservation:updateReservationProp }
+#Rating
+AjoutRateMobile:
+    path:     /AjoutRateMobile
+    defaults: { _controller: BonPlanBundle:Rate:AjoutRateMobile }
+
+AfficheRateMobile:
+    path:     /AfficheRateMobile
+    defaults: { _controller: BonPlanBundle:Rate:afficheRate }
 ProfilProp:
     path:     /ProfilProp
     defaults: { _controller: BonPlanBundle:Default:ProfilProp }
 EditProfilProp:
     path:     /EditProfilProp
     defaults: { _controller: BonPlanBundle:Default:EditProfilProp }
+Commentaire:
+    path:     /Commentaire/{userPlan}
+    defaults: { _controller: BonPlanBundle:Avis:Commentaire }
+create_Commentaire:
+    path:     /AjoutCommentaire/{userPlan}
+    defaults: { _controller: BonPlanBundle:Avis:createCommentaire }
+supprimer_Commentaire:
+    path:     /suppCommentaire/{id}
+    defaults: { _controller: BonPlanBundle:Avis:SuppCommentaire }
+bon_plan_ReclamationPlan:
+    path:     /ReclamerPlan/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerPlan }
+Affiche_Rec:
+    path:     /AfficheRec
+    defaults: { _controller: BonPlanBundle:Reclamation:AfficheReclamation }
+Update_Reclamation:
+    path:     /UpdateRec/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:UpdateReclamation}
+Delete_Recalamation:
+    path:     /DeleteRecAdmin/{idreclamation}
+    defaults: { _controller: BonPlanBundle:Reclamation:DeleteReclamation }
+bon_plan_abonner:
+    path:     /bonPlan/abonner/{id}
+    defaults: { _controller: BonPlanBundle:Abonner:abonner }
+bon_plan_desabonner:
+    path:     /bonPlan/desabonner/{idPlan}/{idUser}
+    defaults: { _controller: BonPlanBundle:Abonner:desabonner }
+bon_plan_recherche:
+    path:     /rechercher
+    defaults: { _controller: BonPlanBundle:Reclamation:rechercheRec }
+bon_plan_ReclamationSite:
+    path:     /ReclamerPlan
+    defaults: { _controller: BonPlanBundle:Reclamation:ReclamerSite }
+
+
+  #routing du module event
+Events:
+    path:     /Events
+    defaults: { _controller: BonPlanBundle:Events:afficherToutEvents_Visiteur}
+addEvent:
+    path:     /Ajout_Event
+    defaults: { _controller: BonPlanBundle:Events:addEvent }
+EventProp_consult:
+    path:     /malisteEvent
+    defaults: { _controller: BonPlanBundle:Events:afficherEventsProp }
+général_consult:
+    path:     /ToutsEvents
+    defaults: { _controller: BonPlanBundle:Events:afficherToutEvents }
+PageEvent:
+    path:     /pageEvent/{id}
+    defaults: { _controller: BonPlanBundle:Events:afficherEvent }
+PageEventGénérale:
+    path:     /pageEventV/{id}
+    defaults: { _controller: BonPlanBundle:Events:afficherEventVisiteur }
+participerEvent:
+    path:     /pageEventV/{id}
+    defaults: { _controller: BonPlanBundle:Events:afficherEventVisiteur}
+AnnulerEvent:
+    path:     /pageEventV/{id}
+    defaults: { _controller: BonPlanBundle:Events:AnnulerEvent}
+Modifier_Event:
+    path:     /Modifier_Event/{id}
+    defaults: { _controller: BonPlanBundle:Events:updateEvent }
+
+#api routing
+all:
+    path:     /tasks/all
+    defaults: { _controller: BonPlanBundle:Default:all }
+
+login_mobile:
+    path:     /login
+    defaults: { _controller: BonPlanBundle:Default:login}
+
+Profile_mobile:
+    path:     /Profile/{id}
+    defaults: { _controller: BonPlanBundle:Default:find}
+RegisterP_mobile:
+    path:     /registerPropmobile
+    defaults: { _controller: BonPlanBundle:Default:registerPropMobile}
+register_mobile:
+    path:     /registermobile
+    defaults: { _controller: BonPlanBundle:Default:registerMobile }
+Max_id_mobile:
+    path:     /maxid
+    defaults: { _controller: BonPlanBundle:Default:maxId}
+all_categorie:
+    path:     /tasks/allCategorie
+    defaults: { _controller: BonPlanBundle:Categorie:all }
+
+#promo
+allPromo:
+    path:     /promotions/all
+    defaults: { _controller: BonPlanBundle:Promotion:allMobile }
+find_promotionU:
+    path:     /promotions/findU/{id}
+    defaults: { _controller: BonPlanBundle:Promotion:findUserMobile}
+find_promotion:
+    path:     /promotions/find/{id}
+    defaults: { _controller: BonPlanBundle:Promotion:findMobile}
+new_promotion:
+    path:     /promotions/new
+    defaults: { _controller: BonPlanBundle:Promotion:newMobile}
+detail_promoSer:
+    path:     /detail_promo/{id}
+    defaults: { _controller: BonPlanBundle:Promotion:detailPromo }
+detail_promoUser:
+    path:     /promo/{id}
+    defaults: { _controller: BonPlanBundle:Promotion:findPromoMobile }
+
+#events
+allEvents:
+    path:     /Events/all
+    defaults: { _controller: BonPlanBundle:Events:all }
+createEvent:
+    path:     /Events/newEvent
+    defaults: { _controller: BonPlanBundle:Events:new }
+Addpart:
+    path:     /Events/participation
+    defaults: { _controller: BonPlanBundle:Events:incrementParticipants }
+Deletepart:
+    path:     /Events/Deleteparticipation
+    defaults: { _controller: BonPlanBundle:Events:decrementParticipants }
+findpart:
+    path:     /Events/findpart
+    defaults: { _controller: BonPlanBundle:Events:find }
+
+#reclamation
+allid:
+    path:     /Rec/{id}
+    defaults: { _controller: BonPlanBundle:Reclamation:find }
+ajoutM:
+    path:     /Reclamations
+    defaults: { _controller: BonPlanBundle:Reclamation:new }
+#Avis
+AjoutCommentaireMobile:
+    path:     /AjoutCommentaireMobile
+    defaults: { _controller: BonPlanBundle:Avis:AjoutCommentaireMobile }
+SupprimerCommentaire:
+    path:     /SupprimerCommentaire/{id}
+    defaults: { _controller: BonPlanBundle:Avis:supprimerCommentaireMobile }
+listeCommentaire:
+    path:     /listeCommentaire/{id}
+    defaults: { _controller: BonPlanBundle:Avis:afficherCommentaireMobile }

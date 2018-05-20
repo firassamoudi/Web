@@ -10,8 +10,9 @@
                             <div class="card-block">
                                 <h3 class="card-title">{{ event.nomCategorie }}</h3>
                                 <a href="{{ path('supprimer_Categorie_admin',{'id': event.id})  }}" class="btn btn-primary">Supprimer</a>
+                                <a href="{{ path('modifier_Categorie_admin',{'id': event.id})  }}" class="btn btn-success">Modifier</a>
 
-                                <button type="button" class="btn btn-success" id="mybtn_{{ event.id }}" data-toggle="modal" data-target="#exampleModal" onclick="ShowModal({{ event.id }})" data-whatever="@getbootstrap">Modifier</button>
+                                {#<button type="button" class="btn btn-success" id="mybtn_{{ event.id }}" data-toggle="modal" data-target="#exampleModal" onclick="ShowModal({{ event.id }})" data-whatever="@getbootstrap">Modifier</button>#}
                             </div>
                         </div>
                 <br>
@@ -38,23 +39,7 @@
             </div>
         </div>
     </div>
-    <script language="JavaScript">
-        function ShowModal(event_id){
-            $.ajax({
-               type:    "POST",
-               url: "{{ path('modifier_Categorie_admin') }}",
-                data:   "id="+event_id,
-                success:    function (data) {
-                    $('#fromAjax').html(data.html);
-                }
-            });
-            $('#exampleModal').modal('toggle');
-        }
-        $('#mybtn').click(function(){
 
-
-        });
-    </script>
 
 {% endblock %}
 

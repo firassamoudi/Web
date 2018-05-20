@@ -1,4 +1,4 @@
-{% extends '@BonPlan/Default/index.html.twig' %}
+{% extends '@BonPlan/default/index.html.twig' %}
 
 {% block body %}
 
@@ -13,7 +13,10 @@
         <div class="row">
             <div class="col-md-6">
                 <h5>{{ user.nomPlan }}</h5>
-                <p><span>$$$</span>$$</p>
+                                        {% if is_granted("ROLE_VISITEUR") and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                <p><span>{{ form(rating) }}</span></p>
+                {% endif %}
                 <p class="reserve-description">{{ user.description }}</p>
             </div>
             <div class="col-md-6">
@@ -22,11 +25,18 @@
                         <span>9.5</span>
                     </div>
                     <div class="review-btn">
-                        <a href="#" class="btn btn-outline-danger">WRITE A REVIEW</a>
-                    </div>
+                        {% if is_granted("ROLE_VISITEUR") and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                            <a href="{{ path('bon_plan_ReclamationPlan', { 'id' : idreclam}) }}"
+                               class="btn btn-outline-danger">Reclamer</a>
+                            <span>34 reviews</span>
+                        {% else %}
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-outline-danger">Reclamer</a>
+                        {% endif %}                                        </div>
+
                     <div class="reserve-btn">
                         <div class="featured-btn-wrap">
-                            <a href="#" class="btn btn-danger">RESERVE A SEAT</a>
+                            <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Réserver</a>
                         </div>
                     </div>
                 </div>
@@ -36,71 +46,13 @@
 </section>
 <!--//END RESERVE A SEAT -->
 <!--============================= BOOKING DETAILS =============================-->
+    <div class="featured-btn-wrap">
+        <a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalP">PROMOTION</a>
+    </div>
 <section class="light-bg booking-details_wrap">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 responsive-wrap">
-
-                <div class="booking-checkbox_wrap">
-                    <div class="customer-review_wrap">
-                        <div class="customer-img">
-                            <img src="images/customer-img1.jpg" class="img-fluid" alt="#">
-                            <p>Amanda G</p>
-                            <span>35 Reviews</span>
-                        </div>
-                        <div class="customer-content-wrap">
-                            <div class="customer-content">
-                                <div class="customer-review">
-                                    <h6>Best noodles in the Newyork city</h6>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span class="round-icon-blank"></span>
-                                    <p>Reviewed 2 days ago</p>
-                                </div>
-                                <div class="customer-rating">8.0</div>
-                            </div>
-                            <p class="customer-text">I love the noodles here but it is so rare that I get to come here. Tasty Hand-Pulled Noodles is the best type of whole in the wall restaurant. The staff are really nice, and you should be seated quickly. I usually get the
-                                hand pulled noodles in a soup. House Special #1 is amazing and the lamb noodles are also great. If you want your noodles a little chewier, get the knife cut noodles, which are also amazing. Their dumplings are great
-                                dipped in their chili sauce.
-                            </p>
-                            <p class="customer-text">I love how you can see into the kitchen and watch them make the noodles and you can definitely tell that this is a family run establishment. The prices are are great with one dish maybe being $9. You just have to remember
-                                to bring cash.
-                            </p>
-                            <span>28 people marked this review as helpful</span>
-                            <a href="#"><span class="icon-like"></span>Helpful</a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="customer-review_wrap">
-                        <div class="customer-img">
-                            <img src="images/customer-img2.jpg" class="img-fluid" alt="#">
-                            <p>Kevin W</p>
-                            <span>17 Reviews</span>
-                        </div>
-                        <div class="customer-content-wrap">
-                            <div class="customer-content">
-                                <div class="customer-review">
-                                    <h6>A hole-in-the-wall old school shop.</h6>
-                                    <span class="customer-rating-red"></span>
-                                    <span class="round-icon-blank"></span>
-                                    <span class="round-icon-blank"></span>
-                                    <span class="round-icon-blank"></span>
-                                    <span class="round-icon-blank"></span>
-                                    <p>Reviewed 3 months ago</p>
-                                </div>
-                                <div class="customer-rating customer-rating-red">2.0</div>
-                            </div>
-                            <p class="customer-text">The dumplings were so greasy...the pan-fried shrimp noodles were the same. So much oil and grease it was difficult to eat. The shrimp noodles only come with 3 shrimp (luckily the dish itself is cheap) </p>
-                            <p class="customer-text">The beef noodle soup was okay. I added black vinegar into the broth to give it some extra flavor. The soup has bok choy which I liked - it's a nice textural element. The shop itself is really unclean (which is the case
-                                in many restaurants in Chinatown) They don't wipe down the tables after customers have eaten. If you peak into the kitchen many of their supplies are on the ground which is unsettling... </p>
-                            <span>10 people marked this review as helpful</span>
-                            <a href="#"><span class="icon-like"></span>Helpful</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{ render(controller('BonPlanBundle:Avis:Commentaire',{'id':user.id})) }}
             <div class="col-md-4 responsive-wrap">
                 <div class="follow">
                     <div class="follow-img">
@@ -112,9 +64,12 @@
                                 <span class="icon-screen-smartphone"></span>
                                 <p>{{ user.telephone }}</p>
                             </div>
+
                     </div>
+
+
+                    <div id="map" class="img-fluid" style="width: 100%; height: 200px; top: 0px; position: relative; overflow: hidden;" ></div>
                     <div class="contact-info">
-                        <img src="{{ asset('images/map.jpg') }}" class="img-fluid" alt="#">
                             <ul class="social-counts">
                                 <li>
                                     <h6>26</h6>
@@ -129,35 +84,127 @@
                                     <span>Followers</span>
                                 </li>
                             </ul>
-                        <a href="#">FOLLOW</a>
-                    </div>
+                        {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {% if plan %}
+                                <a href="{{ path('bon_plan_desabonner', { 'idPlan' : idreclam, 'idUser' : app.user.id }) }}"
+                                   class="btn btn-outline-danger">Desabonner</a>
+                            {% else %}
+                                <a href="{{ path('bon_plan_abonner', { 'id' : idreclam }) }}"
+                                   class="btn btn-outline-danger">Abonner</a>
+                            {% endif %}
+                        {% else %}
+                            <button type="button" class="btn btn-outline-danger" disabled>Abonner</button>
+                        {% endif %}                     </div>
 
-
-
-                    <a href="#" class="btn btn-outline-danger btn-contact">SEND A MESSAGE</a>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModalP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 700px ;alignment: center">
+                <div class="modal-header">
 
-    {% endfor %}
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <span class="modal-body">
+                    <form method="POST">
+                      <div class="content table-responsive table-full-width">
+                        <br>
+                        <table  style=outline-color:#bee5eb    class="table ; table-striped"  id="tableau">
+                            <thead style="color: #0b0b0b ;size:A5" >
+                            <tr>
+                                <th>descritpion</th>
+                                <th>detail</th>
+
+                                <th data-field="date debut" data-sortable="true">date Debut</th>
+                                <th data-field="date fin" data-sortable="true">date fin</th>
+
+                                <th data-field="image" data-sortable="true">Image de Promotion </th>
+
+                            </tr>
+                            </thead>
+                            {% for p in promo %}
+                                <tr>
+                                    <td>{{  p.description}}</td>
+                                    <td><a href="{{ path('detail_promo', {'id': p.idpromotion}) }}">detail </a> </td>
+                                    <td>{{ p.datedebutp |date("m/d/Y")}}</td>
+                                    <td>{{ p.datefinp |date("m/d/Y") }}</td>
+                                    <td> <img src="{{ asset('images/Promotion/' ~  p.urlpromo) }}" style="height: 100px; width: 150px" ></td>
+
+
+
+
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                    </div>
+
+                </form>
+
+                </span></div>
+        </div>
+    </div>
+
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <!-- popup firas-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Remplir le formulaire</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <span class="modal-body">
+                    <form method="POST">
+                        <input name="userConnecté" type="hidden" value="{{ app.user.id }}">
+                        <input name="Plan" type="hidden" value="{{ user.id }}">
+
+                          <div class="form-group">
+    <label for="exampleInputNbr">Nombre des places</label>
+    <input type="number" class="form-control" id="exampleInputNbr"
+           placeholder="entrer le nombre de place" name="nbrplace" required>
+  </div>
+                                                  <div class="form-group">
+    <label for="exampleInputDate">Date de réservation</label>
+    <input type="date" class="form-control" id="exampleInputDate"
+           placeholder="Choisir la date" name="dateReservation" required>
+  </div>
+                                                                         <div class="form-group">
+    <label for="exampleInputDate">Heure de réservation</label>
+    <input type="time" class="form-control" id="exampleInputDate"
+           placeholder="Choisir la date" name="heure" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputTel">Téléphone</label>
+    <input type="text" class="form-control" id="exampleInputTel" placeholder="Téléphone " name="telephone" required>
+  </div>
+                   </span>
+                <span class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">annuler</button>
+
+                        <input type="submit" value="Réserver" class="btn btn-primary" >
+                </span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endif %}
 </section>
 <!--//END BOOKING DETAILS -->
 
 
 
 
-    <!-- JQUERY SCRIPTS -->
-    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="{{ asset('back/js/jquery.metisMenu.js') }}"></script>
-    <!-- MORRIS CHART SCRIPTS -->
-    <script src="{{ asset('back/js/morris/raphael-2.1.0.min.js') }}"></script>
-    <script src="{{ asset('back/js/morris/morris.js') }}"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="{{ asset('back/js/custom.js') }}"></script>
+
 
 <script>
     var swiper = new Swiper('.swiper-container', {
@@ -193,4 +240,19 @@
         });
     }
 </script>
+
+    <script language="JavaScript">
+        function initMap() {
+            var latlng = new google.maps.LatLng({{ user.latitude }},{{ user.longitude }});
+            var map = new google.maps.Map(document.getElementById('map'), {
+                //les element required pour map
+                zoom: 17,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+        }
+    </script>
+{% endfor %}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE1NK3hPy4e4XIry3HF7fz8sXjd4cXDK4&callback=initMap"></script>
 {% endblock  %}

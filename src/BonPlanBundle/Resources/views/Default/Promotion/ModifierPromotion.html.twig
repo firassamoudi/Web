@@ -39,22 +39,32 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        {{ form_row(form.reduction, {'label':"reduction" ,'attr': {'class': 'form-control border-input'}}) }}
+                        {{ form_row(form.datefinp, {'label':"date fin de promotion" ,'attr': {'class': 'form-control border-input'}}) }}
                     </div>
                 </div>
 
             </div>
         </div>
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            {{ form_row(form.datefinp, {'label':"date fin de promotion" ,'attr': {'class': 'form-control border-input'}}) }}
-                        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form_row(form.reduction, {'label':"reduction" ,'attr': {'class': 'form-control border-input'}}) }}
                     </div>
-
                 </div>
+
             </div>
+        </div> <div class="content">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form_row(form.etat, {'label':"etat de promotion" ,'attr': {'class': 'form-control border-input'}}) }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 
     </div>
     </div>

@@ -1,5 +1,6 @@
 {% extends '@BonPlan/Default/index.html.twig' %}
 {% block body %}
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <!--============================= BOOKING =============================-->
 
         <br>
@@ -9,51 +10,43 @@
 <body style="background-size: 100% 100%;background-image: url({{ asset('images/slider.jpg') }}) ">
 
             <div class="container-fluid ">
-
                 <div class="col-sm">
-
-
-
-
                     <center>
                         <div class="header">
                           <h3 class="title" style="color: indianred">Creer votre  profile Proprietaire </h3>
                         </div>
                     </center>
-                    {{ form_start(form) }}
 
-
+                    <form method="post" id="idform">
                     <div class="content">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="form-group">
                                     <h5 style="color: azure">Nom du Plan</h5>
-                                    {{ form_widget(form.nomPlan, {'label':"Nom Plan" ,'attr': {'class': 'form-control border-input'}}) }}
+                                    <input type="text" class="form-control border-input" name="nomPlan">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
                     <div class="content">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5 style="color: azure">Catégorie</h5>
-                                    {{ form_widget(form.categorie, {'label':"Categorie " ,'attr': {'class': 'form-control border-input'}}) }}
+                                    <select type="text" class="form-control border-input" name="categorie">
+                                    {% for i in categ %}
+                                        <option value="{{ i.nomCategorie }}">{{ i.nomCategorie }}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-
                     <div class="content">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5 style="color: azure">Adresse</h5>
-                                    {{ form_widget(form.adresse, {'label':"adresse " ,'attr': {'class': 'form-control border-input'}}) }}
+                                    <input type="text" class="form-control border-input" name="adresse" id="adresse">
                                 </div>
                             </div>
 
@@ -65,7 +58,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5 style="color: azure">Téléphone</h5>
-                                    {{ form_widget(form.telephone, {'label':"telephone" ,'attr': {'class': 'form-control border-input'}}) }}
+                                    <input type="text" class="form-control border-input" name="telephone">
                                 </div>
                             </div>
                         </div>
@@ -76,133 +69,179 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5 style="color: azure">Photo</h5>
-                                    {{ form_widget(form.file, {'label':"Photo de Profil" ,'attr': {'class': 'form-control border-input'}}) }}
+                                    <<input type="file" class="form-control border-input" name="photoProfil">
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="content">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <h5 style="color: azure">Description</h5>
-                                    {{ form_widget(form.description, {'label':"Description" ,'attr': {'class': 'form-control border-input'}}) }}
+                                    <textarea class="form-control border-input" name="description"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input id="pac-input" class="form-control border-input" type="text" placeholder="Search Box">
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h5 style="color: azure">Latitude</h5>
+                                        <input type="text" class="form-control border-input" name="latitude" id="latitude" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h5 style="color: azure">Longitude</h5>
+                                        <input type="text" class="form-control border-input" name="longitude" id="longitude" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-info btn-fill btn-wd">Ajouter</button>
+                        </div>
+                        <div>
+<!--   <input style="background-color: #bd2130 " ; type="submit" class="btn btn-info btn-fill btn-wd" value="Enregistrer" />-->
+                </div>
+                </form>
+                </div>
+
+                <div class="col-sm">
                     <div class="content">
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <input id="pac-input" class="form-control border-input" type="text" placeholder="Search Box">
+                                <div class="map-fix" >
+                            <!-- data-toggle="affix" -->
+                            <!-- Google map will appear here! Edit the Latitude, Longitude and Zoom Level below using data-attr-*  -->
+                                    <div id="map" style="width: 80%; height: 300px; top: 300px; position: relative; overflow: hidden;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                    <div>
-<!--   <input style="background-color: #bd2130 " ; type="submit" class="btn btn-info btn-fill btn-wd" value="Enregistrer" />-->
-                        {{ form_widget(form.Ajouter,{'attr': {'class': 'btn btn-info btn-fill btn-wd'}}) }}
-                    </div>
-                    {{ form_end(form) }}
-                </div>
-
-                <div class="col-sm">
-                    <div class="map-fix">
-                        <!-- data-toggle="affix" -->
-                        <!-- Google map will appear here! Edit the Latitude, Longitude and Zoom Level below using data-attr-*  -->
-                        <div id="map" style=" position: center; "></div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                </div>
-
             </div>
 
 </body>
-    <script>
-        // This example adds a search box to a map, using the Google Place Autocomplete
-        // feature. People can enter geographical searches. The search box will return a
-        // pick list containing a mix of places and predicted search terms.
-
-        // This example requires the Places library. Include the libraries=places
-        // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-        function initAutocomplete() {
+    <script language="JavaScript">
+        $(function initMap() {
+            var latlng = new google.maps.LatLng(36.8064948, 10.181531599999971);
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 36.8064, lng: 10.1815},
-                zoom: 13,
-                mapTypeId: 'roadmap'
+                //les element required pour map
+                zoom: 10,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
-
-            // Create the search box and link it to the UI element.
-            var input = document.getElementById('pac-input');
-            var searchBox = new google.maps.places.SearchBox(input);
-            //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-            // Bias the SearchBox results towards current map's viewport.
-            map.addListener('bounds_changed', function() {
-                searchBox.setBounds(map.getBounds());
+            //ajout d'un marqueur dans la map
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title: 'Bougez ce curseur',
+                draggable: true,
+                animation: google.maps.Animation.BOUNCE
             });
-
-            var markers = [];
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
-            searchBox.addListener('places_changed', function() {
-                var places = searchBox.getPlaces();
-
-                if (places.length == 0) {
-                    return;
+            //obtenir latlong quand marker change de position
+            var geocoder = new google.maps.Geocoder();
+            google.maps.event.addListener(marker, 'drag', function () {
+                setPosition(marker);
+            });
+            google.maps.event.addListener(marker, 'dragend', function () {
+                var pos = marker.getPosition();
+                var latitude = pos.lat();
+                var longitude = pos.lng();
+                getAddress(latitude, longitude);
+                marker.setPosition(latLng);
+            });
+            //Event sur le champ address
+            $('#adresse').keypress(function (e) {
+                if (e.keyCode == 13) {
+                    $(this).val();
+                    var request = {
+                        address: $(this).val()
+                    }
+                    geocoder.geocode(request, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            var pos = results[0].geometry.location;
+                            map.setCenter(pos);
+                            marker.setPosition(pos);
+                            setPosition(marker);
+                        }
+                        else {
+                            alert('false');
+                        }
+                    });
+                    return false;
                 }
 
-                // Clear out the old markers.
-                markers.forEach(function(marker) {
-                    marker.setMap(null);
-                });
-                markers = [];
-
-                // For each place, get the icon, name and location.
-                var bounds = new google.maps.LatLngBounds();
-                places.forEach(function(place) {
-                    if (!place.geometry) {
-                        console.log("Returned place contains no geometry");
-                        return;
-                    }
-                    var icon = {
-                        url: place.icon,
-                        size: new google.maps.Size(71, 71),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25)
-                    };
-
-                    // Create a marker for each place.
-                    markers.push(new google.maps.Marker({
-                        map: map,
-                        icon: icon,
-                        title: place.name,
-                        position: place.geometry.location
-                    }));
-
-                    if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                });
-                map.fitBounds(bounds);
             });
-        }
+
+            //les champ lat et long prend les valeurs de latlong quand le marker se deplace
+            function setPosition(marker) {
+                var pos = marker.getPosition();
+                $('#latitude').val(pos.lat());
+                $('#longitude').val(pos.lng());
+            }
 
 
+            //evenement onclick sur la map
+            map.addListener('click', function (e) {
+                placeMarkerAndPanTo(e.latLng, map);
+            });
 
+            function placeMarkerAndPanTo(latLng, map) {
+                var pos = marker.getPosition();
+                var latitude = pos.lat();
+                var longitude = pos.lng();
+                getAddress(latitude, longitude);
+                marker.setPosition(latLng);
+                setPosition(marker);
+                map.panTo(latLng);
+            }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// reverse geoconding
+
+
+            // function to process address data
+            function processAddress(address) {
+                $("#adresse").val(address);
+                // write address to field
+            }
+
+
+            // function to geocode a lat/long
+            function getAddress(myLatitude, myLongitude) {
+                var geocoder = new google.maps.Geocoder();							// create a geocoder object
+                var location = new google.maps.LatLng(myLatitude, myLongitude);		// turn coordinates into an object
+                geocoder.geocode({'latLng': location}, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {						// if geocode success
+                        processAddress(results[0].formatted_address);					// if address found, pass to processing function
+                    } else {
+                        alert("Geocode failure: " + status);								// alert any other error(s)
+                        return false;
+                    }
+                });
+            }
+        });
     </script>
 
     <!-- Map JS (Please change the API key below. Read documentation for more info) -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE1NK3hPy4e4XIry3HF7fz8sXjd4cXDK4&libraries=places&callback=initAutocomplete"
-            async defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE1NK3hPy4e4XIry3HF7fz8sXjd4cXDK4&callback=initMap"></script>
 {% endblock %}

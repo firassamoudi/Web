@@ -1,0 +1,81 @@
+{% extends '@BonPlan/Default/indexback.html.twig' %}
+{% block body %}
+    <div class="panel panel-default chat">
+        <div class="panel-heading" id="accordion"><svg class="glyph stroked app window with content">
+
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    <div class="col-lg-8 col-md-7">
+
+                        <div class="header">
+                            <h1 class="title">Modifier l'évènement </h1>
+                        </div>
+
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        {{ form_row(form.nomev, {'label':"Nom de l'évènement " ,'attr': {'class': 'form-control border-input'} }) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        {{ form_row(form.description, {'label':"Description de l'évènement" ,'attr': {'class': 'form-control border-input'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{ form_row(form.datedebutev) }}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{ form_row(form.datefinev) }}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{ form_row(form.nbrplace) }}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {{ form_row(form.Modifier, {'attr': {'class': 'btn btn-info'}}) }}
+                        {{ form_end(form) }}
+                        <div>
+                            <a  class="btn btn-danger"href={{ path('EventProp_consult') }} > Retour</a>
+                        </div>
+                    </div>
+
+                    {% for flashMessage in app.session.flashBag.get('success') %}
+                        <div class="alert alert-success">
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                </div></svg>
+        </div>
+    </div>
+{% endblock %}

@@ -31,4 +31,25 @@ class ReservationRepository  extends EntityRepository
 
         return $query->getQuery()->getResult();
     }
+    //0 non lu
+    //1 notif lu
+
+    public function findByNotig($user){
+        $query=$this->createQueryBuilder('c')
+            ->where('c.userPlan = :user_iduser1')
+            ->andWhere('c.notif = 0')
+            ->setParameter(':user_iduser1',$user);
+
+        return $query->getQuery()->getArrayResult();
+    }
+    public function Updatenotif($user){
+
+        $nbr = 1;
+        $query=$this->createQueryBuilder('c')->update()
+            ->set('c.notif ', $nbr)
+            ->where('c.userPlan= :user_iduser1')
+            ->setParameter(':user_iduser1',$user);
+
+        return $query->getQuery()->getResult();
+    }
 }

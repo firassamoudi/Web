@@ -1,0 +1,75 @@
+{% extends '@BonPlan/Default/indexback.html.twig' %}
+{% block body %}
+    <body   >
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                  <div class="col-sm-8">
+                    <h3  class="text-primary">Liste des évènements</h3>
+
+
+                    <div class="col-sm-12">
+                        <h4 class="text-secondary"> </h4>
+
+                        <div class="table-responsive-sm">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <td>Nom de l'évènement</td>
+                                    <td>Description</td>
+                                    <td>Date début de l'évènement </td>
+                                    <td>Date fin de l'évènement </td>
+                                    <td> Nombre des places</td>
+                                    <td> Nombre de participants</td>
+                                    <td> Etat </td>
+                                    <td>selectionner</td>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for e in events %}
+                                <tr>
+                                    <td>
+                                        {{ e.nomev}}
+                                    </td>
+                                    <td>
+                                        {{ e.description}}
+
+                                    </td>
+                                    <td>
+                                        {{ e.datedebutev|date("d/m/Y")}}
+                                    </td>
+                                    <td>
+                                        {{ e.datefinev|date("d/m/Y")}}
+                                    </td>
+                                    <td>
+                                        {{ e.nbrplace}}
+                                    </td>
+                                    <td>
+                                        {{ e.nbparticipant}}
+                                    </td>
+                                    <td>
+                                        {{ e.etatev}}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('PageEvent',{'id':e.idevents}) }}"> Afficher</a>
+                                    </td>
+
+                                    {% else %}
+                                        liste vide
+                                    {% endfor %}
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}

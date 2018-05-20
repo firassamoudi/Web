@@ -16,21 +16,14 @@ class AdminController extends Controller
         return $this->render('', array('name' => $name));
 
     }
-    public function ToPDFAction(Request $request, $id){
-        $user_id= $request->get('id');
+    public function ToPDFAction(Request $request ,$id){
 
-        $em = $this->getDoctrine()->getManager();
-
-        $user= $em->getRepository('BonPlanBundle:User')->find($user_id);
-
-
-
-        $html = $this->renderView('BonPlanBundle:Default/validation:TESTPDF.html.twig' , array('user'=>$user) );
+            $em = $this->getDoctrine()->getManager();
+            $plan= $this->getDoctrine()->getRepository('BonPlanBundle:User')->findBy(array('id' => $id));
+        $em=$this->getDoctrine()->getManager();
+        $html = $this->renderView('BonPlanBundle:Default/validation:TESTPDF.html.twig' , array('plan'=>$plan) );
 
         $snappy = $this->get('knp_snappy.pdf');
-
-
-
         $filename = 'BonPlan';
 
         return new Response(
@@ -42,7 +35,6 @@ class AdminController extends Controller
                 )
                 );
                 }
-
     public function ValiderCompteAction()
     {
 

@@ -1,14 +1,19 @@
+{% extends '@BonPlan/Default/indexback.html.twig' %}
+
+{% block body %}
 {{ form_start(edit_form) }}
 <div class="modal-body">
         <div class="form-group">
-            {{ form_widget(edit_form.nomCategorie, {'label':"Nom Catégorie" ,'attr': {'class': 'form-control border-input'}}) }}
+            {{ form_row(edit_form.nomCategorie, {'label':"Nom Catégorie" ,'attr': {'class': 'form-control border-input'}}) }}
         </div>
-        <div class="form-group">
-            {{ form_widget(edit_form.file, {'label':"Image" ,'attr': {'class': 'form-control border-input' }}) }}
-        </div>
+    <div class="form-group">
+        {{ form_row(edit_form.file, {'label':"Image" ,'attr': {'class': 'form-control border-input'}}) }}
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-    {{ form_widget(edit_form.modifier,{'attr':{'class':'btn btn-warning'}}) }}
+    <button type="submit" class="btn btn-warning" data-dismiss="modal">Modifier</button>
+    {{ form_row(edit_form._token) }}
 </div>
 {{ form_end(edit_form) }}
+{% endblock %}

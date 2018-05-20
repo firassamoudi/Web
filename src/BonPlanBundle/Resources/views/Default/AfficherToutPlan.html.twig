@@ -1,14 +1,13 @@
 {% for user in users %}
+    {% if user.photodeprofil!="" and user.nomPlan!="" and user.validite==1 %}
     <div class="col-md-4 featured-responsive">
         <div class="featured-place-wrap">
             <a href="{{ path('Profil_Plan',{'id': user.id})  }}">
                 <img src="{{ asset('uploads/images/PhotoProfil/'~user.photodeprofil) }}" class="img-fluid" alt="#">
                 <span class="featured-rating">3.2</span>
                 <div class="featured-title-box">
-                    <p>{{ user.id }}</p>
                     <h6>{{ user.nomPlan }}</h6>
                     <p>{{ user.categorie.nomCategorie }} </p> <span>• </span>
-                    <p>3 Reviews</p> <span> • </span>
                     <p><span>$$$</span>$$</p>
                     <ul>
                         <li>
@@ -22,4 +21,5 @@
             </a>
         </div>
     </div>
+        {% endif %}
 {% endfor %}

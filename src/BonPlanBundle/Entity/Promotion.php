@@ -57,6 +57,7 @@ class Promotion
 
     private $datefinp;
 
+
     /**
      * @var \ integer
      *

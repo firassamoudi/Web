@@ -5,10 +5,10 @@ namespace BonPlanBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Avis
+ * views
  *
  * @ORM\Table(name="avis")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BonPlanBundle\Repository\AvisRepository")
  */
 class Avis
 {
@@ -17,14 +17,14 @@ class Avis
      *
      * @ORM\Column(name="idAvis", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $idavis;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="commentaire", type="string", length=255, nullable=true)
+     * @ORM\Column(name="commentaire", type="text", length=65000, nullable=true)
      */
     private $commentaire;
 
@@ -38,7 +38,7 @@ class Avis
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateComment", type="date", nullable=true)
+     * @ORM\Column(name="dateComment", type="datetime", nullable=true)
      */
     private $datecomment;
 

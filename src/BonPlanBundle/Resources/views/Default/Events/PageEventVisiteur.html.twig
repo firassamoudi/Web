@@ -1,0 +1,63 @@
+{% extends '@BonPlan/Default/index.html.twig' %}
+{% block body %}
+    <body   >
+    <div  style="background-repeat:no-repeat ; stroke:5px ; height:1500px ; width: 1500px; color: white ; background-size: 100% 100%;background-image: url({{ asset('images/events.png') }})" class="content">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+
+                    <div class="col-sm-12">
+                        <h3  align="center" class="text-primary">Evenement</h3> <br>
+                        {% for e in event %}
+                            <div class="col-sm-6">
+                                <label>nom de l'évènement:</label>
+                                <p   id="idnomEv" class="editable">  {{ e.nomev}} </p> <BR>
+                                <label >Description de l'évènement:</label>
+                                <p id="iddescEv" class="editable">{{ e.description}}</p><br>
+                                <label >Nombre de place disponible: </label>
+                                <p id="idnbplace" class="editable">  {{ e.nbrplace}}</p><br>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Date début de l'évènement:</label>
+                                <p  id="iddebut" class="text-ch"> {{ e.datedebutev|date("d/m/Y")}}</p><br>
+                                <label>Date fin de l'évènement:</label>
+                                <p id="idfin" class="text-ch">  {{ e.datefinev|date("d/m/Y")}}</p><br>
+                                <label >Nombre de participants de l'évènement </label>
+
+                                <div id="nbUpd">
+                                <p id="idnbparticipant" class="text-ch">  {{ e.nbparticipant}}</p>
+                                </div>
+                            </div>
+                            {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_PROP") )and( e.userPlan.id ==  app.user.id  ) %}
+                                <!-- Trigger the modal with a button -->
+                                <button type="button" id='mdfEv' class="btn btn-success" data-toggle="modal" data-target="modifEvent">Ouvrir modifier</button>
+
+                                <a href="{{ path('PageEvent',{'id':e.idevents}) }}"> Annuller</a>
+                                &nbsp; <a href={{ path('EventProp_consult') }} > Retour</a>
+                            {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") and (is_granted("ROLE_VISITEUR") )%}
+                                 {{ form_start(form) }}
+                                {{ form_row(form.Participer) }}
+                                {{ form_end(form) }}
+
+                                <a href={{ path('Events') }} > Retour</a>
+                            {% else %}
+                                <a href={{ path('Events') }} > Retour</a>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+{% block javascript %}
+
+
+{% endblock %}
+
+

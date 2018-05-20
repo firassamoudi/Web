@@ -1,0 +1,31 @@
+<span class="modal-body">
+                    <form method="POST">
+                        <input name="userConnecté" type="hidden" value="{{ app.user.id }}">
+                        <input name="Plan" type="hidden" value="{{ user.id }}">
+
+                          <div class="form-group">
+    <label for="exampleInputNbr">Nombre des places</label>
+    <input type="text" class="form-control" id="exampleInputNbr"
+           placeholder="entrer le nombre de place" name="nbrplace">
+  </div>
+                                                  <div class="form-group">
+    <label for="exampleInputDate">Date de réservation</label>
+    <input type="date" class="form-control" id="exampleInputDate"
+           placeholder="Choisir la date" name="dateReservation">
+  </div>
+                                                                         <div class="form-group">
+    <label for="exampleInputDate">Heure de réservation</label>
+    <input type="time" class="form-control" id="exampleInputDate"
+           placeholder="Choisir la date" name="heure">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputTel">Téléphone</label>
+    <input type="text" class="form-control" id="exampleInputTel" placeholder="Téléphone " name="telephone">
+  </div>
+                </span>
+<span class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">annuler</button>
+
+                        <input type="submit" value="Réserver" class="btn btn-primary">
+                </span>
+</form>

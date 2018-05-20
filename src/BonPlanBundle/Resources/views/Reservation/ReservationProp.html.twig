@@ -14,7 +14,14 @@
 
                     <div class="col-sm-12">
                         <h4 class="text-secondary"> Liste de mes  réservations</h4>
+                        <div class="row">
+                            <div class="col-md-5">
 
+                                <input type="text" class="form-control" name="name" id="chercher" placeholder="Search" >
+
+                            </div>
+
+                        </div>
                         <div class="table-responsive-sm">
                             <table class="table table-hover">
                                 <thead>
@@ -26,7 +33,7 @@
                                     <td>téléphone</td>
                                     <td>heure</td>
                                     <td>Description</td>
-                                    <td>Modifier</td>
+                                    <td>Traiter</td>
 
                                 </tr>
                                 </thead>
@@ -52,7 +59,7 @@
                                         {{ v.description}}
                                     </td>
                                     <td>
-                                        <a href="{{ path('ReservationPropUpdate',{'id':v.idreservation}) }}"> Modifier</a>
+                                        <a href="{{ path('ReservationPropUpdate',{'id':v.idreservation}) }}"> Traiter</a>
                                     </td>
 
                                     {% else %}
@@ -68,5 +75,20 @@
         </div>
     </div>
 
+    {% block javascript %}
+        <script>
+
+            $("#chercher").keyup(function(){
+                _this = this;
+                $.each($("table tbody tr"), function() {
+                    if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                    {if($(this).text().toLowerCase().indexOf('Name') === -1)
+                        $(this).hide();}
+                    else
+                        $(this).show();
+                });
+            });
+        </script>
+    {% endblock %}
     </body>
 {% endblock %}
